@@ -1,7 +1,7 @@
 # testFingesoProject
 
-Notación commits:
-	* (Todo el conteido en inglés)
+## Notación commits
+	(Todo el conteido en inglés)
     * feat: Nueva característica (feature).
     * fix: Corrección de un error (bug).
     * docs: Cambios en la documentación.
