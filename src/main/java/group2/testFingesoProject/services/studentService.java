@@ -11,7 +11,6 @@ public class studentService {
     studentRepository studentRepositoryInstance;
     public studentEntity createStudent(studentEntity newStudent) {
         //student validation
-        return studentRepository.save(newStudent);
+        return studentRepositoryInstance.save(newStudent);
     }
-
 }
