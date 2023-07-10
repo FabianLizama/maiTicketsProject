@@ -14,7 +14,7 @@ public class studentController {
     @Autowired
     studentService studentServiceInstance;
     @PostMapping(value = "/student/")
-    public ResponseEntity<studentEntity> guardar(@RequestBody studentEntity newStudentEntity){
+    public ResponseEntity<studentEntity> save(@RequestBody studentEntity newStudentEntity){
         studentEntity object = studentServiceInstance.createStudent(newStudentEntity);
         return new ResponseEntity<studentEntity>(object, HttpStatus.OK);
     }
