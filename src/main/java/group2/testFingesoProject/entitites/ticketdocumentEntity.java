@@ -12,13 +12,15 @@ import lombok.NoArgsConstructor;
 @Data
 
 public class ticketdocumentEntity {
+
+    @ManyToOne
+    @JoinColumn (name = "ticket")
+    private ticketEntity ticketEntity;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     Long id;
-    String name;
-    String lastname_p;
-    String lastname_m;
-    String rut;
+    String document;
     boolean state;
 }

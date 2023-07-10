@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "ticketpriority")
 @AllArgsConstructor
@@ -12,13 +14,14 @@ import lombok.NoArgsConstructor;
 @Data
 
 public class ticketpriorityEntity {
+
+    @OneToMany (mappedBy = "ticketpriority", cascade = CascadeType.ALL)
+    private List<ticketEntity> ticketEntities;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     Long id;
-    String name;
-    String lastname_p;
-    String lastname_m;
-    String rut;
+    Integer priority;
     boolean state;
 }

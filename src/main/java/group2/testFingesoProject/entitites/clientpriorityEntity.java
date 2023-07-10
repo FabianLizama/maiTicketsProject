@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "clientpriority")
 @AllArgsConstructor
@@ -12,13 +14,17 @@ import lombok.NoArgsConstructor;
 @Data
 
 public class clientpriorityEntity {
+
+    @OneToMany (mappedBy = "clientpriority", cascade = CascadeType.ALL)
+    private List<internalclientEntity> internalclientEntities;
+
+    @OneToMany (mappedBy = "clientpriority", cascade = CascadeType.ALL)
+    private List<externalclientEntity> externalclientEntities;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     Long id;
-    String name;
-    String lastname_p;
-    String lastname_m;
-    String rut;
+    Integer rank;
     boolean state;
 }

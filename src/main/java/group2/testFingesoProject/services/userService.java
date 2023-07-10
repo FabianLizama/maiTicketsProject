@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 public class userService {
     @Autowired
     userRepository userRepositoryInstance;
-    public userEntity createUser(userEntity newuser) {
+    public userEntity createUser(userEntity newUser) {
         //student validation
-        return userRepositoryInstance.save(newuser);
+        return userRepositoryInstance.save(newUser);
     }
 }

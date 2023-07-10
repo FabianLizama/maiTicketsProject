@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+import java.util.List;
+
 @Entity
 @Table(name = "ticket")
 @AllArgsConstructor
@@ -12,13 +15,44 @@ import lombok.NoArgsConstructor;
 @Data
 
 public class ticketEntity {
+
+    @ManyToOne
+    @JoinColumn (name = "ticketcategory")
+    private ticketcategoryEntity ticketcategoryEntity;
+
+    @ManyToOne
+    @JoinColumn (name = "ticketrating")
+    private ticketratingEntity ticketratingEntity;
+
+    @ManyToOne
+    @JoinColumn (name = "ticketpriority")
+    private ticketpriorityEntity ticketpriorityEntity;
+
+    @ManyToOne
+    @JoinColumn (name = "ticketstate")
+    private ticketstateEntity ticketstateEntity;
+
+    @OneToMany (mappedBy = "ticketcomentary", cascade = CascadeType.ALL)
+    private List<ticketcomentaryEntity> ticketcomentaryEntities;
+
+    @OneToMany (mappedBy = "ticketdocument", cascade = CascadeType.ALL)
+    private List<ticketdocumentEntity> ticketdocumentEntities;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "tickethistory")
+    private tickethistoryEntity tickethistoryEntity;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ticketreport")
+    private ticketreportEntity ticketreportEntity;
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     Long id;
     String name;
-    String lastname_p;
-    String lastname_m;
-    String rut;
+    String description;
+    Date submmitiondate;
     boolean state;
 }

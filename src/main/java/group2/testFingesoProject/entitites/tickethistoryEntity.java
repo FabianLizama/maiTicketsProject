@@ -12,13 +12,11 @@ import lombok.NoArgsConstructor;
 @Data
 
 public class tickethistoryEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     Long id;
-    String name;
-    String lastname_p;
-    String lastname_m;
-    String rut;
+    String history;
     boolean state;
 }
