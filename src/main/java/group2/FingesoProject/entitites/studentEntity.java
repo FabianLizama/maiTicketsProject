@@ -1,0 +1,24 @@
+package group2.FingesoProject.entitites;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "student")
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+
+public class studentEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true, nullable = false)
+    Long id;
+    String name;
+    String lastname_p;
+    String lastname_m;
+    String rut;
+    boolean state;
+}
