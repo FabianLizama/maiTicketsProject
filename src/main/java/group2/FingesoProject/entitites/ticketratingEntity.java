@@ -21,7 +21,7 @@ public class ticketratingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    Long id_rating;
+    Long id_ticketrating;
     Integer rating;
     String rating_description;
 }

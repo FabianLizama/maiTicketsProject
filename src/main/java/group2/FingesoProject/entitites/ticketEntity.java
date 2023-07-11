@@ -17,33 +17,33 @@ import java.util.List;
 public class ticketEntity {
 
     @ManyToOne
-    @JoinColumn (name = "Ticketcategory")
+    @JoinColumn (name = "ticketcategory")
     private ticketcategoryEntity ticketcategoryEntity;
 
     @ManyToOne
-    @JoinColumn (name = "Ticketrating")
+    @JoinColumn (name = "ticketrating")
     private ticketratingEntity ticketratingEntity;
 
     @ManyToOne
-    @JoinColumn (name = "Ticketpriority")
+    @JoinColumn (name = "ticketpriority")
     private ticketpriorityEntity ticketpriorityEntity;
 
     @ManyToOne
-    @JoinColumn (name = "Ticketstate")
+    @JoinColumn (name = "ticketstate")
     private ticketstateEntity ticketstateEntity;
 
-    @OneToMany (mappedBy = "Ticketcomentary", cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "ticketcomentary", cascade = CascadeType.ALL)
     private List<ticketcomentaryEntity> ticketcomentaryEntities;
 
-    @OneToMany (mappedBy = "Ticketdocument", cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "ticketdocument", cascade = CascadeType.ALL)
     private List<ticketdocumentEntity> ticketdocumentEntities;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Tickethistory")
+    @JoinColumn(name = "tickethistory")
     private tickethistoryEntity tickethistoryEntity;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Ticketreport")
+    @JoinColumn(name = "ticketreport")
     private ticketreportEntity ticketreportEntity;
 
     @Id

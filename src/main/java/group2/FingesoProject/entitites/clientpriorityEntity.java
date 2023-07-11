@@ -8,17 +8,17 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = "Clientpriority")
+@Table(name = "clientpriority")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 
 public class clientpriorityEntity {
 
-    @OneToMany (mappedBy = "Clientpriority", cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "clientpriority", cascade = CascadeType.ALL)
     private List<internalclientEntity> internalclientEntities;
 
-    @OneToMany (mappedBy = "Clientpriority", cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "clientpriority", cascade = CascadeType.ALL)
     private List<externalclientEntity> externalclientEntities;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

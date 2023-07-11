@@ -8,20 +8,20 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = "Analyzer")
+@Table(name = "analyzer")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class analyzerEntity extends  userEntity {
+public class analyzerEntity extends  user_infoEntity {
     @ManyToOne
-    @JoinColumn (name = "Academicunit")
+    @JoinColumn (name = "academicunit")
     private academicunitEntity academicunitEntity;
 
     @ManyToOne
-    @JoinColumn (name = "Leadership")
+    @JoinColumn (name = "leadership")
     private leadershipEntity leadershipEntity;
 
-    @OneToMany (mappedBy = "Analyzer", cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "analyzer", cascade = CascadeType.ALL)
     private List<ticketEntity> ticketEntities;
 
     @Id

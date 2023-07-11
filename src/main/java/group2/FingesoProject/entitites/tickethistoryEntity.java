@@ -16,6 +16,6 @@ public class tickethistoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    Long id_history;
+    Long id_tickethistory;
 
 }

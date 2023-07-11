@@ -9,7 +9,7 @@ import java.sql.Time;
 import java.util.Date;
 
 @Entity
-@Table(name = "Ticketcomentary")
+@Table(name = "ticketcomentary")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -17,7 +17,7 @@ import java.util.Date;
 public class ticketcomentaryEntity {
 
     @ManyToOne
-    @JoinColumn (name = "Ticket")
+    @JoinColumn (name = "ticket")
     private ticketEntity ticketEntity;
 
     @Id
@@ -28,3 +28,5 @@ public class ticketcomentaryEntity {
     Date creation_comentary_date;
     Time creation_comentary_hour;
 }
+
+

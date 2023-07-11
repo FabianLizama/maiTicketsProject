@@ -33,7 +33,7 @@ public class ticketreportController {
     //READ(ID)
     @GetMapping("/{ID}")
     public ResponseEntity<ticketreportEntity> getticketreportByID(@PathVariable Long ID){
-        Optional<ticketreportEntity> ticketreport = ticketreportServiceInstance.getticketreportById(ID);
+        Optional<ticketreportEntity> ticketreport = ticketreportServiceInstance.getTicketreportById(ID);
         return ticketreport.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 

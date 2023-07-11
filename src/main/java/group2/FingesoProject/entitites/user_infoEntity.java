@@ -9,17 +9,17 @@ import java.util.Date;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "User")
+@Table(name = "User_info")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 
-public class userEntity {
+public class user_infoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    Long id_user;
+    Long id_user_info;
     String name;
     String lastname_p;
     String lastname_m;

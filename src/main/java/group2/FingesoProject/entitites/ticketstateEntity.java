@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = "ticketstate")
+@Table(name = "Ticketstate")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -21,6 +21,6 @@ public class ticketstateEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    Long id_state;
+    Long id_ticketstate;
     String state_name;
 }

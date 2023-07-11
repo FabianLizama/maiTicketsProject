@@ -21,6 +21,6 @@ public class ticketpriorityEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    Long id_role;
+    Long id_ticketpriority;
     Integer priority_level;
 }

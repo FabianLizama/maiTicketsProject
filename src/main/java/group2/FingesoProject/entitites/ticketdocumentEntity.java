@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Ticketdocument")
+@Table(name = "ticketdocument")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -14,12 +14,12 @@ import lombok.NoArgsConstructor;
 public class ticketdocumentEntity {
 
     @ManyToOne
-    @JoinColumn (name = "Ticket")
+    @JoinColumn (name = "ticket")
     private ticketEntity ticketEntity;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    Long id_document;
+    Long id_ticketdocument;
     String document_description;
 }

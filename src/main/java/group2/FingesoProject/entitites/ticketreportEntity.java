@@ -19,7 +19,7 @@ public class ticketreportEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    Long id_report;
+    Long id_ticketreport;
     String ticket_answer;
     Date answer_date;
 }

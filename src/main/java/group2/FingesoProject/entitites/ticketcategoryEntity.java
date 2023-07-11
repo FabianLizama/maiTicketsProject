@@ -8,14 +8,14 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = "Ticketcategory")
+@Table(name = "ticketcategory")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 
 public class ticketcategoryEntity {
 
-    @OneToMany (mappedBy = "Ticketcategory", cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "ticketcategory", cascade = CascadeType.ALL)
     private List<ticketEntity> ticketEntities;
 
     @Id
