@@ -1,4 +1,4 @@
-# testFingesoProject
+# FingesoProject
 
 ## Notación commits
 	(Todo el conteido en inglés)

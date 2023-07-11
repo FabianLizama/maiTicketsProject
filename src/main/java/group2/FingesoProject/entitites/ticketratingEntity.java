@@ -1,27 +1,28 @@
 package group2.FingesoProject.entitites;
 
+import group2.FingesoProject.entitites.ticketEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
-@Table(name = "Ticketrating")
+@Table(name = "ticketrating")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-
 public class ticketratingEntity {
-
-    @OneToMany (mappedBy = "Ticketrating", cascade = CascadeType.ALL)
-    private List<ticketEntity> ticketEntities;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    Long id_ticketrating;
-    Integer rating;
-    String rating_description;
+    private Long id_ticketrating;
+
+    private Integer rating;
+
+    private String rating_description;
+
+    @ManyToOne
+    @JoinColumn(name = "id_ticket")
+    private ticketEntity ticket;
 }

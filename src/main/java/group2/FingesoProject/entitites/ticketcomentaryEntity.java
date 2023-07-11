@@ -9,24 +9,22 @@ import java.sql.Time;
 import java.util.Date;
 
 @Entity
-@Table(name = "ticketcomentary")
+@Table(name = "Ticketcomentary")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-
 public class ticketcomentaryEntity {
-
-    @ManyToOne
-    @JoinColumn (name = "ticket")
-    private ticketEntity ticketEntity;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    Long id_ticketcomentary;
-    String comentary;
-    Date creation_comentary_date;
-    Time creation_comentary_hour;
+    private Long id_ticketcomentary;
+
+    private String commentary;
+    private Date creation_comentary_date;
+    private Time creation_comentary_hour;
+
+    @ManyToOne
+    @JoinColumn(name = "id_ticket")
+    private ticketEntity ticket;
 }
-
-

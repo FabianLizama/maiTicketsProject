@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/tickethistory")
+@RequestMapping("/Tickethistory")
 public class tickethistoryController {
     @Autowired
     private final tickethistoryService tickethistoryServiceInstance;

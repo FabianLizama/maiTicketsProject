@@ -5,28 +5,31 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Table(name = "analyzer")
+@Table(name = "Analyzer")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class analyzerEntity extends  user_infoEntity {
-    @ManyToOne
-    @JoinColumn (name = "academicunit")
-    private academicunitEntity academicunitEntity;
+public class analyzerEntity extends user_infoEntity {
 
-    @ManyToOne
-    @JoinColumn (name = "leadership")
-    private leadershipEntity leadershipEntity;
-
-    @OneToMany (mappedBy = "analyzer", cascade = CascadeType.ALL)
-    private List<ticketEntity> ticketEntities;
+    @OneToMany(mappedBy = "analyzer", cascade = CascadeType.ALL)
+    public List<ticketEntity> tickets;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    Long id_analyzer;
+    public Long id_analyzer;
+    @OneToMany(mappedBy = "analyzer")
+    private Collection<group2.FingesoProject.entitites.leadershipEntity> leadershipEntity;
 
+    public Collection<group2.FingesoProject.entitites.leadershipEntity> getLeadershipEntity() {
+        return leadershipEntity;
+    }
+
+    public void setLeadershipEntity(Collection<group2.FingesoProject.entitites.leadershipEntity> leadershipEntity) {
+        this.leadershipEntity = leadershipEntity;
+    }
 }

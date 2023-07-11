@@ -6,20 +6,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "ticketdocument")
+@Table(name = "Ticketdocument")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-
 public class ticketdocumentEntity {
-
-    @ManyToOne
-    @JoinColumn (name = "ticket")
-    private ticketEntity ticketEntity;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    Long id_ticketdocument;
-    String document_description;
+    private Long id_ticketdocument;
+
+    private String document_description;
+
+    @ManyToOne
+    @JoinColumn(name = "id_ticket")
+    private ticketEntity ticket;
 }

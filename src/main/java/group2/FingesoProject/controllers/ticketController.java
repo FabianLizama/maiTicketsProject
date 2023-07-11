@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/ticket")
+@RequestMapping("/Ticket")
 public class ticketController {
     @Autowired
     private final ticketService ticketServiceInstance;
@@ -40,7 +40,7 @@ public class ticketController {
     //UPDATE
     @PutMapping("/{ID}")
     public ticketEntity updateTicket(@PathVariable Long ID, @RequestBody ticketEntity ticket){
-        ticket.setId_ticket(ID);
+        ticket.setIdTicket(ID);
         return ticketServiceInstance.updateTicket(ticket);
     }
 

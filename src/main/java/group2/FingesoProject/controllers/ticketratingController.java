@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/ticketrating")
+@RequestMapping("/Ticketrating")
 public class ticketratingController {
     @Autowired
     private final ticketratingService ticketratingServiceInstance;

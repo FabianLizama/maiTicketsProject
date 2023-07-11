@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/externalclient")
+@RequestMapping("/Externalclient")
 public class externalclientController {
     @Autowired
     private final externalclientService externalclientServiceInstance;

@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/user_info")
+@RequestMapping("/User_info")
 public class user_infoController {
     @Autowired
     private final user_infoService user_infoServiceInstance;

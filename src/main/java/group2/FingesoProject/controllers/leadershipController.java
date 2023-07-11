@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/leadership")
+@RequestMapping("/Leadership")
 public class leadershipController {
     @Autowired
     private final leadershipService leadershipServiceInstance;

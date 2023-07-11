@@ -6,16 +6,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Tickethistory")
+@Table(name = "tickethistory")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-
 public class tickethistoryEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    Long id_tickethistory;
+    private Long id_tickethistory;
 
+    @ManyToOne
+    @JoinColumn(name = "id_ticket")
+    private ticketEntity ticket;
 }

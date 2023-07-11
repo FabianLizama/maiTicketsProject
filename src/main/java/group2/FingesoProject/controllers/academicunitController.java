@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/academicunit")
+@RequestMapping("/Academicunit")
 public class academicunitController {
     @Autowired
     private final academicunitService academicunitServiceInstance;

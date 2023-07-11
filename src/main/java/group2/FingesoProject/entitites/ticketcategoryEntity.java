@@ -8,19 +8,19 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = "ticketcategory")
+@Table(name = "Ticketcategory")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-
 public class ticketcategoryEntity {
-
-    @OneToMany (mappedBy = "ticketcategory", cascade = CascadeType.ALL)
-    private List<ticketEntity> ticketEntities;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    Long id_ticketcategory;
-    String category_name;
+    private Long id_ticketcategory;
+
+    private String category_name;
+
+    @OneToMany(mappedBy = "ticketCategory")
+    private List<ticketEntity> tickets;
 }

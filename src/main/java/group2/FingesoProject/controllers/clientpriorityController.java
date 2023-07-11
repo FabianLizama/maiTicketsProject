@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/clientpriority")
+@RequestMapping("/Clientpriority")
 public class clientpriorityController {
     @Autowired
     private final clientpriorityService clientpriorityServiceInstance;

@@ -13,44 +13,47 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-
 public class ticketEntity {
-
-    @ManyToOne
-    @JoinColumn (name = "ticketcategory")
-    private ticketcategoryEntity ticketcategoryEntity;
-
-    @ManyToOne
-    @JoinColumn (name = "ticketrating")
-    private ticketratingEntity ticketratingEntity;
-
-    @ManyToOne
-    @JoinColumn (name = "ticketpriority")
-    private ticketpriorityEntity ticketpriorityEntity;
-
-    @ManyToOne
-    @JoinColumn (name = "ticketstate")
-    private ticketstateEntity ticketstateEntity;
-
-    @OneToMany (mappedBy = "ticketcomentary", cascade = CascadeType.ALL)
-    private List<ticketcomentaryEntity> ticketcomentaryEntities;
-
-    @OneToMany (mappedBy = "ticketdocument", cascade = CascadeType.ALL)
-    private List<ticketdocumentEntity> ticketdocumentEntities;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "tickethistory")
-    private tickethistoryEntity tickethistoryEntity;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ticketreport")
-    private ticketreportEntity ticketreportEntity;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true, nullable = false)
-    Long id_ticket;
-    Date ticket_creation;
-    Date ticket_limit;
-    String description;
+    @Column(name = "id_ticket")
+    private Long idTicket;
+
+    @Column(name = "ticket_creation")
+    private Date ticketCreation;
+
+    @Column(name = "ticket_limit")
+    private Date ticketLimit;
+
+    private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "id_ticketcategory")
+    private ticketcategoryEntity ticketCategory;
+
+    @ManyToOne
+    @JoinColumn(name = "id_ticketrating")
+    private ticketratingEntity ticketRating;
+
+    @ManyToOne
+    @JoinColumn(name = "id_ticketpriority")
+    private ticketpriorityEntity ticketPriority;
+
+    @ManyToOne
+    @JoinColumn(name = "id_ticketstate")
+    private ticketstateEntity ticketState;
+
+    @OneToMany(mappedBy = "ticket")
+    private List<ticketcomentaryEntity> ticketComentaries;
+
+    @OneToMany(mappedBy = "ticket")
+    private List<ticketdocumentEntity> ticketDocuments;
+
+    @OneToMany(mappedBy = "ticket")
+    private List<tickethistoryEntity> ticketHistories;
+
+    @OneToOne(mappedBy = "ticket")
+    private ticketreportEntity ticketReport;
+
 }

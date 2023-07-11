@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/analyzer")
+@RequestMapping("/Analyzer")
 public class analyzerController {
     @Autowired
     private final analyzerService analyzerServiceInstance;

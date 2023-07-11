@@ -8,23 +8,23 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = "internalclient")
+@Table(name = "Internalclient")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-
-
 public class internalclientEntity extends user_infoEntity {
-    @ManyToOne
-    @JoinColumn (name = "clientpriority")
-    private clientpriorityEntity clientpriorityEntity;
 
-    @OneToMany (mappedBy = "internalclient", cascade = CascadeType.ALL)
-    private List<ticketEntity> ticketEntities;
+    @ManyToOne
+    @JoinColumn(name = "id_clientpriority")
+    private clientpriorityEntity clientPriority;
+
+    @OneToMany(mappedBy = "internalClient", cascade = CascadeType.ALL)
+    private List<ticketEntity> tickets;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    Long id_internalclient;
-    String priority_name;
+    private Long id_internalclient;
+
+    private String priority_name;
 }

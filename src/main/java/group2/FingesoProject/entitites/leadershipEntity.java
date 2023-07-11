@@ -5,27 +5,25 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
-@Table(name = "leadership")
+@Table(name = "Leadership")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-
-public class leadershipEntity extends user_infoEntity{
-    @ManyToOne
-    @JoinColumn (name = "academicunit")
-    private academicunitEntity academicunitEntity;
-
-    @OneToMany (mappedBy = "leadership", cascade = CascadeType.ALL)
-    private List<analyzerEntity> analyzerEntities;
-
-    @OneToMany (mappedBy = "leadership", cascade = CascadeType.ALL)
-    private List<ticketEntity> ticketEntities;
+public class leadershipEntity extends user_infoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    Long id_leadership;
+    private Long id_leadership;
+
+    @ManyToOne
+    @JoinColumn(name = "id_analyzer")
+    private analyzerEntity analyzer;
+
+    @ManyToOne
+    @JoinColumn(name = "id_academicunit")
+    private academicunitEntity academicunit;
+
+    // Getter and Setter methods (omitted for brevity)
 }
