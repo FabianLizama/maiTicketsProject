@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class analyzerEntity extends user_infoEntity {
+public class analyzerEntity extends userInfoEntity {
 
     @OneToMany(mappedBy = "analyzer", cascade = CascadeType.ALL)
     public List<ticketEntity> tickets;
