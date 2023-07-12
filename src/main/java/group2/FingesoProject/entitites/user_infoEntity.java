@@ -19,7 +19,6 @@ public class user_infoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     Long id_user_info;
-
     String name;
     String lastname_p;
     String lastname_m;

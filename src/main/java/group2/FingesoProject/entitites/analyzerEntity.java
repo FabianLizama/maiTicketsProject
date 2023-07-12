@@ -22,14 +22,15 @@ public class analyzerEntity extends user_infoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     public Long id_analyzer;
-    @OneToMany(mappedBy = "analyzer")
-    private Collection<group2.FingesoProject.entitites.leadershipEntity> leadershipEntity;
 
-    public Collection<group2.FingesoProject.entitites.leadershipEntity> getLeadershipEntity() {
+    @OneToMany(mappedBy = "analyzer")
+    private leadershipEntity leadershipEntity;
+
+    public leadershipEntity getLeadershipEntity() {
         return leadershipEntity;
     }
 
-    public void setLeadershipEntity(Collection<group2.FingesoProject.entitites.leadershipEntity> leadershipEntity) {
+    public void setLeadershipEntity(leadershipEntity leadershipEntity) {
         this.leadershipEntity = leadershipEntity;
     }
 }

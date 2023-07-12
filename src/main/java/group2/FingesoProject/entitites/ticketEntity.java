@@ -45,9 +45,6 @@ public class ticketEntity {
     private ticketstateEntity ticketState;
 
     @OneToMany(mappedBy = "ticket")
-    private List<ticketcomentaryEntity> ticketComentaries;
-
-    @OneToMany(mappedBy = "ticket")
     private List<ticketdocumentEntity> ticketDocuments;
 
     @OneToMany(mappedBy = "ticket")

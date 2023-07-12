@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = "Internalclient")
+@Table(name = "internalclient")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -18,7 +18,7 @@ public class internalclientEntity extends user_infoEntity {
     @JoinColumn(name = "id_clientpriority")
     private clientpriorityEntity clientPriority;
 
-    @OneToMany(mappedBy = "internalClient", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "internalclient", cascade = CascadeType.ALL)
     private List<ticketEntity> tickets;
 
     @Id
