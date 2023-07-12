@@ -5,25 +5,28 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Entity
-@Table(name = "Leadership")
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "User_info")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class leadershipEntity extends userInfoEntity {
+public class userInfoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    private Long id_leadership;
+    Long id_user_info;
 
-    @ManyToOne
-    @JoinColumn(name = "id_analyzer")
-    private analyzerEntity analyzer;
-
-    @ManyToOne
-    @JoinColumn(name = "id_academicunit")
-    private academicUnitEntity academicunit;
+    String name;
+    String lastname_p;
+    String lastname_m;
+    String rut;
+    String mail;
+    String password;
+    Date birthdate;
 
     // Getter and Setter methods (omitted for brevity)
 }

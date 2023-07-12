@@ -30,30 +30,30 @@ public class ticketEntity {
 
     @ManyToOne
     @JoinColumn(name = "id_ticketcategory")
-    private ticketcategoryEntity ticketCategory;
+    private ticketCategoryEntity ticketCategory;
 
     @ManyToOne
     @JoinColumn(name = "id_ticketrating")
-    private ticketratingEntity ticketRating;
+    private ticketRatingEntity ticketRating;
 
     @ManyToOne
     @JoinColumn(name = "id_ticketpriority")
-    private ticketpriorityEntity ticketPriority;
+    private ticketPriorityEntity ticketPriority;
 
     @ManyToOne
     @JoinColumn(name = "id_ticketstate")
-    private ticketstateEntity ticketState;
+    private ticketStateEntity ticketState;
 
     @OneToMany(mappedBy = "ticket")
-    private List<ticketcomentaryEntity> ticketComentaries;
+    private List<ticketComentaryEntity> ticketComentaries;
 
     @OneToMany(mappedBy = "ticket")
-    private List<ticketdocumentEntity> ticketDocuments;
+    private List<ticketDocumentEntity> ticketDocuments;
 
     @OneToMany(mappedBy = "ticket")
-    private List<tickethistoryEntity> ticketHistories;
+    private List<ticketHistoryEntity> ticketHistories;
 
     @OneToOne(mappedBy = "ticket")
-    private ticketreportEntity ticketReport;
+    private ticketReportEntity ticketReport;
 
 }
