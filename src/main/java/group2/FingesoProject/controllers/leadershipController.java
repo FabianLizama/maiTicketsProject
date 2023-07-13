@@ -1,6 +1,6 @@
 package group2.FingesoProject.controllers;
 
-import group2.FingesoProject.entitites.leadershipEntity;
+import group2.FingesoProject.entities.leadershipEntity;
 import group2.FingesoProject.services.leadershipService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

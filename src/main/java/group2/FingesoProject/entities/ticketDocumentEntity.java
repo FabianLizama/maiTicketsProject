@@ -1,28 +1,23 @@
-package group2.FingesoProject.entitites;
+package group2.FingesoProject.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Time;
-import java.util.Date;
-
 @Entity
-@Table(name = "Ticketcomentary")
+@Table(name = "TicketDocument")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ticketComentaryEntity {
+public class ticketDocumentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    private Long id_ticketcomentary;
+    private Long id_ticketDocument;
 
-    private String commentary;
-    private Date creation_comentary_date;
-    private Time creation_comentary_hour;
+    private String Document_description;
 
     @ManyToOne
     @JoinColumn(name = "id_ticket")

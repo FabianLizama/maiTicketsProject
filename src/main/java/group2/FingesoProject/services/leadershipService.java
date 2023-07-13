@@ -1,6 +1,6 @@
 package group2.FingesoProject.services;
 
-import group2.FingesoProject.entitites.leadershipEntity;
+import group2.FingesoProject.entities.leadershipEntity;
 import group2.FingesoProject.repositories.leadershipRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

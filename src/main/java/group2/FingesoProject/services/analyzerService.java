@@ -1,6 +1,6 @@
 package group2.FingesoProject.services;
 
-import group2.FingesoProject.entitites.analyzerEntity;
+import group2.FingesoProject.entities.analyzerEntity;
 import group2.FingesoProject.repositories.analyzerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

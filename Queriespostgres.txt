@@ -1,27 +1,27 @@
-create table if not exists Clientpriority (
-	id_clientpriority serial primary key,
-	id_externalclient int,
-	id_internalclient int,
-	clientpriority_name varchar,
-	foreign key(id_externalclient) references Externalclient(id_externalclient),
-	foreign key(id_internalclient) references Internalclient(id_internalclient)
+create table if not exists ClientPriority (
+	id_clientPriority serial primary key,
+	id_externalClient int,
+	id_internalClient int,
+	clientPriority_name varchar,
+	foreign key(id_externalClient) references Externalclient(id_externalClient),
+	foreign key(id_internalClient) references Internalclient(id_internalClient)
 );
 
 create table if not exists Externalclient (
-	id_externalclient serial primary key,
-	id_clientpriority int not null,
+	id_externalClient serial primary key,
+	id_clientPriority int not null,
 	id_ticket int not null,
-	clientpriority_name varchar,
-	foreign key(id_clientpriority) references Clientpriority(id_clientpriority),
+	clientPriority_name varchar,
+	foreign key(id_clientPriority) references ClientPriority(id_clientPriority),
 	foreign key(id_ticket) references Ticket(id_ticket)
 );
 
 create table if not exists Internalclient (
-	id_internalclient serial primary key,
-	id_clientpriority int not null,
+	id_internalClient serial primary key,
+	id_clientPriority int not null,
 	id_ticket int not null,
-	clientpriority_name varchar,
-	foreign key(id_clientpriority) references Clientpriority(id_clientpriority),
+	clientPriority_name varchar,
+	foreign key(id_clientPriority) references ClientPriority(id_clientPriority),
 	foreign key(id_ticket) references Ticket(id_ticket)
 );
 
@@ -54,57 +54,57 @@ create table if not exists Ticket (
 	ticket_creation Date,
 	ticket_limit Date,
 	description Varchar,
-	id_ticketcategory int,
+	id_ticketCategory int,
 	id_ticketrating int,
-	id_ticketpriority int,
-	id_ticketstate int,
-	id_ticketcomentary int,
-	id_ticketdocument int,
-	id_tickethistory int,
-	id_ticketreport int,
-	foreign key(id_ticketcategory) references Ticketcategory(id_ticketcategory),
+	id_ticketPriority int,
+	id_ticketState int,
+	id_ticketComentary int,
+	id_ticketDocument int,
+	id_ticketHistory int,
+	id_ticketReport int,
+	foreign key(id_ticketCategory) references TicketCategory(id_ticketCategory),
 	foreign key(id_ticketrating) references Ticketrating(id_ticketrating),
-	foreign key(id_ticketpriority) references Ticketpriority(id_ticketpriority),
-	foreign key(id_ticketstate) references Ticketstate(id_ticketstate),
-	foreign key(id_ticketcomentary) references Ticketcomentary(id_ticketcomentary),
-	foreign key(id_ticketdocument) references Ticketdocument(id_ticketdocument),
-	foreign key(id_tickethistory) references Tickethistory(id_tickethistory),
-	foreign key(id_ticketreport) references Ticketreport(id_ticketreport)
+	foreign key(id_ticketPriority) references TicketPriority(id_ticketPriority),
+	foreign key(id_ticketState) references TicketState(id_ticketState),
+	foreign key(id_ticketComentary) references TicketComentary(id_ticketComentary),
+	foreign key(id_ticketDocument) references TicketDocument(id_ticketDocument),
+	foreign key(id_ticketHistory) references TicketHistory(id_ticketHistory),
+	foreign key(id_ticketReport) references TicketReport(id_ticketReport)
 );
 
-create table if not exists Ticketcategory (
-	id_ticketcategory serial primary key,
+create table if not exists TicketCategory (
+	id_ticketCategory serial primary key,
 	id_ticket int not null,
-	category_name varchar,
+	Category_name varchar,
 	foreign key(id_ticket) references Ticket(id_ticket)
 );
 
-create table if not exists Ticketcomentary (
-	id_ticketcomentary serial primary key,
+create table if not exists TicketComentary (
+	id_ticketComentary serial primary key,
 	id_ticket int not null,
-	comentary varchar,
-	creation_comentary_date Date,
-	creation_comentary_hour Time,
+	Comentary varchar,
+	creation_Comentary_date Date,
+	creation_Comentary_hour Time,
 	foreign key(id_ticket) references Ticket(id_ticket)
 );
 
-create table if not exists Ticketdocument (
-	id_ticketdocument serial primary key,
+create table if not exists TicketDocument (
+	id_ticketDocument serial primary key,
 	id_ticket int not null,
-	document_description varchar,
+	Document_description varchar,
 	foreign key(id_ticket) references Ticket(id_ticket)
 );
 
-create table if not exists Tickethistory (
-	id_tickethistory serial primary key,
+create table if not exists TicketHistory (
+	id_ticketHistory serial primary key,
 	id_ticket int not null,
 	foreign key(id_ticket) references Ticket(id_ticket)
 );
 
-create table if not exists Ticketpriority (
-	id_ticketpriority serial primary key,
+create table if not exists TicketPriority (
+	id_ticketPriority serial primary key,
 	id_ticket int not null,
-	priority_level int,
+	Priority_level int,
 	foreign key(id_ticket) references Ticket(id_ticket)
 );
 
@@ -116,18 +116,18 @@ create table if not exists Ticketrating (
 	foreign key(id_ticket) references Ticket(id_ticket)
 );
 
-create table if not exists Ticketreport (
-	id_ticketreport serial primary key,
+create table if not exists TicketReport (
+	id_ticketReport serial primary key,
 	id_ticket int not null,
 	ticket_answer varchar,
 	answer_date Date,
 	foreign key(id_ticket) references Ticket(id_ticket)
 );
 
-create table if not exists Ticketstate (
-	id_ticketstate serial primary key,
+create table if not exists TicketState (
+	id_ticketState serial primary key,
 	id_ticket int not null,
-	state_name varchar,
+	State_name varchar,
 	foreign key(id_ticket) references Ticket(id_ticket)
 );
 

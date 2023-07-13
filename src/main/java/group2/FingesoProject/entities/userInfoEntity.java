@@ -1,4 +1,4 @@
-package group2.FingesoProject.entitites;
+package group2.FingesoProject.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -18,7 +18,7 @@ public class userInfoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    Long id_user_info;
+    Long id_userInfo;
     String name;
     String lastname_p;
     String lastname_m;

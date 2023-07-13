@@ -1,6 +1,6 @@
 package group2.FingesoProject.services;
 
-import group2.FingesoProject.entitites.userInfoEntity;
+import group2.FingesoProject.entities.userInfoEntity;
 import group2.FingesoProject.repositories.userInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

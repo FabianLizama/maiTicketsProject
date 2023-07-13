@@ -1,6 +1,6 @@
 package group2.FingesoProject.controllers;
 
-import group2.FingesoProject.entitites.ticketRatingEntity;
+import group2.FingesoProject.entities.ticketRatingEntity;
 import group2.FingesoProject.services.ticketRatingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,41 +12,41 @@ import java.util.Optional;
 @RequestMapping("/Ticketrating")
 public class ticketRatingController {
     @Autowired
-    private final ticketRatingService ticketratingServiceInstance;
+    private final ticketRatingService ticketRatingServiceInstance;
 
-    public ticketRatingController(ticketRatingService ticketratingService){
-        this.ticketratingServiceInstance = ticketratingService;
+    public ticketRatingController(ticketRatingService ticketRatingService){
+        this.ticketRatingServiceInstance = ticketRatingService;
     }
 
     //CREATE
     @PostMapping
-    public ticketRatingEntity createTicketrating(@RequestBody ticketRatingEntity ticketrating){
-        return ticketratingServiceInstance.createTicketrating(ticketrating);
+    public ticketRatingEntity createTicketrating(@RequestBody ticketRatingEntity ticketRating){
+        return ticketRatingServiceInstance.createTicketrating(ticketRating);
     }
 
     //READ(ALL)
     @GetMapping
     public List<ticketRatingEntity> getAllTicketratings(){
-        return ticketratingServiceInstance.getAllTicketratings();
+        return ticketRatingServiceInstance.getAllTicketratings();
     }
 
     //READ(ID)
     @GetMapping("/{ID}")
     public ResponseEntity<ticketRatingEntity> getTicketratingByID(@PathVariable Long ID){
-        Optional<ticketRatingEntity> ticketrating = ticketratingServiceInstance.getTicketratingById(ID);
-        return ticketrating.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+        Optional<ticketRatingEntity> ticketRating = ticketRatingServiceInstance.getTicketratingById(ID);
+        return ticketRating.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     //UPDATE
     @PutMapping("/{ID}")
-    public ticketRatingEntity updateTicketrating(@PathVariable Long ID, @RequestBody ticketRatingEntity ticketrating){
-        ticketrating.setId_ticketrating(ID);
-        return ticketratingServiceInstance.updateTicketrating(ticketrating);
+    public ticketRatingEntity updateTicketrating(@PathVariable Long ID, @RequestBody ticketRatingEntity ticketRating){
+        ticketRating.setId_ticketRating(ID);
+        return ticketRatingServiceInstance.updateTicketrating(ticketRating);
     }
 
     @DeleteMapping("/{ID}")
     public ResponseEntity<Void> deleteTicketrating(@PathVariable Long ID){
-        ticketratingServiceInstance.deleteTicketrating(ID);
+        ticketRatingServiceInstance.deleteTicketrating(ID);
         return ResponseEntity.noContent().build();
     }
 }

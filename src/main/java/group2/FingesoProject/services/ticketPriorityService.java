@@ -1,6 +1,6 @@
 package group2.FingesoProject.services;
 
-import group2.FingesoProject.entitites.ticketPriorityEntity;
+import group2.FingesoProject.entities.ticketPriorityEntity;
 import group2.FingesoProject.repositories.ticketPriorityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,35 +11,35 @@ import java.util.Optional;
 @Service
 public class ticketPriorityService {
     @Autowired
-    private final ticketPriorityRepository ticketpriorityRepository;
+    private final ticketPriorityRepository ticketPriorityRepository;
 
     //Call service
-    public ticketPriorityService(ticketPriorityRepository ticketpriorityRepository){
-        this.ticketpriorityRepository = ticketpriorityRepository;
+    public ticketPriorityService(ticketPriorityRepository ticketPriorityRepository){
+        this.ticketPriorityRepository = ticketPriorityRepository;
     }
 
     //CREATE
-    public ticketPriorityEntity createTicketpriority(ticketPriorityEntity ticketpriority){
-        return ticketpriorityRepository.save(ticketpriority);
+    public ticketPriorityEntity createTicketPriority(ticketPriorityEntity ticketPriority){
+        return ticketPriorityRepository.save(ticketPriority);
     }
 
     //READ
-    public List<ticketPriorityEntity> getAllTicketprioritys() {
-        return ticketpriorityRepository.findAll();
+    public List<ticketPriorityEntity> getAllTicketPrioritys() {
+        return ticketPriorityRepository.findAll();
     }
 
     //READbyID
-    public Optional<ticketPriorityEntity> getTicketpriorityById(Long ID){
-        return ticketpriorityRepository.findById(ID);
+    public Optional<ticketPriorityEntity> getTicketPriorityById(Long ID){
+        return ticketPriorityRepository.findById(ID);
     }
 
     //UPDATE
-    public ticketPriorityEntity updateTicketpriority(ticketPriorityEntity ticketpriority){
-        return ticketpriorityRepository.save(ticketpriority);
+    public ticketPriorityEntity updateTicketPriority(ticketPriorityEntity ticketPriority){
+        return ticketPriorityRepository.save(ticketPriority);
     }
 
     //DELETE(ID)x
-    public void deleteTicketpriority(Long ID){
-        ticketpriorityRepository.deleteById(ID);
+    public void deleteTicketPriority(Long ID){
+        ticketPriorityRepository.deleteById(ID);
     }
 }

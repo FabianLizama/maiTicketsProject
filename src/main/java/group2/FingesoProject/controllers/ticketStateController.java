@@ -1,6 +1,6 @@
 package group2.FingesoProject.controllers;
 
-import group2.FingesoProject.entitites.ticketStateEntity;
+import group2.FingesoProject.entities.ticketStateEntity;
 import group2.FingesoProject.services.ticketStateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,44 +9,44 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/Ticketstate")
+@RequestMapping("/TicketState")
 public class ticketStateController {
     @Autowired
-    private final ticketStateService ticketstateServiceInstance;
+    private final ticketStateService ticketStateServiceInstance;
 
-    public ticketStateController(ticketStateService ticketstateService){
-        this.ticketstateServiceInstance = ticketstateService;
+    public ticketStateController(ticketStateService ticketStateService){
+        this.ticketStateServiceInstance = ticketStateService;
     }
 
     //CREATE
     @PostMapping
-    public ticketStateEntity createTicketstate(@RequestBody ticketStateEntity ticketstate){
-        return ticketstateServiceInstance.createTicketstate(ticketstate);
+    public ticketStateEntity createTicketState(@RequestBody ticketStateEntity ticketState){
+        return ticketStateServiceInstance.createTicketState(ticketState);
     }
 
     //READ(ALL)
     @GetMapping
-    public List<ticketStateEntity> getAllTicketstates(){
+    public List<ticketStateEntity> getAllTicketStates(){
         return ticketstateServiceInstance.getAllTicketstates();
     }
 
     //READ(ID)
     @GetMapping("/{ID}")
-    public ResponseEntity<ticketStateEntity> getTicketstateByID(@PathVariable Long ID){
-        Optional<ticketStateEntity> ticketstate = ticketstateServiceInstance.getTicketstateById(ID);
-        return ticketstate.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<ticketStateEntity> getTicketStateByID(@PathVariable Long ID){
+        Optional<ticketStateEntity> ticketState = ticketstateServiceInstance.getTicketStateById(ID);
+        return ticketState.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     //UPDATE
     @PutMapping("/{ID}")
-    public ticketStateEntity updateTicketstate(@PathVariable Long ID, @RequestBody ticketStateEntity ticketstate){
-        ticketstate.setId_ticketstate(ID);
-        return ticketstateServiceInstance.updateTicketstate(ticketstate);
+    public ticketStateController updateTicketState(@PathVariable Long ID, @RequestBody ticketStateController ticketState){
+        ticketState.setId_ticketState(ID);
+        return ticketStateServiceInstance.updateTicketState(ticketState);
     }
 
     @DeleteMapping("/{ID}")
-    public ResponseEntity<Void> deleteTicketstate(@PathVariable Long ID){
-        ticketstateServiceInstance.deleteTicketstate(ID);
+    public ResponseEntity<Void> deleteTicketState(@PathVariable Long ID){
+        ticketStateServiceInstance.deleteTicketState(ID);
         return ResponseEntity.noContent().build();
     }
 }

@@ -1,6 +1,6 @@
 package group2.FingesoProject.controllers;
 
-import group2.FingesoProject.entitites.academicUnitEntity;
+import group2.FingesoProject.entities.academicUnitEntity;
 import group2.FingesoProject.services.academicUnitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

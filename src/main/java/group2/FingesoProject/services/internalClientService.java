@@ -1,6 +1,6 @@
 package group2.FingesoProject.services;
 
-import group2.FingesoProject.entitites.internalClientEntity;
+import group2.FingesoProject.entities.internalClientEntity;
 import group2.FingesoProject.repositories.internalClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,35 +11,35 @@ import java.util.Optional;
 @Service
 public class internalClientService {
     @Autowired
-    private final internalClientRepository internalclientRepository;
+    private final internalClientRepository internalClientRepository;
 
     //Call service
-    public internalClientService(internalClientRepository internalclientRepository){
-        this.internalclientRepository = internalclientRepository;
+    public internalClientService(internalClientRepository internalClientRepository){
+        this.internalClientRepository = internalClientRepository;
     }
 
     //CREATE
-    public internalClientEntity createInternalclient(internalClientEntity internalclient){
-        return internalclientRepository.save(internalclient);
+    public internalClientEntity createInternalClient(internalClientEntity internalClient){
+        return internalClientRepository.save(internalClient);
     }
 
     //READ
-    public List<internalClientEntity> getAllInternalclients() {
-        return internalclientRepository.findAll();
+    public List<internalClientEntity> getAllInternalClients() {
+        return internalClientRepository.findAll();
     }
 
     //READbyID
-    public Optional<internalClientEntity> getInternalclientById(Long ID){
-        return internalclientRepository.findById(ID);
+    public Optional<internalClientEntity> getInternalClientById(Long ID){
+        return internalClientRepository.findById(ID);
     }
 
     //UPDATE
-    public internalClientEntity updateInternalclient(internalClientEntity internalclient){
-        return internalclientRepository.save(internalclient);
+    public internalClientEntity updateInternalClient(internalClientEntity internalClient){
+        return internalClientRepository.save(internalClient);
     }
 
     //DELETE(ID)x
-    public void deleteInternalclient(Long ID){
-        internalclientRepository.deleteById(ID);
+    public void deleteInternalClient(Long ID){
+        internalClientRepository.deleteById(ID);
     }
 }

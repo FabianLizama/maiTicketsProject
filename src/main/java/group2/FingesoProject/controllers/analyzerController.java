@@ -1,6 +1,6 @@
 package group2.FingesoProject.controllers;
 
-import group2.FingesoProject.entitites.analyzerEntity;
+import group2.FingesoProject.entities.analyzerEntity;
 import group2.FingesoProject.services.analyzerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package group2.FingesoProject.entitites;
+package group2.FingesoProject.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,18 +6,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "ticketpriority")
+@Table(name = "TicketHistory")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ticketPriorityEntity {
+public class ticketHistoryEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    private Long id_ticketpriority;
-
-    private Integer priority_level;
+    private Long id_ticketHistory;
 
     @ManyToOne
     @JoinColumn(name = "id_ticket")

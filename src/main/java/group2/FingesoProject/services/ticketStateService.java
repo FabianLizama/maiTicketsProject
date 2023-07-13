@@ -1,6 +1,6 @@
 package group2.FingesoProject.services;
 
-import group2.FingesoProject.entitites.ticketStateEntity;
+import group2.FingesoProject.entities.ticketStateEntity;
 import group2.FingesoProject.repositories.ticketStateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,35 +11,35 @@ import java.util.Optional;
 @Service
 public class ticketStateService {
     @Autowired
-    private final ticketStateRepository ticketstateRepository;
+    private final ticketStateRepository ticketStateRepository;
 
     //Call service
-    public ticketStateService(ticketStateRepository ticketstateRepository){
-        this.ticketstateRepository = ticketstateRepository;
+    public ticketStateService(ticketStateRepository ticketStateRepository){
+        this.ticketStateRepository = ticketStateRepository;
     }
 
     //CREATE
-    public ticketStateEntity createTicketstate(ticketStateEntity ticketstate){
-        return ticketstateRepository.save(ticketstate);
+    public ticketStateEntity createTicketState(ticketStateEntity ticketState){
+        return ticketStateRepository.save(ticketState);
     }
 
     //READ
-    public List<ticketStateEntity> getAllTicketstates() {
-        return ticketstateRepository.findAll();
+    public List<ticketStateEntity> getAllTicketStates() {
+        return ticketStateRepository.findAll();
     }
 
     //READbyID
-    public Optional<ticketStateEntity> getTicketstateById(Long ID){
-        return ticketstateRepository.findById(ID);
+    public Optional<ticketStateEntity> getTicketStateById(Long ID){
+        return ticketStateRepository.findById(ID);
     }
 
     //UPDATE
-    public ticketStateEntity updateTicketstate(ticketStateEntity ticketstate){
-        return ticketstateRepository.save(ticketstate);
+    public ticketStateEntity updateTicketState(ticketStateEntity ticketState){
+        return ticketStateRepository.save(ticketState);
     }
 
     //DELETE(ID)x
-    public void deleteTicketstate(Long ID){
-        ticketstateRepository.deleteById(ID);
+    public void deleteTicketState(Long ID){
+        ticketStateRepository.deleteById(ID);
     }
 }

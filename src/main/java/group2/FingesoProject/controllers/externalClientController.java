@@ -1,6 +1,6 @@
 package group2.FingesoProject.controllers;
 
-import group2.FingesoProject.entitites;
+import group2.FingesoProject.entities.externalClientEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/Externalclient")
+@RequestMapping("/ExternalClient")
 public class externalClientController {
     @Autowired
     private final externalClientService externalClientServiceInstance;
@@ -20,33 +20,33 @@ public class externalClientController {
 
     //CREATE
     @PostMapping
-    public externalClientEntity createExternalclient(@RequestBody externalClientEntity externalClient){
-        return externalClientServiceInstance.createExternalclient(externalClient);
+    public externalClientEntity createExternalClient(@RequestBody externalClientEntity externalClient){
+        return externalClientServiceInstance.createExternalClient(externalClient);
     }
 
     //READ(ALL)
     @GetMapping
-    public List<externalClientEntity> getAllExternalclients(){
-        return externalClientServiceInstance.getAllExternalclients();
+    public List<externalClientEntity> getAllExternalClients(){
+        return externalClientServiceInstance.getAllExternalClients();
     }
 
     //READ(ID)
     @GetMapping("/{ID}")
-    public ResponseEntity<externalClientEntity> getExternalclientByID(@PathVariable Long ID){
-        Optional<externalClientEntity> externalClient = externalClientServiceInstance.getExternalclientById(ID);
+    public ResponseEntity<externalClientEntity> getExternalClientByID(@PathVariable Long ID){
+        Optional<externalClientEntity> externalClient = externalClientServiceInstance.getExternalClientById(ID);
         return externalClient.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     //UPDATE
     @PutMapping("/{ID}")
-    public externalClientEntity updateExternalclient(@PathVariable Long ID, @RequestBody externalClientEntity externalClient){
+    public externalClientEntity updateExternalClient(@PathVariable Long ID, @RequestBody externalClientEntity externalClient){
         externalClient.setId_externalClient(ID);
-        return externalClientServiceInstance.updateExternalclient(externalClient);
+        return externalClientServiceInstance.updateExternalClient(externalClient);
     }
 
     @DeleteMapping("/{ID}")
-    public ResponseEntity<Void> deleteExternalclient(@PathVariable Long ID){
-        externalClientServiceInstance.deleteExternalclient(ID);
+    public ResponseEntity<Void> deleteExternalClient(@PathVariable Long ID){
+        externalClientServiceInstance.deleteExternalClient(ID);
         return ResponseEntity.noContent().build();
     }
 }

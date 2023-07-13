@@ -1,23 +1,25 @@
-package group2.FingesoProject.entitites;
+package group2.FingesoProject.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
-@Table(name = "Clientpriority")
+@Table(name = "TicketState")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class clientPriorityEntity {
+public class ticketStateEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    private Long id_clientPriority;
+    private Long id_ticketState;
 
-    private String clientPriority_name;
+    private String State_name;
+
+    @ManyToOne
+    @JoinColumn(name = "id_ticket")
+    private ticketEntity ticket;
 }

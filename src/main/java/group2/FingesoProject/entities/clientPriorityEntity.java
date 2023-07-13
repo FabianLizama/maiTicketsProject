@@ -1,22 +1,21 @@
-package group2.FingesoProject.entitites;
+package group2.FingesoProject.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
-@Table(name = "AcademicUnit")
+@Table(name = "ClientPriority")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class academicUnitEntity {
+public class clientPriorityEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    private Long id_academicUnit;
-    private String academicUnit_name;
+    private Long id_clientPriority;
+
+    private String clientPriority_name;
 }

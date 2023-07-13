@@ -1,6 +1,6 @@
 package group2.FingesoProject.repositories;
 
-import group2.FingesoProject.entitites.externalClientEntity;
+import group2.FingesoProject.entities.externalClientEntity;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

@@ -1,6 +1,6 @@
 package group2.FingesoProject.services;
 
-import group2.FingesoProject.entitites.ticketDocumentEntity;
+import group2.FingesoProject.entities.ticketDocumentEntity;
 import group2.FingesoProject.repositories.ticketDocumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,35 +11,35 @@ import java.util.Optional;
 @Service
 public class ticketDocumentService {
     @Autowired
-    private final ticketDocumentRepository ticketdocumentRepository;
+    private final ticketDocumentRepository ticketDocumentRepository;
 
     //Call service
-    public ticketDocumentService(ticketDocumentRepository ticketdocumentRepository){
-        this.ticketdocumentRepository = ticketdocumentRepository;
+    public ticketDocumentService(ticketDocumentRepository ticketDocumentRepository){
+        this.ticketDocumentRepository = ticketDocumentRepository;
     }
 
     //CREATE
-    public ticketDocumentEntity createTicketdocument(ticketDocumentEntity ticketdocument){
-        return ticketdocumentRepository.save(ticketdocument);
+    public ticketDocumentEntity createTicketDocument(ticketDocumentEntity ticketDocument){
+        return ticketDocumentRepository.save(ticketDocument);
     }
 
     //READ
-    public List<ticketDocumentEntity> getAllTicketdocuments() {
-        return ticketdocumentRepository.findAll();
+    public List<ticketDocumentEntity> getAllTicketDocuments() {
+        return ticketDocumentRepository.findAll();
     }
 
     //READbyID
-    public Optional<ticketDocumentEntity> getTicketdocumentById(Long ID){
-        return ticketdocumentRepository.findById(ID);
+    public Optional<ticketDocumentEntity> getTicketDocumentById(Long ID){
+        return ticketDocumentRepository.findById(ID);
     }
 
     //UPDATE
-    public ticketDocumentEntity updateTicketdocument(ticketDocumentEntity ticketdocument){
-        return ticketdocumentRepository.save(ticketdocument);
+    public ticketDocumentEntity updateTicketDocument(ticketDocumentEntity ticketDocument){
+        return ticketDocumentRepository.save(ticketDocument);
     }
 
     //DELETE(ID)x
-    public void deleteTicketdocument(Long ID){
-        ticketdocumentRepository.deleteById(ID);
+    public void deleteTicketDocument(Long ID){
+        ticketDocumentRepository.deleteById(ID);
     }
 }

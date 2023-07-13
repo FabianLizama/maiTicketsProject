@@ -14,9 +14,9 @@ CREATE TABLE IF NOT EXISTS Leadership (
     id_academicunit INT NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS Clientpriority (
-    id_clientpriority SERIAL PRIMARY KEY,
-    clientpriority_name VARCHAR
+CREATE TABLE IF NOT EXISTS ClientPriority (
+    id_clientPriority SERIAL PRIMARY KEY,
+    clientPriority_name VARCHAR
 );
 
 CREATE TABLE IF NOT EXISTS Analyzer (
@@ -36,20 +36,20 @@ CREATE TABLE IF NOT EXISTS Academicunit (
 
 
 CREATE TABLE IF NOT EXISTS Externalclient (
-    id_externalclient SERIAL PRIMARY KEY,
-    id_clientpriority INT NOT NULL,
-    clientpriority_name VARCHAR,
+    id_externalClient SERIAL PRIMARY KEY,
+    id_clientPriority INT NOT NULL,
+    clientPriority_name VARCHAR,
     id_user_info INT,
-    FOREIGN KEY (id_clientpriority) REFERENCES Clientpriority (id_clientpriority),
+    FOREIGN KEY (id_clientPriority) REFERENCES ClientPriority (id_clientPriority),
     FOREIGN KEY (id_user_info) REFERENCES User_info (id_user_info)
 );
 
 CREATE TABLE IF NOT EXISTS Internalclient (
-    id_internalclient SERIAL PRIMARY KEY,
-    id_clientpriority INT NOT NULL,
-    clientpriority_name VARCHAR,
+    id_internalClient SERIAL PRIMARY KEY,
+    id_clientPriority INT NOT NULL,
+    clientPriority_name VARCHAR,
     id_user_info INT,
-    FOREIGN KEY (id_clientpriority) REFERENCES Clientpriority (id_clientpriority),
+    FOREIGN KEY (id_clientPriority) REFERENCES ClientPriority (id_clientPriority),
     FOREIGN KEY (id_user_info) REFERENCES User_info (id_user_info)
 );
 
@@ -58,59 +58,59 @@ CREATE TABLE IF NOT EXISTS Ticket (
     ticket_creation DATE,
     ticket_limit DATE,
     description VARCHAR,
-    id_ticketcategory INT,
+    id_ticketCategory INT,
     id_ticketrating INT,
-    id_ticketpriority INT,
-    id_ticketstate INT,
-    id_ticketcomentary INT,
-    id_ticketdocument INT,
-    id_tickethistory INT,
-    id_ticketreport INT,
+    id_ticketPriority INT,
+    id_ticketState INT,
+    id_ticketComentary INT,
+    id_ticketDocument INT,
+    id_ticketHistory INT,
+    id_ticketReport INT,
     id_analyzer INT,
     id_leadership INT,
-    id_externalclient INT,
-    id_internalclient INT,
+    id_externalClient INT,
+    id_internalClient INT,
     id_academicunit INT,
     FOREIGN KEY (id_analyzer) REFERENCES Analyzer (id_analyzer),
     FOREIGN KEY (id_leadership) REFERENCES Leadership (id_leadership),
-    FOREIGN KEY (id_externalclient) REFERENCES Externalclient (id_externalclient),
-    FOREIGN KEY (id_internalclient) REFERENCES Internalclient (id_internalclient),
+    FOREIGN KEY (id_externalClient) REFERENCES Externalclient (id_externalClient),
+    FOREIGN KEY (id_internalClient) REFERENCES Internalclient (id_internalClient),
     FOREIGN KEY (id_academicunit) REFERENCES Academicunit (id_academicunit)
 );
 
-CREATE TABLE IF NOT EXISTS Ticketcategory (
-    id_ticketcategory SERIAL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS TicketCategory (
+    id_ticketCategory SERIAL PRIMARY KEY,
     id_ticket INT NOT NULL,
-    category_name VARCHAR,
+    Category_name VARCHAR,
     FOREIGN KEY (id_ticket) REFERENCES Ticket (id_ticket)
 );
 
-CREATE TABLE IF NOT EXISTS Ticketcomentary (
-    id_ticketcomentary SERIAL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS TicketComentary (
+    id_ticketComentary SERIAL PRIMARY KEY,
     id_ticket INT NOT NULL,
-    comentary VARCHAR,
-    creation_comentary_date DATE,
-    creation_comentary_hour TIME,
+    Comentary VARCHAR,
+    creation_Comentary_date DATE,
+    creation_Comentary_hour TIME,
     FOREIGN KEY (id_ticket) REFERENCES Ticket (id_ticket)
 );
 
-CREATE TABLE IF NOT EXISTS Ticketdocument (
-    id_ticketdocument SERIAL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS TicketDocument (
+    id_ticketDocument SERIAL PRIMARY KEY,
     id_ticket INT NOT NULL,
-    document_description VARCHAR,
+    Document_description VARCHAR,
     FOREIGN KEY (id_ticket) REFERENCES Ticket (id_ticket)
 );
 
-CREATE TABLE IF NOT EXISTS Tickethistory (
-    id_tickethistory SERIAL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS TicketHistory (
+    id_ticketHistory SERIAL PRIMARY KEY,
     id_ticket INT NOT NULL,
     FOREIGN KEY (id_ticket) REFERENCES Ticket (id_ticket)
 );
 
-CREATE TABLE IF NOT EXISTS Ticketpriority (
-    id_ticketpriority SERIAL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS TicketPriority (
+    id_ticketPriority SERIAL PRIMARY KEY,
     id_ticket INT NOT NULL,
-    priority_level INT,
+    Priority_level INT,
     FOREIGN KEY (id_ticket) REFERENCES Ticket (id_ticket)
 );
 
@@ -122,17 +122,17 @@ CREATE TABLE IF NOT EXISTS Ticketrating (
     FOREIGN KEY (id_ticket) REFERENCES Ticket (id_ticket)
 );
 
-CREATE TABLE IF NOT EXISTS Ticketreport (
-    id_ticketreport SERIAL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS TicketReport (
+    id_ticketReport SERIAL PRIMARY KEY,
     id_ticket INT NOT NULL,
     ticket_answer VARCHAR,
     answer_date DATE,
     FOREIGN KEY (id_ticket) REFERENCES Ticket (id_ticket)
 );
 
-CREATE TABLE IF NOT EXISTS Ticketstate (
-    id_ticketstate SERIAL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS TicketState (
+    id_ticketState SERIAL PRIMARY KEY,
     id_ticket INT NOT NULL,
-    state_name VARCHAR,
+    State_name VARCHAR,
     FOREIGN KEY (id_ticket) REFERENCES Ticket (id_ticket)
 );

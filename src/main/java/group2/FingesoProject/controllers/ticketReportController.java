@@ -1,6 +1,6 @@
 package group2.FingesoProject.controllers;
 
-import group2.FingesoProject.entitites.ticketReportEntity;
+import group2.FingesoProject.entities.ticketReportEntity;
 import group2.FingesoProject.services.ticketReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,44 +9,44 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/Ticketreport")
+@RequestMapping("/TicketReport")
 public class ticketReportController {
     @Autowired
-    private final ticketReportService ticketreportServiceInstance;
+    private final ticketReportService ticketReportServiceInstance;
 
-    public ticketReportController(ticketReportService ticketreportService){
-        this.ticketreportServiceInstance = ticketreportService;
+    public ticketReportController(ticketReportService ticketReportService){
+        this.ticketReportServiceInstance = ticketReportService;
     }
 
     //CREATE
     @PostMapping
-    public ticketReportEntity createTicketreport(@RequestBody ticketReportEntity ticketreport){
-        return ticketreportServiceInstance.createTicketreport(ticketreport);
+    public ticketReportEntity createTicketReport(@RequestBody ticketReportEntity ticketReport){
+        return ticketReportServiceInstance.createTicketReport(ticketReport);
     }
 
     //READ(ALL)
     @GetMapping
-    public List<ticketReportEntity> getAllTicketreports(){
-        return ticketreportServiceInstance.getAllTicketreports();
+    public List<ticketReportEntity> getAllTicketReports(){
+        return ticketReportServiceInstance.getAllTicketReports();
     }
 
     //READ(ID)
     @GetMapping("/{ID}")
-    public ResponseEntity<ticketReportEntity> getticketreportByID(@PathVariable Long ID){
-        Optional<ticketReportEntity> ticketreport = ticketreportServiceInstance.getTicketreportById(ID);
-        return ticketreport.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<ticketReportEntity> getticketReportByID(@PathVariable Long ID){
+        Optional<ticketReportEntity> ticketReport = ticketReportServiceInstance.getTicketReportById(ID);
+        return ticketReport.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     //UPDATE
     @PutMapping("/{ID}")
-    public ticketReportEntity updateTicketreport(@PathVariable Long ID, @RequestBody ticketReportEntity ticketreport){
-        ticketreport.setId_ticketreport(ID);
-        return ticketreportServiceInstance.updateTicketreport(ticketreport);
+    public ticketReportEntity updateTicketReport(@PathVariable Long ID, @RequestBody ticketReportEntity ticketReport){
+        ticketReport.setId_ticketReport(ID);
+        return ticketReportServiceInstance.updateTicketReport(ticketReport);
     }
 
     @DeleteMapping("/{ID}")
-    public ResponseEntity<Void> deleteTicketreport(@PathVariable Long ID){
-        ticketreportServiceInstance.deleteTicketreport(ID);
+    public ResponseEntity<Void> deleteTicketReport(@PathVariable Long ID){
+        ticketReportServiceInstance.deleteTicketReport(ID);
         return ResponseEntity.noContent().build();
     }
 }

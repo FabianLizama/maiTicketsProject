@@ -1,6 +1,6 @@
 package group2.FingesoProject.services;
 
-import group2.FingesoProject.entitites.externalClientEntity;
+import group2.FingesoProject.entities.externalClientEntity;
 import group2.FingesoProject.repositories.externalClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,27 +19,27 @@ public class externalClientService {
     }
 
     //CREATE
-    public externalClientEntity createExternalclient(externalClientEntity externalClient){
+    public externalClientEntity createExternalClient(externalClientEntity externalClient){
         return externalClientRepository.save(externalClient);
     }
 
     //READ
-    public List<externalClientEntity> getAllExternalclients() {
+    public List<externalClientEntity> getAllExternalClients() {
         return externalClientRepository.findAll();
     }
 
     //READbyID
-    public Optional<externalClientEntity> getExternalclientById(Long ID){
+    public Optional<externalClientEntity> getExternalClientById(Long ID){
         return externalClientRepository.findById(ID);
     }
 
     //UPDATE
-    public externalClientEntity updateExternalclient(externalClientEntity externalClient){
+    public externalClientEntity updateExternalClient(externalClientEntity externalClient){
         return externalClientRepository.save(externalClient);
     }
 
     //DELETE(ID)x
-    public void deleteExternalclient(Long ID){
+    public void deleteExternalClient(Long ID){
         externalClientRepository.deleteById(ID);
     }
 }

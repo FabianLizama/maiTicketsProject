@@ -1,6 +1,6 @@
 package group2.FingesoProject.controllers;
 
-import group2.FingesoProject.entitites.ticketEntity;
+import group2.FingesoProject.entities.ticketEntity;
 import group2.FingesoProject.services.ticketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

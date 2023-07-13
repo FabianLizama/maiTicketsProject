@@ -1,6 +1,6 @@
 package group2.FingesoProject.repositories;
 
-import group2.FingesoProject.entitites.ticketHistoryEntity;
+import group2.FingesoProject.entities.ticketHistoryEntity;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

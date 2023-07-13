@@ -1,6 +1,6 @@
 package group2.FingesoProject.services;
 
-import group2.FingesoProject.entitites.ticketRatingEntity;
+import group2.FingesoProject.entities.ticketRatingEntity;
 import group2.FingesoProject.repositories.ticketRatingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

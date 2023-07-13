@@ -1,6 +1,6 @@
 package group2.FingesoProject.services;
 
-import group2.FingesoProject.entitites.ticketCategoryEntity;
+import group2.FingesoProject.entities.ticketCategoryEntity;
 import group2.FingesoProject.repositories.ticketCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,35 +11,35 @@ import java.util.Optional;
 @Service
 public class ticketCategoryService {
     @Autowired
-    private final ticketCategoryRepository ticketcategoryRepository;
+    private final ticketCategoryRepository ticketCategoryRepository;
 
     //Call service
-    public ticketCategoryService(ticketCategoryRepository ticketcategoryRepository){
-        this.ticketcategoryRepository = ticketcategoryRepository;
+    public ticketCategoryService(ticketCategoryRepository ticketCategoryRepository){
+        this.ticketCategoryRepository = ticketCategoryRepository;
     }
 
     //CREATE
-    public ticketCategoryEntity createTicketcategory(ticketCategoryEntity ticketcategory){
-        return ticketcategoryRepository.save(ticketcategory);
+    public ticketCategoryEntity createTicketCategory(ticketCategoryEntity ticketCategory){
+        return ticketCategoryRepository.save(ticketCategory);
     }
 
     //READ
-    public List<ticketCategoryEntity> getAllTicketcategorys() {
-        return ticketcategoryRepository.findAll();
+    public List<ticketCategoryEntity> getAllTicketCategorys() {
+        return ticketCategoryRepository.findAll();
     }
 
     //READbyID
-    public Optional<ticketCategoryEntity> getTicketcategoryById(Long ID){
-        return ticketcategoryRepository.findById(ID);
+    public Optional<ticketCategoryEntity> getTicketCategoryById(Long ID){
+        return ticketCategoryRepository.findById(ID);
     }
 
     //UPDATE
-    public ticketCategoryEntity updateTicketcategory(ticketCategoryEntity ticketcategory){
-        return ticketcategoryRepository.save(ticketcategory);
+    public ticketCategoryEntity updateTicketCategory(ticketCategoryEntity ticketCategory){
+        return ticketCategoryRepository.save(ticketCategory);
     }
 
     //DELETE(ID)x
-    public void deleteTicketcategory(Long ID){
-        ticketcategoryRepository.deleteById(ID);
+    public void deleteTicketCategory(Long ID){
+        ticketCategoryRepository.deleteById(ID);
     }
 }
