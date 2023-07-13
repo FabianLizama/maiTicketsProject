@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class leadershipEntity extends userInfoEntity {
+public class leadershipEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,12 +18,13 @@ public class leadershipEntity extends userInfoEntity {
     private Long id_leadership;
 
     @ManyToOne
-    @JoinColumn(name = "id_analyzer")
-    private analyzerEntity analyzer;
+    @JoinColumn(name = "id_userInfo")
+    private userInfoEntity userInfoEntity;
 
     @ManyToOne
-    @JoinColumn(name = "id_academicunit")
-    private academicUnitEntity academicunit;
+    @JoinColumn(name = "id_academicUnit")
+    private academicUnitEntity academicUnitEntity;
+
 
     // Getter and Setter methods (omitted for brevity)
 }

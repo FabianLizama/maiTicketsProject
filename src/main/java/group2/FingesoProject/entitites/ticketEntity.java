@@ -29,31 +29,24 @@ public class ticketEntity {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "id_ticketcategory")
-    private ticketCategoryEntity ticketCategory;
+    @JoinColumn(name = "id_analyzer")
+    private analyzerEntity analyzerEntity;
 
     @ManyToOne
-    @JoinColumn(name = "id_ticketrating")
-    private ticketRatingEntity ticketRating;
+    @JoinColumn(name = "id_leadership")
+    private leadershipEntity leadershipEntity;
 
     @ManyToOne
-    @JoinColumn(name = "id_ticketpriority")
-    private ticketPriorityEntity ticketPriority;
+    @JoinColumn(name = "id_academicUnit")
+    private academicUnitEntity academicUnitEntity;
 
     @ManyToOne
-    @JoinColumn(name = "id_ticketstate")
-    private ticketStateEntity ticketState;
+    @JoinColumn(name = "id_internalClient")
+    private internalClientEntity internalClientEntity;
 
-    @OneToMany(mappedBy = "ticket")
-    private List<ticketComentaryEntity> ticketComentaries;
+    @ManyToOne
+    @JoinColumn(name = "id_externalClient")
+    private externalClientEntity externalClientEntity;
 
-    @OneToMany(mappedBy = "ticket")
-    private List<ticketDocumentEntity> ticketDocuments;
-
-    @OneToMany(mappedBy = "ticket")
-    private List<ticketHistoryEntity> ticketHistories;
-
-    @OneToOne(mappedBy = "ticket")
-    private ticketReportEntity ticketReport;
 
 }

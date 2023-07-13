@@ -13,24 +13,23 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class analyzerEntity extends userInfoEntity {
-
-    @OneToMany(mappedBy = "analyzer", cascade = CascadeType.ALL)
-    public List<ticketEntity> tickets;
+public class analyzerEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     public Long id_analyzer;
 
-    @OneToMany(mappedBy = "analyzer")
+    @ManyToOne
+    @JoinColumn(name = "id_userInfo")
+    private userInfoEntity userInfoEntity;
+
+    @ManyToOne
+    @JoinColumn(name = "id_academicUnit")
+    private academicUnitEntity academicUnitEntity;
+
+    @ManyToOne
+    @JoinColumn(name = "id_leadership")
     private leadershipEntity leadershipEntity;
 
-    public leadershipEntity getLeadershipEntity() {
-        return leadershipEntity;
     }
-
-    public void setLeadershipEntity(leadershipEntity leadershipEntity) {
-        this.leadershipEntity = leadershipEntity;
-    }
-}

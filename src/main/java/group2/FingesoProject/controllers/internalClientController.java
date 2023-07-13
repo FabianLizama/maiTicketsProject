@@ -12,41 +12,41 @@ import java.util.Optional;
 @RequestMapping("/Internalclient")
 public class internalClientController {
     @Autowired
-    private final internalClientService internalclientServiceInstance;
+    private final internalClientService internalClientServiceInstance;
 
-    public internalClientController(internalClientService internalclientService){
-        this.internalclientServiceInstance = internalclientService;
+    public internalClientController(internalClientService internalClientService){
+        this.internalClientServiceInstance = internalClientService;
     }
 
     //CREATE
     @PostMapping
-    public internalClientEntity createInternalclient(@RequestBody internalClientEntity internalclient){
-        return internalclientServiceInstance.createInternalclient(internalclient);
+    public internalClientEntity createInternalclient(@RequestBody internalClientEntity internalClient){
+        return internalClientServiceInstance.createInternalclient(internalClient);
     }
 
     //READ(ALL)
     @GetMapping
     public List<internalClientEntity> getAllInternalclients(){
-        return internalclientServiceInstance.getAllInternalclients();
+        return internalClientServiceInstance.getAllInternalclients();
     }
 
     //READ(ID)
     @GetMapping("/{ID}")
     public ResponseEntity<internalClientEntity> getInternalclientByID(@PathVariable Long ID){
-        Optional<internalClientEntity> internalclient = internalclientServiceInstance.getInternalclientById(ID);
-        return internalclient.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+        Optional<internalClientEntity> internalClient = internalClientServiceInstance.getInternalClientById(ID);
+        return internalClient.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     //UPDATE
     @PutMapping("/{ID}")
-    public internalClientEntity updateInternalclient(@PathVariable Long ID, @RequestBody internalClientEntity internalclient){
-        internalclient.setId_internalclient(ID);
-        return internalclientServiceInstance.updateInternalclient(internalclient);
+    public internalClientEntity updateInternalclient(@PathVariable Long ID, @RequestBody internalClientEntity internalClient){
+        internalClient.setId_internalClient(ID);
+        return internalClientServiceInstance.updateInternalclient(internalClient);
     }
 
     @DeleteMapping("/{ID}")
     public ResponseEntity<Void> deleteInternalclient(@PathVariable Long ID){
-        internalclientServiceInstance.deleteInternalclient(ID);
+        internalClientServiceInstance.deleteInternalclient(ID);
         return ResponseEntity.noContent().build();
     }
 }

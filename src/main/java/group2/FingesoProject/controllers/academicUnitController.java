@@ -9,44 +9,44 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/Academicunit")
+@RequestMapping("/academicUnit")
 public class academicUnitController {
     @Autowired
-    private final academicUnitService academicunitServiceInstance;
+    private final academicUnitService academicUnitServiceInstance;
 
-    public academicUnitController(academicUnitService academicunitService){
-        this.academicunitServiceInstance = academicunitService;
+    public academicUnitController(academicUnitService academicUnitService){
+        this.academicUnitServiceInstance = academicUnitService;
     }
 
     //CREATE
     @PostMapping
-    public academicUnitEntity createAcademicunit(@RequestBody academicUnitEntity academicunit){
-        return academicunitServiceInstance.createAcademicunit(academicunit);
+    public academicUnitEntity createAcademicUnit(@RequestBody academicUnitEntity academicUnit){
+        return academicUnitServiceInstance.createAcademicUnit(academicUnit);
     }
 
     //READ(ALL)
     @GetMapping
-    public List<academicUnitEntity> getAllAcademicunits(){
-        return academicunitServiceInstance.getAllAcademicunits();
+    public List<academicUnitEntity> getAllAcademicUnits(){
+        return academicUnitServiceInstance.getAllAcademicUnits();
     }
 
     //READ(ID)
     @GetMapping("/{ID}")
-    public ResponseEntity<academicUnitEntity> getAcademicunitByID(@PathVariable Long ID){
-        Optional<academicUnitEntity> academicunit = academicunitServiceInstance.getAcademicunitById(ID);
-        return academicunit.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<academicUnitEntity> getAcademicUnitByID(@PathVariable Long ID){
+        Optional<academicUnitEntity> academicUnit = academicUnitServiceInstance.getAcademicUnitById(ID);
+        return academicUnit.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     //UPDATE
     @PutMapping("/{ID}")
-    public academicUnitEntity updateAcademicunit(@PathVariable Long ID, @RequestBody academicUnitEntity academicunit){
-        academicunit.setId_academicunit(ID);
-        return academicunitServiceInstance.updateAcademicunit(academicunit);
+    public academicUnitEntity updateAcademicUnit(@PathVariable Long ID, @RequestBody academicUnitEntity academicUnit){
+        academicUnit.setId_academicUnit(ID);
+        return academicUnitServiceInstance.updateAcademicUnit(academicUnit);
     }
 
     @DeleteMapping("/{ID}")
-    public ResponseEntity<Void> deleteAcademicunit(@PathVariable Long ID){
-        academicunitServiceInstance.deleteAcademicunit(ID);
+    public ResponseEntity<Void> deleteAcademicUnit(@PathVariable Long ID){
+        academicUnitServiceInstance.deleteAcademicUnit(ID);
         return ResponseEntity.noContent().build();
     }
 }

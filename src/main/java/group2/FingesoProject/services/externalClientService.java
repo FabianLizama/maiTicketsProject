@@ -11,35 +11,35 @@ import java.util.Optional;
 @Service
 public class externalClientService {
     @Autowired
-    private final externalClientRepository externalclientRepository;
+    private final externalClientRepository externalClientRepository;
 
     //Call service
-    public externalClientService(externalClientRepository externalclientRepository){
-        this.externalclientRepository = externalclientRepository;
+    public externalClientService(externalClientRepository externalClientRepository){
+        this.externalClientRepository = externalClientRepository;
     }
 
     //CREATE
-    public externalClientEntity createExternalclient(externalClientEntity externalclient){
-        return externalclientRepository.save(externalclient);
+    public externalClientEntity createExternalclient(externalClientEntity externalClient){
+        return externalClientRepository.save(externalClient);
     }
 
     //READ
     public List<externalClientEntity> getAllExternalclients() {
-        return externalclientRepository.findAll();
+        return externalClientRepository.findAll();
     }
 
     //READbyID
     public Optional<externalClientEntity> getExternalclientById(Long ID){
-        return externalclientRepository.findById(ID);
+        return externalClientRepository.findById(ID);
     }
 
     //UPDATE
-    public externalClientEntity updateExternalclient(externalClientEntity externalclient){
-        return externalclientRepository.save(externalclient);
+    public externalClientEntity updateExternalclient(externalClientEntity externalClient){
+        return externalClientRepository.save(externalClient);
     }
 
     //DELETE(ID)x
     public void deleteExternalclient(Long ID){
-        externalclientRepository.deleteById(ID);
+        externalClientRepository.deleteById(ID);
     }
 }

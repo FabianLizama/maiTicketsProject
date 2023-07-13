@@ -8,23 +8,25 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = "Externalclient")
+@Table(name = "externalClient")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class externalClientEntity extends userInfoEntity {
+public class externalClientEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    private Long id_externalclient;
+    private Long id_externalClient;
 
     private String priority_name;
 
     @ManyToOne
-    @JoinColumn(name = "id_clientpriority")
+    @JoinColumn(name = "id_userInfo")
+    private userInfoEntity userInfoEntity;
+
+    @ManyToOne
+    @JoinColumn(name = "id_clientPriority")
     private clientPriorityEntity clientPriority;
 
-    @OneToMany(mappedBy = "externalClient", cascade = CascadeType.ALL)
-    private List<ticketEntity> tickets;
 }

@@ -17,13 +17,7 @@ public class clientPriorityEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    private Long id_clientpriority;
+    private Long id_clientPriority;
 
-    private String clientpriority_name;
-
-    @OneToMany(mappedBy = "clientPriority")
-    private List<externalClientEntity> externalClients;
-
-    @OneToMany(mappedBy = "clientPriority")
-    private List<internalClientEntity> internalClients;
+    private String clientPriority_name;
 }
