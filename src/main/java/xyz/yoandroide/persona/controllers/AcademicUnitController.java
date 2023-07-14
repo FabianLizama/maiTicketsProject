@@ -5,9 +5,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import xyz.yoandroide.persona.entities.AcademicUnit;
+import xyz.yoandroide.persona.entities.Analyzer;
 import xyz.yoandroide.persona.entities.Client;
+import xyz.yoandroide.persona.entities.Leadership;
 import xyz.yoandroide.persona.services.AcademicUnitService;
-import xyz.yoandroide.persona.services.ClientService;
+import xyz.yoandroide.persona.services.LeadershipService;
+import xyz.yoandroide.persona.services.TicketService;
 
 import java.net.URI;
 import java.util.List;
@@ -19,17 +22,27 @@ public class AcademicUnitController {
     private AcademicUnitService academicUnitService;
 
     @GetMapping
-    private ResponseEntity<List<AcademicUnit>> getAllUnits(){
+    private ResponseEntity<List<AcademicUnit>> getAllUnits() {
         return ResponseEntity.ok(academicUnitService.findAll());
     }
 
     @PostMapping
-    private ResponseEntity<AcademicUnit> saveUnits(@RequestBody AcademicUnit academicUnit){
-        try{
+    private ResponseEntity<AcademicUnit> saveUnits(@RequestBody AcademicUnit academicUnit) {
+        try {
             AcademicUnit savedAcademicUnit = academicUnitService.save(academicUnit);
             return ResponseEntity.created(new URI("/units/"+savedAcademicUnit.getIdAcademicUnit())).body(savedAcademicUnit);
-        }catch(Exception e){
+        } catch(Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
+
+
+    @PutMapping("/leaderships/{idLeadership}/tickets/{idTicket}")
+    public Leadership assignTicketToLeadership (
+            @PathVariable Long idLeadership,
+            @PathVariable Long idTicket) {
+        return academicUnitService.assignTicketToLeadership(idLeadership, idTicket);
+    }
+
+
 }

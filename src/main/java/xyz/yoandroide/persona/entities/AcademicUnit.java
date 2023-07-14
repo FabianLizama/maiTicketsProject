@@ -22,8 +22,4 @@ public class AcademicUnit {
     @JoinColumn(name = "idAcademicUnit", referencedColumnName = "idAcademicUnit")
     private List<Ticket> tickets;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idAcademicUnit", referencedColumnName = "idAcademicUnit")
-    private List<Analyzer> analyzers;
-
 }

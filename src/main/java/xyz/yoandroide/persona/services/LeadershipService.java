@@ -44,7 +44,7 @@ public class LeadershipService {
     }
 
     //Cambiar estado del ticket asignado.
-    public Analyzer assignTicketToAnalyzer(Long idAnalyzer, Long idTicket){
+    public Analyzer assignTicketToAnalyzer(Long idAnalyzer, Long idTicket) {
         List<Ticket> ticketList = null;
         Analyzer analyzer = analyzerRepository.findById(idAnalyzer).get();
         Ticket ticket = ticketRepository.findById(idTicket).get();

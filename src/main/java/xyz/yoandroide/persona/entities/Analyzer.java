@@ -18,12 +18,4 @@ public class Analyzer {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "idAnalyzer", referencedColumnName = "idAnalyzer")
     private List<Ticket> tickets;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idLeadership", referencedColumnName = "idLeadership")
-    private Leadership leadership;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idAcademicUnit", referencedColumnName = "idAcademicUnit")
-    private AcademicUnit academicUnit;
 }

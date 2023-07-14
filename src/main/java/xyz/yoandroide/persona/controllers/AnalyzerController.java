@@ -1,13 +1,13 @@
 package xyz.yoandroide.persona.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import xyz.yoandroide.persona.entities.Analyzer;
 import xyz.yoandroide.persona.services.AnalyzerService;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -20,4 +20,15 @@ public class AnalyzerController {
     private ResponseEntity<List<Analyzer>> getAllAnalyzers(){
         return ResponseEntity.ok(analyzerService.findAll());
     }
+
+    @PostMapping
+    private ResponseEntity<Analyzer> saveAnalyzer(@RequestBody Analyzer analyzer){
+        try{
+            Analyzer savedAnalyzer = analyzerService.save(analyzer);
+            return ResponseEntity.created(new URI("/analyzers/"+savedAnalyzer.getIdAnalyzer())).body(savedAnalyzer);
+        }catch(Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+    }
+
 }
