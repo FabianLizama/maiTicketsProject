@@ -22,4 +22,8 @@ public class Leadership {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "idLeadership", referencedColumnName = "idLeadership")
     private List<Analyzer> analyzers;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fkIdAcademicUnit")
+    private AcademicUnit academicUnit;
 }
