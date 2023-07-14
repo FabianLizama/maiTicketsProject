@@ -14,15 +14,16 @@ public class AcademicUnit {
     private Long idAcademicUnit;
     private String name;
 
-    @OneToOne(mappedBy = "AcademicUnit")
+    @OneToOne
+    @JoinColumn(name = "idLeadership", referencedColumnName = "idLeadership")
     private Leadership leadership;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idAcademicUnit", referencedColumnName = "idAnalyzer")
-    private List<Analyzer> analyzerList;
+    @JoinColumn(name = "idAcademicUnit", referencedColumnName = "idAcademicUnit")
+    private List<Ticket> tickets;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idAcademicUnit", referencedColumnName = "idTicket")
-    private List<Ticket> ticketList;
+    @JoinColumn(name = "idAcademicUnit", referencedColumnName = "idAcademicUnit")
+    private List<Analyzer> analyzers;
 
 }

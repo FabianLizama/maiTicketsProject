@@ -37,4 +37,7 @@ public class Ticket {
     @JoinColumn(name = "idAnalyzer", referencedColumnName = "idAnalyzer")
     private Analyzer analyzer;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idAcademicUnit", referencedColumnName = "idAcademicUnit")
+    private AcademicUnit academicUnit;
 }

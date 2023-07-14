@@ -23,4 +23,7 @@ public class Analyzer {
     @JoinColumn(name = "idLeadership", referencedColumnName = "idLeadership")
     private Leadership leadership;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idAcademicUnit", referencedColumnName = "idAcademicUnit")
+    private AcademicUnit academicUnit;
 }

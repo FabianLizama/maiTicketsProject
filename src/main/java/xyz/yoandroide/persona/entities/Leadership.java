@@ -23,7 +23,7 @@ public class Leadership {
     @JoinColumn(name = "idLeadership", referencedColumnName = "idLeadership")
     private List<Analyzer> analyzers;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fkIdAcademicUnit")
+    @OneToOne
+    @JoinColumn(name = "idAcademicUnit", referencedColumnName = "idAcademicUnit")
     private AcademicUnit academicUnit;
 }
