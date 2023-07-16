@@ -39,4 +39,19 @@ public class LeadershipController {
             @PathVariable Long idTicket) {
         return leadershipService.assignTicketToAnalyzer(idAnalyzer, idTicket);
     }
+
+    @GetMapping("/{idLeadership}/analyzers")
+    public ResponseEntity<List<Analyzer>> getAnalyzersByLeadership(@PathVariable Long idLeadership){
+        return ResponseEntity.ok(leadershipService.findAnalyzersByLeadership(idLeadership));
+    }
+
+    @GetMapping("/{idLeadership}/tickets")
+    public ResponseEntity<List<Ticket>> getTicketsByLeadership(@PathVariable Long idLeadership){
+        return ResponseEntity.ok(leadershipService.findTicketsByLeadership(idLeadership));
+    }
+
+    @GetMapping("/{idLeadership}/tickets-sin-asignar")
+    public ResponseEntity<List<Ticket>> getUnasignedTicketsByLeadership(@PathVariable Long idLeadership){
+        return ResponseEntity.ok(leadershipService.findUnassignedTicketsByLeadership(idLeadership));
+    }
 }

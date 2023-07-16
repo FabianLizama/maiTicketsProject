@@ -3,7 +3,6 @@ package xyz.yoandroide.persona.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import xyz.yoandroide.persona.entities.Analyzer;
-import xyz.yoandroide.persona.entities.Client;
 import xyz.yoandroide.persona.entities.Leadership;
 import xyz.yoandroide.persona.entities.Ticket;
 import xyz.yoandroide.persona.repositories.AnalyzerRepository;
@@ -38,12 +37,52 @@ public class LeadershipService {
         return leadershipRepository.findAll();
     }
 
+    public List<Analyzer> findAnalyzersByLeadership(Long idLeadership){
+        List<Leadership> leaderships = leadershipRepository.findAll();
+
+        for(Leadership leadership : leaderships){
+            if(leadership.getIdLeadership().equals(idLeadership)){
+                return leadership.getAnalyzers();
+            }
+        }
+        return null;
+    }
+
+    public List<Ticket> findTicketsByLeadership(Long idLeadership){
+        List<Leadership> leaderships = leadershipRepository.findAll();
+
+        for(Leadership leadership : leaderships){
+            if(leadership.getIdLeadership().equals(idLeadership)){
+                return leadership.getTickets();
+            }
+        }
+        return null;
+    }
+
+    public List<Ticket> findUnassignedTicketsByLeadership(Long idLeadership){
+        List<Leadership> leaderships = leadershipRepository.findAll();
+
+        for(Leadership leadership : leaderships){
+            if(leadership.getIdLeadership().equals(idLeadership)){
+                List<Ticket> tickets = leadership.getTickets();
+                List<Ticket> UnassignedTickets = null;
+
+                for(Ticket ticket : tickets){
+                    if(ticket.getState().equals("Sin asignar")){
+                        UnassignedTickets.add(ticket);
+                    }
+                }
+                return UnassignedTickets;
+            }
+        }
+        return null;
+    }
+
 
     public long count() {
         return leadershipRepository.count();
     }
 
-    //Cambiar estado del ticket asignado.
     public Analyzer assignTicketToAnalyzer(Long idAnalyzer, Long idTicket) {
         List<Ticket> ticketList = null;
         Analyzer analyzer = analyzerRepository.findById(idAnalyzer).get();
