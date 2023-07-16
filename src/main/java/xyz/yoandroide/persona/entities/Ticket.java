@@ -19,8 +19,4 @@ public class Ticket {
     private Date creation;
     private Date responseLimit;
 
-    private Long fkIdClient;
-    private Long fkIdAnalyzer;
-    private Long fkIdAcademicUnit;
-    private Long fkIdLeadership;
 }
