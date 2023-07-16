@@ -8,7 +8,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "install": "^0.13.0",
+    "npm": "^9.8.0",
     "vue": "^3.3.4",
+    "vue-router": "^4.2.4",
     "vuetify": "^3.3.8"
   },
   "devDependencies": {
