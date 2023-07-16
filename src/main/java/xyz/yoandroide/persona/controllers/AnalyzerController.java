@@ -34,9 +34,10 @@ public class AnalyzerController {
 
     @PutMapping("/clients/{idClient}/tickets/{idTicket}")
     public Client answerTicketToClient (
+            String answer,
             @PathVariable Long idClient,
             @PathVariable Long idTicket) {
-        return analyzerService.answerTicketToClient(idClient, idTicket);
+        return analyzerService.answerTicketToClient(idClient, idTicket, answer);
     }
 
 }

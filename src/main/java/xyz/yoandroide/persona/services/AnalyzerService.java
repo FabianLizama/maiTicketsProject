@@ -39,11 +39,12 @@ public class AnalyzerService {
         return analyzerRepository.count();
     }
 
-    public Client answerTicketToClient(Long idClient, Long idTicket) {
+    public Client answerTicketToClient(Long idClient, Long idTicket, String answer) {
         List<Ticket> ticketList = null;
         Client client = clientRepository.findById(idClient).get();
         Ticket ticket = ticketRepository.findById(idTicket).get();
         ticket.setState("Respondido");
+        ticket.setAnswer(answer);
         ticketList = client.getTickets();
         ticketList.add(ticket);
         client.setTickets(ticketList);

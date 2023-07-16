@@ -49,6 +49,7 @@ public class LeadershipService {
         Analyzer analyzer = analyzerRepository.findById(idAnalyzer).get();
         Ticket ticket = ticketRepository.findById(idTicket).get();
         ticket.setState("Asignado");
+        ticket.setFkIdAnalyzer(idAnalyzer);
         ticketList = analyzer.getTickets();
         ticketList.add(ticket);
         analyzer.setTickets(ticketList);
