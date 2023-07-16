@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import xyz.yoandroide.persona.entities.Client;
+import xyz.yoandroide.persona.entities.Ticket;
 import xyz.yoandroide.persona.services.ClientService;
 
 import java.net.URI;
@@ -19,6 +20,11 @@ public class ClientController {
     @GetMapping
     private ResponseEntity<List<Client>> getAllClients(){
         return ResponseEntity.ok(clientService.findAll());
+    }
+
+    @GetMapping("/{idClient}/tickets")
+    private ResponseEntity<List<Ticket>> getTicketsByClient(@PathVariable Long idClient){
+        return ResponseEntity.ok(clientService.findTicketsByClient(idClient));
     }
 
     @PostMapping

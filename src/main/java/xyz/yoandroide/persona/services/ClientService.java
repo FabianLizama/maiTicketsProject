@@ -49,4 +49,14 @@ public class ClientService {
         client.setTickets(ticketList);
         return clientRepository.save(client);
     }
+
+    public List<Ticket> findTicketsByClient(Long idClient){
+        List<Client> clients = clientRepository.findAll();
+        for(Client client : clients){
+            if(client.getIdClient().equals(idClient)){
+                return client.getTickets();
+            }
+        }
+        return null;
+    }
 }
