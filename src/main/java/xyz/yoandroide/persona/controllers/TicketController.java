@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import xyz.yoandroide.persona.entities.AcademicUnit;
+import xyz.yoandroide.persona.entities.Client;
 import xyz.yoandroide.persona.entities.Ticket;
 import xyz.yoandroide.persona.services.TicketService;
 
@@ -29,5 +31,12 @@ public class TicketController {
         }catch(Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
+    }
+
+    @PutMapping("/{idTicket}/units/{idAcademicUnit}")
+    public AcademicUnit assignTicketToAcademicUnit (
+            @PathVariable Long idAcademicUnit,
+            @PathVariable Long idTicket) {
+        return ticketService.assignTicketToAcademicUnit(idAcademicUnit, idTicket);
     }
 }
