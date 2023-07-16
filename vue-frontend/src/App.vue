@@ -1,6 +1,38 @@
 <template>
-  <appBar />
-  
+  <v-layout>
+    <v-app-bar
+              flat
+              class="pa-md-3"
+              color="grey"
+    >
+      <appBar />
+    </v-app-bar>
+    <v-main>
+      <v-container class="text-center" fluid>
+        <v-card
+        title="Iniciar Sesión"
+        variant="tonal"
+        >
+          <v-card-actions>
+            <v-btn
+            color="primary"
+            text
+            to="/login"
+            >
+              Iniciar Sesión
+            </v-btn>
+            <v-btn
+            color="primary"
+            text
+            to="/register"
+            >
+              Registrarse
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-container>
+    </v-main>
+  </v-layout>
 </template>
 
 <script>
@@ -11,32 +43,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
