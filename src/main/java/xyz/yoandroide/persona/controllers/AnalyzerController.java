@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import xyz.yoandroide.persona.entities.Analyzer;
 import xyz.yoandroide.persona.entities.Client;
+import xyz.yoandroide.persona.entities.Ticket;
 import xyz.yoandroide.persona.services.AnalyzerService;
 
 import java.net.URI;
@@ -30,6 +31,11 @@ public class AnalyzerController {
         }catch(Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
+    }
+
+    @GetMapping("/{idAnalyzer}/tickets")
+    private ResponseEntity<List<Ticket>> getTicketsByAnalyzer(@PathVariable Long idAnalyzer){
+        return ResponseEntity.ok(analyzerService.findTicketsByAnalyzer(idAnalyzer));
     }
 
     @PutMapping("/clients/{idClient}/tickets/{idTicket}")

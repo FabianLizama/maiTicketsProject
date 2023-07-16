@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import xyz.yoandroide.persona.entities.Analyzer;
 import xyz.yoandroide.persona.entities.Client;
+import xyz.yoandroide.persona.entities.Leadership;
 import xyz.yoandroide.persona.entities.Ticket;
 import xyz.yoandroide.persona.repositories.AnalyzerRepository;
 import xyz.yoandroide.persona.repositories.ClientRepository;
+import xyz.yoandroide.persona.repositories.LeadershipRepository;
 import xyz.yoandroide.persona.repositories.TicketRepository;
 
 import java.util.List;
@@ -22,6 +24,9 @@ public class AnalyzerService {
 
     @Autowired
     private TicketRepository ticketRepository;
+
+    @Autowired
+    private LeadershipRepository leadershipRepository;
 
     public <S extends Analyzer> S save(S entity) {
         return analyzerRepository.save(entity);
@@ -49,6 +54,19 @@ public class AnalyzerService {
         ticketList.add(ticket);
         client.setTickets(ticketList);
         return clientRepository.save(client);
+    }
+
+    public List<Ticket> findTicketsByAnalyzer(Long idAnalyzer){
+        List<Leadership> leaderships = leadershipRepository.findAll();
+        for(Leadership leadership : leaderships){
+            List<Analyzer> analyzers = leadership.getAnalyzers();
+            for(Analyzer analyzer : analyzers){
+                if(analyzer.getIdAnalyzer().equals(idAnalyzer)){
+                    return analyzer.getTickets();
+                }
+            }
+        }
+        return null;
     }
 
 }

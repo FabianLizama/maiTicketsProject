@@ -24,7 +24,7 @@ public class AcademicUnitController {
     }
 
     @GetMapping
-    private ResponseEntity  getAllAcademicUnits() {
+    private ResponseEntity getAllAcademicUnits() {
         return ResponseEntity.ok(this.AcademicUnitRespository.findAll());
     }
 
