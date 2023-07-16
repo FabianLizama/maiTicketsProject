@@ -22,7 +22,7 @@ public class AnalyzerService {
 
     @Autowired
     private TicketRepository ticketRepository;
-    
+
     public <S extends Analyzer> S save(S entity) {
         return analyzerRepository.save(entity);
     }

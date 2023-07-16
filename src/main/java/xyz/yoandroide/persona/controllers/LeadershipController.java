@@ -33,7 +33,7 @@ public class LeadershipController {
         }
     }
 
-    @PutMapping("/{idAnalyzer}/ticket/{idTicket}")
+    @PutMapping("/analyzers/{idAnalyzer}/tickets/{idTicket}")
     public Analyzer assignTicketToAnalyzer(
             @PathVariable Long idAnalyzer,
             @PathVariable Long idTicket) {
