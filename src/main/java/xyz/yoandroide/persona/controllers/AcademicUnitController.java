@@ -5,25 +5,27 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import xyz.yoandroide.persona.entities.AcademicUnit;
-import xyz.yoandroide.persona.entities.Analyzer;
-import xyz.yoandroide.persona.entities.Client;
 import xyz.yoandroide.persona.entities.Leadership;
+import xyz.yoandroide.persona.repositories.AcademicUnitRepository;
 import xyz.yoandroide.persona.services.AcademicUnitService;
-import xyz.yoandroide.persona.services.LeadershipService;
-import xyz.yoandroide.persona.services.TicketService;
 
 import java.net.URI;
-import java.util.List;
+
 
 @RestController
 @RequestMapping("/units/")
 public class AcademicUnitController {
     @Autowired
     private AcademicUnitService academicUnitService;
+    private final AcademicUnitRepository AcademicUnitRespository;
+
+    public AcademicUnitController(AcademicUnitRepository academicUnitRespository) {
+        this.AcademicUnitRespository = academicUnitRespository;
+    }
 
     @GetMapping
-    private ResponseEntity<List<AcademicUnit>> getAllUnits() {
-        return ResponseEntity.ok(academicUnitService.findAll());
+    private ResponseEntity  getAllAcademicUnits() {
+        return ResponseEntity.ok(this.AcademicUnitRespository.findAll());
     }
 
     @PostMapping
