@@ -31,16 +31,17 @@
             variant="outlined"
           >
           </v-text-field>
-          <v-card-actions>
+          <v-card-actions class="px-16">
             <v-btn
-              :disabled="!form"
+              class="rounded-lg"
               :loading="loading"
               block
               size="large"
               type="submit"
               variant="tonal"
+              
             >
-              Iniciar Sesión
+              Ingresar
             </v-btn>
           </v-card-actions>
         </v-card>
@@ -52,6 +53,13 @@
 <script>
 import appBar from './components/appBar.vue'
 export default {
+  data: () => ({
+    email: '',
+    password: '',
+    visible: false,
+    loading: false,
+    form: false,
+  }),
   components: {
     appBar
   }
