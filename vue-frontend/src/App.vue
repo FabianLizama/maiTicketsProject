@@ -12,21 +12,35 @@
         <v-card
         title="Iniciar Sesión"
         variant="tonal"
+        class="rounded-lg px-10 py-5"
+        width="500"
+        
         >
+          <v-text-field 
+            v-model="email"
+            placeholder="example@usach.cl"
+            size="large"
+            label="Correo"
+            variant="outlined"
+          >
+          </v-text-field>
+          <v-text-field 
+            :type="visible ? 'text' : 'password'"
+            v-model="password"
+            label="Contraseña"
+            variant="outlined"
+          >
+          </v-text-field>
           <v-card-actions>
             <v-btn
-            color="primary"
-            text
-            to="/login"
+              :disabled="!form"
+              :loading="loading"
+              block
+              size="large"
+              type="submit"
+              variant="tonal"
             >
               Iniciar Sesión
-            </v-btn>
-            <v-btn
-            color="primary"
-            text
-            to="/register"
-            >
-              Registrarse
             </v-btn>
           </v-card-actions>
         </v-card>
