@@ -31,6 +31,12 @@ public class ClientController {
         }
     }
 
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Boolean> delete(@PathVariable ("id") Long id) {
+        clientService.delete(id);
+        return ResponseEntity.ok(!clientService.existById(id));
+    }
+
     @PutMapping("/{idClient}/tickets/{idTicket}")
     public Client assignTicketToClient (
             @PathVariable Long idClient,

@@ -27,6 +27,9 @@ public class ClientService {
         return clientRepository.findById(aLong);
     }
 
+    public void delete(Long id) { clientRepository.deleteById(id); }
+
+    public boolean existById(Long id) {return clientRepository.existsById(id); }
 
     public List<Client> findAll() {
         return clientRepository.findAll();
