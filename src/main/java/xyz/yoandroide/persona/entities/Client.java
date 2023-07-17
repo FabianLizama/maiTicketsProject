@@ -16,6 +16,8 @@ public class Client {
     private String lastNameP;
     private String lastNameM;
     private String rut;
+    private String email;
+    private String password;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "idClient", referencedColumnName = "idClient")
