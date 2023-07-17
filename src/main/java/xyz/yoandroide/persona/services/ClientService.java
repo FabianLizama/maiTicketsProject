@@ -27,6 +27,16 @@ public class ClientService {
         return clientRepository.findById(aLong);
     }
 
+    public Long existLogin(String email, String password) {
+        List<Client> clientList = clientRepository.findAll();
+        for (Client client: clientList) {
+            if (client.getEmail().equals(email) && client.getPassword().equals(password)) {
+                return client.getIdClient();
+            }
+        }
+        return (long) -1;
+    }
+
     public void delete(Long id) { clientRepository.deleteById(id); }
 
     public boolean existById(Long id) {return clientRepository.existsById(id); }

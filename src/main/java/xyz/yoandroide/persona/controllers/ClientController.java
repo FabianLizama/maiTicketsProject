@@ -43,6 +43,18 @@ public class ClientController {
         }
     }
 
+    @PostMapping("/login/")
+    private ResponseEntity<Long> loginClient(@RequestBody Client client) {
+        try{
+            String email = client.getEmail();
+            String password = client.getPassword();
+            return ResponseEntity.ok(clientService.existLogin(email, password));
+            //return ResponseEntity.created(new URI("/clients/"+savedClient.getIdClient())).body(savedClient);
+        }catch(Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+    }
+
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Boolean> delete(@PathVariable ("id") Long id) {
         clientService.delete(id);
