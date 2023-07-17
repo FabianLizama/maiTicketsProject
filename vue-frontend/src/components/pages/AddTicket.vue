@@ -109,7 +109,7 @@
         methods: {
             sendData(){
                 axios.post(
-                    `http://localhost:8081/tickets/1/tickets`,
+                    `http://localhost:8081/tickets/add-ticket/1/`,
                     {
                         description: this.descripcion,
                         category: this.motivo,
