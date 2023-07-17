@@ -115,7 +115,7 @@
                         category: this.motivo,
                         fkIdAcademicUnit: 16,
                         state: "Sin asignar",
-                        responseLimit: 20
+                        fkIdClient: 1
                     }
                 ).then(response => {
                     console.log(response.data)
