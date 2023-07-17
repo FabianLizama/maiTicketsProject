@@ -1,0 +1,69 @@
+<template>
+    <v-app>
+        <v-app-bar
+            flat
+            class="pa-md-3"
+            color="grey"
+        >
+        <appBar />
+        </v-app-bar>
+        <v-main class="d-flex align-center justify-center">
+                <v-card
+                    variant="tonal"
+                    class="rounded-lg px-10 py-5 align-center text-center"
+                    width="500"
+                >
+                    <div class="py-4 text-h4 font-weight-black text-disabled">
+                        Iniciar Sesión
+                    </div>
+                    <v-text-field 
+                        class="pt-5"
+                        v-model="email"
+                        placeholder="example@usach.cl"
+                        size="large"
+                        label="Correo"
+                        variant="outlined"
+                    >
+                    </v-text-field>
+                    <v-text-field 
+                        :type="visible ? 'text' : 'password'"
+                        v-model="password"
+                        label="Contraseña"
+                        variant="outlined"
+                    >
+                    </v-text-field>
+                    <v-card-actions class="px-16">
+                        <v-btn
+                            class="rounded-lg "
+                            :loading="loading"
+                            block
+                            size="large"
+                            type="submit"
+                            variant="tonal"
+                            
+                        >
+                        <div class="text-h6 font-weight-bold text-disabled">
+                        Ingresar
+                        </div>
+                    </v-btn>
+                    </v-card-actions>
+                </v-card>
+        </v-main>
+    </v-app>
+</template>
+
+<script>
+    import appBar from '../appBar.vue'
+    export default {
+        data: () => ({
+            email: '',
+            password: '',
+            visible: false,
+            loading: false,
+            form: false,
+        }),
+        components: {
+            appBar
+        }
+    }
+</script>
