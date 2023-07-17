@@ -9,8 +9,10 @@ import xyz.yoandroide.persona.entities.Client;
 import xyz.yoandroide.persona.entities.Ticket;
 import xyz.yoandroide.persona.services.AnalyzerService;
 
+import javax.swing.text.html.Option;
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/analyzers/")
@@ -21,6 +23,11 @@ public class AnalyzerController {
     @GetMapping
     private ResponseEntity<List<Analyzer>> getAllAnalyzers(){
         return ResponseEntity.ok(analyzerService.findAll());
+    }
+
+    @GetMapping("/{idAnalyzer}")
+    private ResponseEntity<Optional<Analyzer>> getIdAnalyzer(@PathVariable Long idAnalyzer){
+        return ResponseEntity.ok(analyzerService.findById(idAnalyzer));
     }
 
     @PostMapping
