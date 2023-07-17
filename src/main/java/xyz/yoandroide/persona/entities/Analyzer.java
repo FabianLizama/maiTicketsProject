@@ -14,6 +14,8 @@ public class Analyzer {
     private Long idAnalyzer;
 
     private String name;
+    private String email;
+    private String password;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "idAnalyzer", referencedColumnName = "idAnalyzer")

@@ -14,6 +14,8 @@ public class Leadership {
     private Long idLeadership;
 
     private String name;
+    private String email;
+    private String password;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "idLeadership", referencedColumnName = "idLeadership")
