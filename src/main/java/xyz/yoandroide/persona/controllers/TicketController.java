@@ -36,7 +36,6 @@ public class TicketController {
     @PostMapping("/{idClient}/tickets")
     private ResponseEntity<Ticket> saveTicket(@PathVariable Long idClient, @RequestBody Ticket ticket){
         try{
-            ticket.setFkIdClient(idClient);
             Ticket savedTicket = ticketService.save(ticket);
             clientService.assignTicketToClient(idClient, savedTicket.getIdTicket());
             return ResponseEntity.created(new URI("/tickets/"+savedTicket.getIdTicket())).body(savedTicket);
