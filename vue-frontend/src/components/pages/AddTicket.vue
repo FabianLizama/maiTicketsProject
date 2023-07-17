@@ -80,6 +80,7 @@
                         size="large"
                         type="submit"
                         variant="outlined"
+                        @click="getUnits"
                         >
                         Enviar
                         </v-btn>
@@ -105,29 +106,28 @@
         components: {
             appBar
         },
-        mounted: {
-            getIdClient(){
-                axios.get('/clients/id').then((response) => {
-                    this.clientId = response.data
-                })
-                console.log('test ' ,this.clientId)
-            },
-        },
         methods: {
-            sendData(){
-                this.getIdClient()
-                axios({
-                    method: 'post',
-                    url: '/tickets/',
-                    data: {
-                        title: 'Article title',
-                        body:  'Article body content',
-                        userId: 1,
+            sendData(id){
+                instance.post(
+                    `/tickets/${id}/tickets`,
+                    {
+                        description: this.descripcion,
+                        category: this.motivo,
+                        state: "Sin asignar",
                     }
-                })
+                )
             }
-        }
+        },
+        computed: {
+            getUnits(){
+                instance.get('/units/').then((response) => {console.log(response)})
+            }
+        },
     }
+    
+    const instance = axios.create({
+        baseURL: 'http://localhost:8081' // URL base con el puerto 8081
+    })
 </script>
 <style>
 </style>
