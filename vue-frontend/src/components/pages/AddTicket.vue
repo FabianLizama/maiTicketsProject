@@ -10,14 +10,15 @@
         <v-main
         class="d-flex align-center justify-center"
         >
-            <v-sheet 
+            <v-card
             :elevation="10"
             width="40%"
-            class="px-6 py-3"
+            height="80%"
+            class="px-6 pb-10"
             style="border-radius: 10px"
             >
             <v-container>
-                <v-row>
+                <v-row class="py-1">
                     <v-col cols="12" align="center">
                         <h2 class="text-h4 font-weight-black text-disabled">Añadir Ticket</h2>
                     </v-col>
@@ -40,11 +41,11 @@
                 </v-row>
                 <v-row>
                     <v-col align="center">
-                        <v-textarea
+                        <v-text-field
                         label="Descripción" 
                         variant="outlined"
                         >
-                        </v-textarea>
+                        </v-text-field>
                     </v-col>
                 </v-row>
                 <v-row>
@@ -58,11 +59,11 @@
                 </v-row>
                 <v-row>
                     <v-col align="center">
-                        <v-textarea
+                        <v-text-field
                         label="Comentarios"
                         variant="outlined"
                         >
-                        </v-textarea>
+                        </v-text-field>
                     </v-col>
                 </v-row>
                 <v-row>
@@ -79,7 +80,7 @@
                     </v-col>
                 </v-row>
             </v-container>
-        </v-sheet>
+            </v-card>
         </v-main>
     </v-app>
 </template>
