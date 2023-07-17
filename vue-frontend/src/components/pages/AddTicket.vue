@@ -113,9 +113,13 @@
                     {
                         description: this.descripcion,
                         category: this.motivo,
-                        state: "Sin asignar",
+                        fkIdAcademicUnit: 16
                     }
-                )
+                ).then(response => {
+                    console.log(response.data)
+                }).catch(error => {
+                    console.error(error)
+                })
             }
         },
     }
