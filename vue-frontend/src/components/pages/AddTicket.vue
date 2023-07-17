@@ -118,11 +118,6 @@
                 )
             }
         },
-        computed: {
-            getUnits(){
-                instance.get('/units/').then((response) => {console.log(response)})
-            }
-        },
     }
     
     const instance = axios.create({
