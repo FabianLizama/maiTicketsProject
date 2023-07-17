@@ -80,7 +80,7 @@
                         size="large"
                         type="submit"
                         variant="outlined"
-                        @click="getUnits"
+                        @click="sendData"
                         >
                         Enviar
                         </v-btn>
@@ -107,9 +107,9 @@
             appBar
         },
         methods: {
-            sendData(id){
-                instance.post(
-                    `/tickets/${id}/tickets`,
+            sendData(){
+                axios.post(
+                    `http://localhost:8081/tickets/1/tickets`,
                     {
                         description: this.descripcion,
                         category: this.motivo,
