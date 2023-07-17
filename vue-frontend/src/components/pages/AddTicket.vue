@@ -14,29 +14,43 @@
             :elevation="10"
             width="40%"
             height="80%"
-            class="px-6 pb-10"
+            class="pa-10"
             style="border-radius: 10px"
             >
-            <v-container>
                 <v-row class="py-1">
                     <v-col cols="12" align="center">
                         <h2 class="text-h4 font-weight-black text-disabled">Añadir Ticket</h2>
                     </v-col>
                 </v-row>
                 <v-row>
-                    <v-col align="center">
-                        <v-text-field
+                    <v-col cols="4">
+                        <v-autocomplete
                         label="Motivo" 
                         variant="outlined"
+                        v-model="motivo"
+                        :items="['Solicitud', 'Incidencia']"
                         >
-                        </v-text-field>
+                        </v-autocomplete>
                     </v-col>
                     <v-col align="center">
-                        <v-text-field
+                        <v-autocomplete
                         label="Unidad Académica" 
                         variant="outlined"
+                        v-model="unidad"
+                        :items="[
+                            'Facultad de Administración y Economía',
+                            'Facultad de Ciencia',
+                            'Facultad de Ciencias Médicas',
+                            'Facultad de Derecho',
+                            'Facultad de Humanidades',
+                            'Facultad de Ingeniería',
+                            'Facultad de Química y Biología',
+                            'Facultad Tecnológica',
+                            'Facultad de Arquitectura y Ambiente',
+                            'Programa de Bachillerato'
+                            ]"
                         >
-                        </v-text-field>
+                        </v-autocomplete>
                     </v-col>
                 </v-row>
                 <v-row>
@@ -44,6 +58,7 @@
                         <v-text-field
                         label="Descripción" 
                         variant="outlined"
+                        v-model="descripcion"
                         >
                         </v-text-field>
                     </v-col>
@@ -57,17 +72,8 @@
                         </v-file-input>
                     </v-col>
                 </v-row>
-                <v-row>
-                    <v-col align="center">
-                        <v-text-field
-                        label="Comentarios"
-                        variant="outlined"
-                        >
-                        </v-text-field>
-                    </v-col>
-                </v-row>
-                <v-row>
-                    <v-col align="center">
+                <v-row align-center class="pt-7">
+                    <v-col align-center>
                         <v-btn
                         class="rounded-lg text-disabled"
                         block
@@ -79,22 +85,49 @@
                         </v-btn>
                     </v-col>
                 </v-row>
-            </v-container>
             </v-card>
         </v-main>
     </v-app>
 </template>
 
 <script>
+    import axios from 'axios'
     import appBar from '../appBar.vue'
     export default {
         name: 'AddTicket',
+        data: () => ({
+            motivo: null,
+            unidad: null,
+            descripcion: "",
+            comentarios: "",
+            clientId: null
+        }),
         components: {
             appBar
         },
+        mounted: {
+            getIdClient(){
+                axios.get('/clients/id').then((response) => {
+                    this.clientId = response.data
+                })
+                console.log('test ' ,this.clientId)
+            },
+        },
+        methods: {
+            sendData(){
+                this.getIdClient()
+                axios({
+                    method: 'post',
+                    url: '/tickets/',
+                    data: {
+                        title: 'Article title',
+                        body:  'Article body content',
+                        userId: 1,
+                    }
+                })
+            }
+        }
     }
-    
 </script>
-
 <style>
 </style>
