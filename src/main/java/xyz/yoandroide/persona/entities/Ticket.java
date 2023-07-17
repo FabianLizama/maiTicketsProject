@@ -17,7 +17,7 @@ public class Ticket {
     private Integer priority;
     private String state;
     private Date creation;
-    private Date responseLimit;
+    private Integer responseLimit;
     private String answer;
     private Long fkIdClient;
     private Long fkIdAnalyzer;
