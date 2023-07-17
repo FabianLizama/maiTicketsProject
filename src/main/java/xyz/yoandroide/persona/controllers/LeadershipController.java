@@ -11,6 +11,7 @@ import xyz.yoandroide.persona.services.LeadershipService;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/leaderships/")
@@ -21,6 +22,11 @@ public class LeadershipController {
     @GetMapping
     private ResponseEntity<List<Leadership>> getAllLeaderships(){
         return ResponseEntity.ok(leadershipService.findAll());
+    }
+
+    @GetMapping("/{idLeadership}")
+    private ResponseEntity<Optional<Leadership>> getIdLeadership(@PathVariable Long idLeadership){
+        return ResponseEntity.ok(leadershipService.findById(idLeadership));
     }
 
     @PostMapping

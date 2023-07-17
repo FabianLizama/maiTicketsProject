@@ -10,6 +10,7 @@ import xyz.yoandroide.persona.services.ClientService;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/clients/")
@@ -20,6 +21,11 @@ public class ClientController {
     @GetMapping
     private ResponseEntity<List<Client>> getAllClients(){
         return ResponseEntity.ok(clientService.findAll());
+    }
+
+    @GetMapping("/{idClient}")
+    private ResponseEntity<Optional<Client>> getIdClient(@PathVariable Long idClient){
+        return ResponseEntity.ok(clientService.findById(idClient));
     }
 
     @GetMapping("/{idClient}/tickets")
