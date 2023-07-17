@@ -113,7 +113,8 @@
                     {
                         description: this.descripcion,
                         category: this.motivo,
-                        fkIdAcademicUnit: 16
+                        fkIdAcademicUnit: 16,
+                        state: "Sin asignar"
                     }
                 ).then(response => {
                     console.log(response.data)
