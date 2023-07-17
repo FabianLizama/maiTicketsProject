@@ -33,7 +33,7 @@ public class TicketController {
         return ResponseEntity.ok(ticketService.findById(idTicket));
     }
 
-    @PostMapping("/{idClient}/tickets}")
+    @PostMapping("/{idClient}/tickets")
     private ResponseEntity<Ticket> saveTicket(@PathVariable Long idClient, @RequestBody Ticket ticket){
         try{
             Ticket savedTicket = ticketService.save(ticket);
