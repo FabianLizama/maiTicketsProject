@@ -10,6 +10,7 @@ import xyz.yoandroide.persona.services.ClientService;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -46,8 +47,9 @@ public class ClientController {
     @PostMapping("/login/")
     private ResponseEntity<Long> loginClient(@RequestBody Client client) {
         try{
-            String email = client.getEmail();
-            String password = client.getPassword();
+            String email = (String) client.getEmail();
+            String password = (String) client.getPassword();
+            //return ResponseEntity.accepted(clientService.existLogin(email, password));
             return ResponseEntity.ok(clientService.existLogin(email, password));
             //return ResponseEntity.created(new URI("/clients/"+savedClient.getIdClient())).body(savedClient);
         }catch(Exception e){
