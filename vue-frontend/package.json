@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mdi/font": "^7.2.96",
     "install": "^0.13.0",
     "npm": "^9.8.0",
     "vue": "^3.3.4",
