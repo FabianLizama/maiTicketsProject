@@ -32,6 +32,10 @@ public class LeadershipService {
         return leadershipRepository.findById(aLong);
     }
 
+    public void delete(Long id) { leadershipRepository.deleteById(id); }
+
+    public boolean existById(Long id) {return leadershipRepository.existsById(id); }
+
 
     public List<Leadership> findAll() {
         return leadershipRepository.findAll();

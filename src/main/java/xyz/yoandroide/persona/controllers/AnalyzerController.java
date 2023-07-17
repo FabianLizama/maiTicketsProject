@@ -38,6 +38,11 @@ public class AnalyzerController {
         return ResponseEntity.ok(analyzerService.findTicketsByAnalyzer(idAnalyzer));
     }
 
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Boolean> delete(@PathVariable ("id") Long id) {
+        analyzerService.delete(id);
+        return ResponseEntity.ok(!analyzerService.existById(id));
+    }
     @PutMapping("/clients/{idClient}/tickets/{idTicket}")
     public Client answerTicketToClient (
             String answer,

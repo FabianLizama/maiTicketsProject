@@ -34,6 +34,10 @@ public class AcademicUnitService {
         return academicUnitRepository.findById(aLong);
     }
 
+    public void delete(Long id) { academicUnitRepository.deleteById(id); }
+
+    public boolean existById(Long id) {return academicUnitRepository.existsById(id); }
+
     public Optional<Leadership> findLeadershipById(Long aLong) { return leadershipRepository.findById(aLong);}
 
     public List<AcademicUnit> findAll() {

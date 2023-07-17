@@ -31,6 +31,9 @@ public class AdminService {
     public Optional<Admin> findById(Long aLong) {
         return adminRepository.findById(aLong);
     }
+    public void delete(Long id) { adminRepository.deleteById(id); }
+
+    public boolean existById(Long id) {return adminRepository.existsById(id); }
     public List<Admin> findAll() {
         return adminRepository.findAll();
     }

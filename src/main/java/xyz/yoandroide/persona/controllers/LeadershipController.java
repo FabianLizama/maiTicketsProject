@@ -33,6 +33,12 @@ public class LeadershipController {
         }
     }
 
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Boolean> delete(@PathVariable ("id") Long id) {
+        leadershipService.delete(id);
+        return ResponseEntity.ok(!leadershipService.existById(id));
+    }
+
     @PutMapping("/analyzers/{idAnalyzer}/tickets/{idTicket}")
     public Analyzer assignTicketToAnalyzer(
             @PathVariable Long idAnalyzer,

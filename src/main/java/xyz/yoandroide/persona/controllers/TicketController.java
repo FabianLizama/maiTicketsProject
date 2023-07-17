@@ -33,6 +33,12 @@ public class TicketController {
         }
     }
 
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Boolean> delete(@PathVariable ("id") Long id) {
+        ticketService.delete(id);
+        return ResponseEntity.ok(!ticketService.existById(id));
+    }
+
     @PutMapping("/{idTicket}/units/{idAcademicUnit}")
     public AcademicUnit assignTicketToAcademicUnit (
             @PathVariable Long idAcademicUnit,

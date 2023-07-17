@@ -33,6 +33,10 @@ public class TicketService {
         return ticketRepository.findById(aLong);
     }
 
+    public void delete(Long id) { ticketRepository.deleteById(id); }
+
+    public boolean existById(Long id) {return ticketRepository.existsById(id); }
+
 
     public List<Ticket> findAll() {
         return ticketRepository.findAll();

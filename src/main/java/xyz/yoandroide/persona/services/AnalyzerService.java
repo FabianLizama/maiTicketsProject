@@ -36,6 +36,10 @@ public class AnalyzerService {
         return analyzerRepository.findById(aLong);
     }
 
+    public void delete(Long id) { analyzerRepository.deleteById(id); }
+
+    public boolean existById(Long id) {return analyzerRepository.existsById(id); }
+
     public List<Analyzer> findAll() {
         return analyzerRepository.findAll();
     }

@@ -31,6 +31,12 @@ public class AdminController {
         }
     }
 
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Boolean> delete(@PathVariable ("id") Long id) {
+        adminService.delete(id);
+        return ResponseEntity.ok(!adminService.existById(id));
+    }
+
     @PutMapping("/leaderships/{idLeadership}/units/{idAcademicUnit}")
     public AcademicUnit assignLeadershipToAcademicUnit (
             @PathVariable Long idLeadership,

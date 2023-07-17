@@ -38,6 +38,11 @@ public class AcademicUnitController {
         }
     }
 
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Boolean> delete(@PathVariable ("id") Long id) {
+        academicUnitService.delete(id);
+        return ResponseEntity.ok(!academicUnitService.existById(id));
+    }
 
     @PutMapping("/leaderships/{idLeadership}/tickets/{idTicket}")
     public Leadership assignTicketToLeadership (
