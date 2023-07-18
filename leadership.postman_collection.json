@@ -1,0 +1,310 @@
+{
+	"info": {
+		"_postman_id": "ceedcd40-546e-4bb5-a1e4-68c7f35ca64a",
+		"name": "leadership",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28584115"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8081/leaderships/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"email\": \"john.doe@example.com\",\r\n  \"password\": \"leadership_password\",\r\n  \"tickets\": [],\r\n  \"analyzers\": []\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8081/leaderships/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"leaderships",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/leaderships/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"FELIPE FUENTES LEADERSHIP\",\r\n  \"email\": \"FELIPE_FUENTES_L@maitickets.com\",\r\n  \"password\": \"1234\",\r\n  \"tickets\": [],\r\n  \"analyzers\": []\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8081/leaderships/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"leaderships",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/leaderships/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"JOSEFINA MUNOZ LEADERSHIP\",\r\n  \"email\": \"JOSEFINA_MUNOZ_L@maitickets.com\",\r\n  \"password\": \"1234\",\r\n  \"tickets\": [],\r\n  \"analyzers\": []\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8081/leaderships/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"leaderships",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/leaderships/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"FREDY MERCURY LEADERSHIP\",\r\n  \"email\": \"FREDY_MERCURY_L@maitickets.com\",\r\n  \"password\": \"1234\",\r\n  \"tickets\": [],\r\n  \"analyzers\": []\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8081/leaderships/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"leaderships",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/leaderships/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"FERNANDO SOLÍS LEADERSHIP\",\r\n  \"email\": \"FERNANDO_SOLÍS_L@maitickets.com\",\r\n  \"password\": \"1234\",\r\n  \"tickets\": [],\r\n  \"analyzers\": []\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8081/leaderships/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"leaderships",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/leaderships/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"ANDRE COSIO LEADERSHIP\",\r\n  \"email\": \"ANDRE_COSIO_L@maitickets.com\",\r\n  \"password\": \"1234\",\r\n  \"tickets\": [],\r\n  \"analyzers\": []\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8081/leaderships/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"leaderships",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/leaderships/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"NICOLÁS AGUILERA LEADERSHIP\",\r\n  \"email\": \"NICOLÁS_AGUILERA_L@maitickets.com\",\r\n  \"password\": \"1234\",\r\n  \"tickets\": [],\r\n  \"analyzers\": []\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8081/leaderships/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"leaderships",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/leaderships/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"VALENTINA CAMPOS LEADERSHIP\",\r\n  \"email\": \"VALENTINA_CAMPOS_L@maitickets.com\",\r\n  \"password\": \"1234\",\r\n  \"tickets\": [],\r\n  \"analyzers\": []\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8081/leaderships/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"leaderships",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/leaderships/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"FABIÁN LIZAMA LEADERSHIP\",\r\n  \"email\": \"FABIÁN_LIZAMA_L@maitickets.com\",\r\n  \"password\": \"1234\",\r\n  \"tickets\": [],\r\n  \"analyzers\": []\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8081/leaderships/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"leaderships",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/leaderships/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Leadership Name\",\r\n  \"email\": \"Leadership@maitickets.com\",\r\n  \"password\": \"1234\",\r\n  \"tickets\": [],\r\n  \"analyzers\": []\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8081/leaderships/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"leaderships",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
