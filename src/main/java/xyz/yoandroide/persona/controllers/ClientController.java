@@ -69,4 +69,5 @@ public class ClientController {
             @PathVariable Long idTicket) {
         return clientService.assignTicketToClient(idClient, idTicket);
     }
+
 }

@@ -3,6 +3,7 @@ package xyz.yoandroide.persona.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import xyz.yoandroide.persona.entities.Analyzer;
+import xyz.yoandroide.persona.entities.Client;
 import xyz.yoandroide.persona.entities.Leadership;
 import xyz.yoandroide.persona.entities.Ticket;
 import xyz.yoandroide.persona.repositories.AnalyzerRepository;
@@ -97,5 +98,15 @@ public class LeadershipService {
         ticketList.add(ticket);
         analyzer.setTickets(ticketList);
         return analyzerRepository.save(analyzer);
+    }
+
+    public Leadership findByEmail(String email){
+        List<Leadership> leaderships = leadershipRepository.findAll();
+        for(Leadership leadership : leaderships){
+            if(leadership.getEmail().equals(email)){
+                return leadership;
+            }
+        }
+        return null;
     }
 }

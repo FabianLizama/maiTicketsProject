@@ -39,8 +39,9 @@
                             block
                             size="large"
                             type="submit"
+                            @click="login"
                             variant="tonal"
-                            
+
                         >
                         <div class="text-h6 font-weight-bold text-disabled">
                         Ingresar
@@ -54,6 +55,8 @@
 
 <script>
     import appBar from '../appBar.vue'
+    import axios from 'axios';
+
     export default {
         data: () => ({
             email: '',
@@ -64,6 +67,19 @@
         }),
         components: {
             appBar
+        },
+        methods: {
+            async login() {
+                try {
+                    const response = await axios.post('http://localhost:8081/api/login', {
+                        email: this.email,
+                        password: this.password
+                    });
+
+                } catch (error) {
+                    console.log('Credenciales inválidas');
+                }
+            }
         }
-    }
+    };
 </script>

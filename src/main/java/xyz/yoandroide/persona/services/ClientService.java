@@ -69,4 +69,14 @@ public class ClientService {
         }
         return null;
     }
+
+    public Client findByEmail(String email){
+        List<Client> clients = clientRepository.findAll();
+        for(Client client : clients){
+            if(client.getEmail().equals(email)){
+                return client;
+            }
+        }
+        return null;
+    }
 }

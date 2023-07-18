@@ -73,4 +73,14 @@ public class AnalyzerService {
         return null;
     }
 
+    public Analyzer findByEmail(String email){
+        List<Analyzer> analyzers = analyzerRepository.findAll();
+        for(Analyzer analyzer : analyzers){
+            if(analyzer.getEmail().equals(email)){
+                return analyzer;
+            }
+        }
+        return null;
+    }
+
 }
