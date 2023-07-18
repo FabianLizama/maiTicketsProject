@@ -14,7 +14,7 @@
             :elevation="10"
             class="pa-10"
             style="border-radius: 10px"
-            min-width="500"
+            min-width="600"
             >
                 <v-row class="py-1">
                     <v-col cols="12" align="center">
