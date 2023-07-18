@@ -14,6 +14,7 @@
             :elevation="10"
             class="pa-10"
             style="border-radius: 10px"
+            min-width="1000"
             >
                 <v-row justify="center">
                     <v-col align="center">
@@ -43,7 +44,7 @@
                             class="py-3 my-3 rounded-lg"
                         >
                             <v-row>
-                                <v-col>
+                                <v-col align="center">
                                     <v-list-item-title class="text-left">
                                         ID: {{ item.idTicket }}<br>Motivo: {{ item.category }}
                                     </v-list-item-title>
@@ -51,8 +52,8 @@
                                         {{ item.description }}
                                     </v-list-item-subtitle>
                                 </v-col>
-                                <v-col>
-                                    <v-row>
+                                <v-col class="d-flex align-center">
+                                    <v-row justify="space-between" align="center">
                                         <v-col>
                                             <v-btn>
                                                 Asignar
