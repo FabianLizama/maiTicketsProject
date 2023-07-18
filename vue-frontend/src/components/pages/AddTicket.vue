@@ -12,10 +12,9 @@
         >
             <v-card
             :elevation="10"
-            width="40%"
-            height="80%"
             class="pa-10"
             style="border-radius: 10px"
+            min-width="500"
             >
                 <v-row class="py-1">
                     <v-col cols="12" align="center">
