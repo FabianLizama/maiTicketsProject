@@ -38,24 +38,26 @@
                 >
                     <v-list lines="one">
                         <v-list-item
-                            v-for="item in items"
-                            :key="item.idTicket"
+                            v-for="ticket in listTickets"
+                            :key="ticket.idTicket"
                             variant="outlined"
                             class="py-3 my-3 rounded-lg"
                         >
                             <v-row>
                                 <v-col align="center">
                                     <v-list-item-title class="text-left">
-                                        ID: {{ item.idTicket }}<br>Motivo: {{ item.category }}
+                                        ID: {{ ticket.idTicket }}<br>Motivo: {{ ticket.category }}
                                     </v-list-item-title>
                                     <v-list-item-subtitle class="text-left">
-                                        {{ item.description }}
+                                        {{ ticket.description }}
                                     </v-list-item-subtitle>
                                 </v-col>
                                 <v-col class="d-flex align-center">
                                     <v-row justify="space-between" align="center">
                                         <v-col>
-                                            <v-btn>
+                                            <v-btn
+                                            @click="popUp = true"
+                                            >
                                                 Asignar
                                             </v-btn>
                                         </v-col>
@@ -76,6 +78,34 @@
                     </v-list>
                 </v-card-text>
             </v-card>
+            <v-dialog v-model="popUp" max-width="500">
+                <v-card  class="pa-5 rounded-lg">
+                <v-card-title>
+                    Seleccione analista a asignar
+                </v-card-title>
+                <v-card-text>
+                    <v-list
+                    v-for="analist in listAnalists"
+                    :key="analist.idAnalyst"
+                    >
+                        <v-list-item>
+                            <v-list-item-title>
+                                {{ analist.name }}
+                            </v-list-item-title>
+                            <v-list-item-action>
+                                <v-btn
+                                >
+                                    Asignar
+                                </v-btn>
+                            </v-list-item-action>
+                        </v-list-item>
+                    </v-list>
+                </v-card-text>
+                <v-card-actions>
+                    <v-btn @click="popUp = false">Cerrar</v-btn>
+                </v-card-actions>
+                </v-card>
+            </v-dialog>
         </v-main>
     </v-app>
 </template>
@@ -91,7 +121,8 @@
             descripcion: "",
             comentarios: "",
             clientId: null,
-            items: [
+            popUp: false,
+            listTickets: [
                 {
                 idTicket: 1,
                 category: "Solicitud",
@@ -101,6 +132,16 @@
                 idTicket: 2,
                 category: "Incidencia",
                 description: "Me quiero cambiar de carrera"
+                }
+            ],
+            listAnalists: [
+                {
+                    idAnalyst: 1,
+                    name: "Analista 1"
+                },
+                {
+                    idAnalyst: 2,
+                    name: "Analista 2"
                 }
             ]
         }),
