@@ -21,9 +21,6 @@ public class TicketService {
     @Autowired
     private AcademicUnitRepository academicUnitRepository;
 
-    @Autowired
-    private ClientRepository clientRepository;
-
     public <S extends Ticket> S save(S entity) {
         return ticketRepository.save(entity);
     }

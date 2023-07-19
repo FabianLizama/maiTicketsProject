@@ -79,16 +79,18 @@
                     const responseStatus = response.data.substring(0, 7);
                     const userId = response.data.substring(7);
 
+                    console.log(userId);
+
                     if (responseStatus === 'loggedC') {
                       this.$router.push({name: 'add-ticket', params: {id: userId}});
-                    } else if (responseStatus === 'loggedL'){
+                    }else if (responseStatus === 'loggedL'){
                       this.$router.push({name: 'assign-ticket', params: {id: userId}});
-                    } else {
-                      console.log('A');
+                    }else{
+                      console.log('BBBBBBBB');
                     }
 
                 } catch (error) {
-                    console.log('Credenciales inválidas');
+                    console.error('A');
                 }
             }
         }
