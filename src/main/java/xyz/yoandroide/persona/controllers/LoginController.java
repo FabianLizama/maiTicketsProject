@@ -41,11 +41,11 @@ public class LoginController {
         Analyzer analyzer = analyzerService.findByEmail(email);
 
         if(client != null && client.getPassword().equals(password)){
-            return ResponseEntity.ok("Inicio de sesión exitoso. Tu rol es: Cliente.");
+            return ResponseEntity.ok("loggedC"+client.getIdClient().toString());
         }else if(leadership != null && leadership.getPassword().equals(password)){
-            return ResponseEntity.ok("Inicio de sesión exitoso. Tu rol es: Jefatura.");
+            return ResponseEntity.ok("loggedL"+leadership.getIdLeadership().toString());
         }else if(analyzer != null && analyzer.getPassword().equals(password)){
-            return ResponseEntity.ok("Inicio de sesión exitoso. Tu rol es: Analista.");
+            return ResponseEntity.ok("loggedA"+analyzer.getIdAnalyzer().toString());
         }else{
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales inválidas");
         }

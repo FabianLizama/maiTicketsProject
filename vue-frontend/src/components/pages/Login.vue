@@ -76,6 +76,17 @@
                         password: this.password
                     });
 
+                    const responseStatus = response.data.substring(0, 7);
+                    const userId = response.data.substring(7);
+
+                    if (responseStatus === 'loggedC') {
+                      this.$router.push({name: 'add-ticket', params: {id: userId}});
+                    } else if (responseStatus === 'loggedL'){
+                      this.$router.push({name: 'assign-ticket', params: {id: userId}});
+                    } else {
+                      console.log('A');
+                    }
+
                 } catch (error) {
                     console.log('Credenciales inválidas');
                 }

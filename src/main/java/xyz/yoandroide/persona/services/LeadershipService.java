@@ -10,6 +10,7 @@ import xyz.yoandroide.persona.repositories.AnalyzerRepository;
 import xyz.yoandroide.persona.repositories.LeadershipRepository;
 import xyz.yoandroide.persona.repositories.TicketRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -65,22 +66,30 @@ public class LeadershipService {
     }
 
     public List<Ticket> findUnassignedTicketsByLeadership(Long idLeadership){
-        List<Leadership> leaderships = leadershipRepository.findAll();
+        Optional<Leadership> leadership = leadershipRepository.findById(idLeadership);
 
-        for(Leadership leadership : leaderships){
-            if(leadership.getIdLeadership().equals(idLeadership)){
-                List<Ticket> tickets = leadership.getTickets();
-                List<Ticket> UnassignedTickets = null;
-
-                for(Ticket ticket : tickets){
-                    if(ticket.getState().equals("Sin asignar")){
-                        UnassignedTickets.add(ticket);
-                    }
-                }
-                return UnassignedTickets;
+        List<Ticket> tickets = leadership.get().getTickets();
+        List<Ticket> unassigned = new ArrayList<>();
+        for(Ticket ticket : tickets){
+            if(ticket.getState().equals("Sin asignar")){
+                unassigned.add(ticket);
             }
         }
-        return null;
+        return unassigned;
+    }
+
+    public List<Ticket> findAnsweredTicketsByLeadership(Long idLeadership){
+        Optional<Leadership> leadership = leadershipRepository.findById(idLeadership);
+
+        List<Ticket> tickets = leadership.get().getTickets();
+        List<Ticket> answered = new ArrayList<>();
+
+        for(Ticket ticket : tickets){
+            if(ticket.getState().equals("Respondido")){
+                answered.add(ticket);
+            }
+        }
+        return answered;
     }
 
 

@@ -58,12 +58,20 @@ public class LeadershipController {
     }
 
     @GetMapping("/{idLeadership}/tickets")
-    public ResponseEntity<List<Ticket>> getTicketsByLeadership(@PathVariable Long idLeadership){
-        return ResponseEntity.ok(leadershipService.findTicketsByLeadership(idLeadership));
+    public ResponseEntity<List<Ticket>> getTicketsByLeadership(@PathVariable String idLeadership){
+        Long idLeader = Long.parseLong(idLeadership);
+        return ResponseEntity.ok(leadershipService.findTicketsByLeadership(idLeader));
     }
 
     @GetMapping("/{idLeadership}/tickets-sin-asignar")
-    public ResponseEntity<List<Ticket>> getUnasignedTicketsByLeadership(@PathVariable Long idLeadership){
-        return ResponseEntity.ok(leadershipService.findUnassignedTicketsByLeadership(idLeadership));
+    public ResponseEntity<List<Ticket>> getUnasignedTicketsByLeadership(@PathVariable String idLeadership){
+        Long idLeader = Long.parseLong(idLeadership);
+        return ResponseEntity.ok(leadershipService.findUnassignedTicketsByLeadership(idLeader));
+    }
+
+    @GetMapping("/{idLeadership}/tickets-por-validar")
+    public ResponseEntity<List<Ticket>> getAnsweredTicketsByLeadership(@PathVariable String idLeadership){
+        Long idLeader = Long.parseLong(idLeadership);
+        return ResponseEntity.ok(leadershipService.findAnsweredTicketsByLeadership(idLeader));
     }
 }

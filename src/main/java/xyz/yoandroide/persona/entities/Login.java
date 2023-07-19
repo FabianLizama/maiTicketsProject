@@ -11,6 +11,7 @@ import javax.persistence.Table;
 @Table(name = "Login")
 public class Login {
     @Id
-    String email;
-    String password;
+    private String email;
+    private String password;
+
 }

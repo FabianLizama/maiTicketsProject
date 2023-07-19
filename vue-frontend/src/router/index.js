@@ -14,11 +14,13 @@ const routes = [
         component: Login,
     },
     {
-        path: '/add-ticket',
+        path: '/add-ticket/:id',
+        name: 'add-ticket',
         component: AddTicket,
     },
     {
-        path: '/assign-ticket',
+        path: '/assign-ticket/:id',
+        name: 'assign-ticket',
         component: LeadershipAssign,
     }
 ]

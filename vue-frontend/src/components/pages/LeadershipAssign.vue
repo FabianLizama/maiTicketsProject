@@ -20,6 +20,7 @@
                     <v-col align="center">
                             <v-btn
                             variant="outlined"
+                            @click="getUnassignedTickets"
                             >
                                 Tickets por asignar
                             </v-btn>
@@ -27,6 +28,7 @@
                     <v-col align="center">
                             <v-btn
                             variant="outlined"
+                            @click="getAnsweredTickets"
                             >
                                 Tickets por validar
                             </v-btn>
@@ -114,7 +116,7 @@
     import axios from 'axios'
     import appBar from '../appBar.vue'
     export default {
-        name: 'AddTicket',
+        name: 'AssignTicket',
         data: () => ({
             motivo: null,
             unidad: null,
@@ -122,49 +124,31 @@
             comentarios: "",
             clientId: null,
             popUp: false,
-            listTickets: [
-                {
-                idTicket: 1,
-                category: "Solicitud",
-                description: "Quiero"
-                },
-                {
-                idTicket: 2,
-                category: "Incidencia",
-                description: "Me quiero cambiar de carrera"
-                }
-            ],
-            listAnalists: [
-                {
-                    idAnalyst: 1,
-                    name: "Analista 1"
-                },
-                {
-                    idAnalyst: 2,
-                    name: "Analista 2"
-                }
-            ]
+            listTickets: [],
+            listAnalists: []
         }),
         components: {
             appBar
         },
         methods: {
-            sendData(){
-                axios.post(
-                    `http://localhost:8081/tickets/add-ticket/1/`,
-                    {
-                        description: this.descripcion,
-                        category: this.motivo,
-                        fkIdAcademicUnit: 16,
-                        state: "Sin asignar",
-                        fkIdClient: 1
-                    }
-                ).then(response => {
-                    console.log(response.data)
-                }).catch(error => {
-                    console.error(error)
-                })
-            }
+            async getUnassignedTickets() {
+              try {
+                const idLeadership = this.$route.params.id;
+                const response = await axios.get(`http://localhost:8081/leaderships/${idLeadership}/tickets-sin-asignar`);
+                this.listTickets = response.data;
+              } catch (error) {
+                console.error(error);
+              }
+            },
+          async getAnsweredTickets(){
+              try {
+                const idLeadership = this.$route.params.id;
+                const response = await axios.get(`http://localhost:8081/leaderships/${idLeadership}/tickets-por-validar`);
+                this.listTickets = response.data;
+              } catch (error) {
+                console.error(error);
+              }
+          }
         },
     }
     
