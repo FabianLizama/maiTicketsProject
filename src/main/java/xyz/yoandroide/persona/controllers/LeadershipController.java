@@ -53,8 +53,9 @@ public class LeadershipController {
     }
 
     @GetMapping("/{idLeadership}/analyzers")
-    public ResponseEntity<List<Analyzer>> getAnalyzersByLeadership(@PathVariable Long idLeadership){
-        return ResponseEntity.ok(leadershipService.findAnalyzersByLeadership(idLeadership));
+    public ResponseEntity<List<Analyzer>> getAnalyzersByLeadership(@PathVariable String idLeadership){
+        Long idLeader = Long.parseLong(idLeadership);
+        return ResponseEntity.ok(leadershipService.findAnalyzersByLeadership(idLeader));
     }
 
     @GetMapping("/{idLeadership}/tickets")

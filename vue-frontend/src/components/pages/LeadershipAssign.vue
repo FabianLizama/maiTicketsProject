@@ -58,7 +58,7 @@
                                     <v-row justify="space-between" align="center">
                                         <v-col>
                                             <v-btn
-                                            @click="popUp = true"
+                                            @click="openPopup"
                                             >
                                                 Asignar
                                             </v-btn>
@@ -87,12 +87,12 @@
                 </v-card-title>
                 <v-card-text>
                     <v-list
-                    v-for="analist in listAnalists"
-                    :key="analist.idAnalyst"
+                    v-for="analyzer in listAnalyzers"
+                    :key="analyzer.idAnalyzer"
                     >
                         <v-list-item>
                             <v-list-item-title>
-                                {{ analist.name }}
+                                {{ analyzer.name }}
                             </v-list-item-title>
                             <v-list-item-action>
                                 <v-btn
@@ -125,7 +125,7 @@
             clientId: null,
             popUp: false,
             listTickets: [],
-            listAnalists: []
+            listAnalyzers: []
         }),
         components: {
             appBar
@@ -146,6 +146,23 @@
                 const response = await axios.get(`http://localhost:8081/leaderships/${idLeadership}/tickets-por-validar`);
                 this.listTickets = response.data;
               } catch (error) {
+                console.error(error);
+              }
+          },
+          async getAnalyzers(){
+              try {
+                const idLeadership = this.$route.params.id;
+                const response = await axios.get(`http://localhost:8081/leaderships/${idLeadership}/analyzers`);
+                this.listAnalyzers = response.data;
+              }catch (error){
+                console.error(error);
+              }
+          },
+          async openPopup(){
+              try {
+                await this.getAnalyzers();
+                this.popUp = true;
+              }catch (error){
                 console.error(error);
               }
           }
