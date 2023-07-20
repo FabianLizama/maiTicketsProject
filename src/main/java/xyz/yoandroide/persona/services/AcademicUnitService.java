@@ -11,6 +11,7 @@ import xyz.yoandroide.persona.repositories.ClientRepository;
 import xyz.yoandroide.persona.repositories.LeadershipRepository;
 import xyz.yoandroide.persona.repositories.TicketRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,7 +39,9 @@ public class AcademicUnitService {
 
     public boolean existById(Long id) {return academicUnitRepository.existsById(id); }
 
-    public Optional<Leadership> findLeadershipById(Long aLong) { return leadershipRepository.findById(aLong);}
+    public Long findLeadershipById(Long aLong) {
+        return academicUnitRepository.findById(aLong).get().getLeadership().getIdLeadership();
+    }
 
     public List<AcademicUnit> findAll() {
         return academicUnitRepository.findAll();
@@ -60,15 +63,25 @@ public class AcademicUnitService {
         return leadershipRepository.save(leadership);
     }
 
-    public AcademicUnit findByName(String nameAcademicUnit){
+    public Long findByName(String nameAcademicUnit){
         List<AcademicUnit> academicUnits = academicUnitRepository.findAll();
 
         for(AcademicUnit academicUnit : academicUnits){
             if(academicUnit.getName().equals(nameAcademicUnit)){
-                return academicUnit;
+                return academicUnit.getIdAcademicUnit();
             }
         }
         return null;
     }
 
+    public List<String> findUnitNames(){
+        List<String> names = new ArrayList<>();
+        List<AcademicUnit> units = academicUnitRepository.findAll();
+
+        for(AcademicUnit academicUnit : units){
+            names.add(academicUnit.getName());
+        }
+
+        return names;
+    }
 }

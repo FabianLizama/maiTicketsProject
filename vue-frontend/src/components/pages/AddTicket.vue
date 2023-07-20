@@ -36,7 +36,8 @@
                         label="Unidad Académica" 
                         variant="outlined"
                         v-model="unidad"
-                        :items="[]"
+                        :items="unidades"
+                        @click="getUnits"
                         >
                         </v-autocomplete>
                     </v-col>
@@ -82,28 +83,34 @@
 <script>
     import axios from 'axios'
     import appBar from '../appBar.vue'
+    import {id} from "vuetify/locale";
     export default {
         name: 'AddTicket',
         data: () => ({
             motivo: null,
-            unidad: null,
+            unidad: "",
+            unidades: [],
             descripcion: "",
+            creation: "",
+            responseLimit: "",
             comentarios: "",
-            clientId: null
+            fkIdClient: null,
+            fkIdAcademicUnit: null,
+            fkIdLeadership: null
         }),
         components: {
             appBar
         },
         methods: {
-            async sendData(){
-              try{
+            async sendData() {
+              try {
                 const idClient = this.$route.params.id;
+                this.clientId = idClient;
                 axios.post(
                     `http://localhost:8081/tickets/add-ticket/${idClient}/`,
                     {
                       description: this.descripcion,
                       category: this.motivo,
-                      fkIdAcademicUnit: 16,
                       state: "Sin asignar",
                       fkIdClient: Number(idClient)
                     }
@@ -116,7 +123,15 @@
               } catch (error) {
                 console.error(error);
               }
-            }
+            },
+          async getUnits(){
+              try {
+                const response = await axios.get(`http://localhost:8081/units/names`);
+                this.unidades = response.data;
+              } catch (error){
+                console.error(error);
+              }
+          }
         },
     }
     

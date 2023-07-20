@@ -19,15 +19,10 @@ import java.util.Optional;
 public class AcademicUnitController {
     @Autowired
     private AcademicUnitService academicUnitService;
-    private final AcademicUnitRepository AcademicUnitRespository;
-
-    public AcademicUnitController(AcademicUnitRepository academicUnitRespository) {
-        this.AcademicUnitRespository = academicUnitRespository;
-    }
 
     @GetMapping
     private ResponseEntity<List<AcademicUnit>> getAllAcademicUnits() {
-        return ResponseEntity.ok(this.AcademicUnitRespository.findAll());
+        return ResponseEntity.ok(academicUnitService.findAll());
     }
 
     @GetMapping("/{idAcademicUnit}")
@@ -36,8 +31,18 @@ public class AcademicUnitController {
     }
 
     @GetMapping("/{nameAcademicUnit}")
-    private ResponseEntity<AcademicUnit> getIdAcademicUnit(@PathVariable String nameAcademicUnit){
+    private ResponseEntity<Long> getIdAcademicUnit(@PathVariable String nameAcademicUnit){
         return ResponseEntity.ok(academicUnitService.findByName(nameAcademicUnit));
+    }
+
+    @GetMapping("/names")
+    private ResponseEntity<List<String>> getUnitsNames(){
+        return ResponseEntity.ok(academicUnitService.findUnitNames());
+    }
+
+    @GetMapping("/{idAcademicUnit}/leadership")
+    private ResponseEntity<Long> getIdLeadershipByUnit(@PathVariable Long idAcademicUnit){
+        return ResponseEntity.ok(academicUnitService.findLeadershipById(idAcademicUnit));
     }
 
     @PostMapping
@@ -62,6 +67,5 @@ public class AcademicUnitController {
             @PathVariable Long idTicket) {
         return academicUnitService.assignTicketToLeadership(idLeadership, idTicket);
     }
-
 
 }
