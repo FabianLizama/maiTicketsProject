@@ -36,18 +36,7 @@
                         label="Unidad Académica" 
                         variant="outlined"
                         v-model="unidad"
-                        :items="[
-                            'Facultad de Administración y Economía',
-                            'Facultad de Ciencia',
-                            'Facultad de Ciencias Médicas',
-                            'Facultad de Derecho',
-                            'Facultad de Humanidades',
-                            'Facultad de Ingeniería',
-                            'Facultad de Química y Biología',
-                            'Facultad Tecnológica',
-                            'Facultad de Arquitectura y Ambiente',
-                            'Programa de Bachillerato'
-                            ]"
+                        :items="[]"
                         >
                         </v-autocomplete>
                     </v-col>
@@ -106,21 +95,27 @@
             appBar
         },
         methods: {
-            sendData(){
+            async sendData(){
+              try{
+                const idClient = this.$route.params.id;
                 axios.post(
-                    `http://localhost:8081/tickets/add-ticket/1/`,
+                    `http://localhost:8081/tickets/add-ticket/${idClient}/`,
                     {
-                        description: this.descripcion,
-                        category: this.motivo,
-                        fkIdAcademicUnit: 16,
-                        state: "Sin asignar",
-                        fkIdClient: 1
+                      description: this.descripcion,
+                      category: this.motivo,
+                      fkIdAcademicUnit: 16,
+                      state: "Sin asignar",
+                      fkIdClient: Number(idClient)
                     }
                 ).then(response => {
-                    console.log(response.data)
+                  console.log(response.data)
                 }).catch(error => {
-                    console.error(error)
+                  console.error(error)
                 })
+
+              } catch (error) {
+                console.error(error);
+              }
             }
         },
     }

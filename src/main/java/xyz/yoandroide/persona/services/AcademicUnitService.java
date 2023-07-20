@@ -60,4 +60,15 @@ public class AcademicUnitService {
         return leadershipRepository.save(leadership);
     }
 
+    public AcademicUnit findByName(String nameAcademicUnit){
+        List<AcademicUnit> academicUnits = academicUnitRepository.findAll();
+
+        for(AcademicUnit academicUnit : academicUnits){
+            if(academicUnit.getName().equals(nameAcademicUnit)){
+                return academicUnit;
+            }
+        }
+        return null;
+    }
+
 }

@@ -10,6 +10,7 @@ import xyz.yoandroide.persona.repositories.AcademicUnitRepository;
 import xyz.yoandroide.persona.services.AcademicUnitService;
 
 import java.net.URI;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -25,13 +26,18 @@ public class AcademicUnitController {
     }
 
     @GetMapping
-    private ResponseEntity getAllAcademicUnits() {
+    private ResponseEntity<List<AcademicUnit>> getAllAcademicUnits() {
         return ResponseEntity.ok(this.AcademicUnitRespository.findAll());
     }
 
     @GetMapping("/{idAcademicUnit}")
     private ResponseEntity<Optional<AcademicUnit>> getIdAcademicUnit(@PathVariable Long idAcademicUnit){
         return ResponseEntity.ok(academicUnitService.findById(idAcademicUnit));
+    }
+
+    @GetMapping("/{nameAcademicUnit}")
+    private ResponseEntity<AcademicUnit> getIdAcademicUnit(@PathVariable String nameAcademicUnit){
+        return ResponseEntity.ok(academicUnitService.findByName(nameAcademicUnit));
     }
 
     @PostMapping
