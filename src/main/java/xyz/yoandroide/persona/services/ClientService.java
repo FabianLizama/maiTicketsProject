@@ -3,6 +3,7 @@ package xyz.yoandroide.persona.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import xyz.yoandroide.persona.entities.Client;
+import xyz.yoandroide.persona.entities.Leadership;
 import xyz.yoandroide.persona.entities.Ticket;
 import xyz.yoandroide.persona.repositories.ClientRepository;
 import xyz.yoandroide.persona.repositories.TicketRepository;
@@ -73,7 +74,8 @@ public class ClientService {
     public Client findByEmail(String email){
         List<Client> clients = clientRepository.findAll();
         for(Client client : clients){
-            if(client.getEmail().equals(email)){
+            String clientEmail = client.getEmail();
+            if(clientEmail != null && clientEmail.equals(email)){
                 return client;
             }
         }

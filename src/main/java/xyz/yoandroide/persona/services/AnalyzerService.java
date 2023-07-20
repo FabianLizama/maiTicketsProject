@@ -76,7 +76,8 @@ public class AnalyzerService {
     public Analyzer findByEmail(String email){
         List<Analyzer> analyzers = analyzerRepository.findAll();
         for(Analyzer analyzer : analyzers){
-            if(analyzer.getEmail().equals(email)){
+            String analyzerEmail = analyzer.getEmail();
+            if(analyzerEmail != null && analyzerEmail.equals(email)){
                 return analyzer;
             }
         }

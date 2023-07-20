@@ -40,11 +40,11 @@ public class LoginController {
         Leadership leadership = leadershipService.findByEmail(email);
         Analyzer analyzer = analyzerService.findByEmail(email);
 
-        if (client != null && client.getEmail().equals(email)) {
+        if (client != null && client.getPassword().equals(password)) {
             return ResponseEntity.ok("loggedC" + client.getIdClient().toString());
-        } else if (leadership != null && leadership.getEmail().equals(email)) {
+        } else if (leadership != null && leadership.getPassword().equals(password)) {
             return ResponseEntity.ok("loggedL" + leadership.getIdLeadership().toString());
-        } else if (analyzer != null && analyzer.getEmail().equals(email)) {
+        } else if (analyzer != null && analyzer.getPassword().equals(password)) {
             return ResponseEntity.ok("loggedA" + analyzer.getIdAnalyzer().toString());
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");

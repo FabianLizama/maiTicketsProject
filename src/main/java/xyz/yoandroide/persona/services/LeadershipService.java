@@ -112,7 +112,8 @@ public class LeadershipService {
     public Leadership findByEmail(String email){
         List<Leadership> leaderships = leadershipRepository.findAll();
         for(Leadership leadership : leaderships){
-            if(leadership.getEmail().equals(email)){
+            String leadershipEmail = leadership.getEmail();
+            if(leadershipEmail != null && leadershipEmail.equals(email)){
                 return leadership;
             }
         }
