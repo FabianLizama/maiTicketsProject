@@ -151,14 +151,14 @@
             comentarios: '',
             clientId: null,
             popUp: false,
-            //listTickets: [],
-            listTickets: [
+            listTickets: [],
+            /*listTickets: [
                 {
                     id: 1,
                     category: "Por asignar",
                     description: "Compré un ticket y el código qr no llevaba hacia ninguna página"
                 }
-            ],
+            ],*/
             listAnalyzers: [],
             clickedButton: 'unassigned',
             loadingAnalysts: false,
