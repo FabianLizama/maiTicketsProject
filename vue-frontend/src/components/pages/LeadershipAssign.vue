@@ -160,6 +160,7 @@
                 }
             ],*/
             listAnalyzers: [],
+            idAnalyzer: null,
             clickedButton: 'unassigned',
             loadingAnalysts: false,
             loadingTickets: false,
@@ -222,7 +223,7 @@
                 catch (error){
                     console.error(error)
                 }
-            },
+            }
 
         },
         mounted() {
