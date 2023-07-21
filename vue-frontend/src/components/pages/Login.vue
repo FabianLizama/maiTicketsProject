@@ -71,22 +71,25 @@
         methods: {
             async login() {
                 try {
-                    const response = await axios.post('http://localhost:8081/api/login', {
-                        email: this.email,
-                        password: this.password
-                    });
+                    const response = await axios.post(
+                        'http://localhost:8081/api/login',
+                        {
+                            email: this.email,
+                            password: this.password
+                        }
+                    );
 
                     const responseStatus = response.data.substring(0, 7);
                     const userId = response.data.substring(7);
 
-                    console.log(userId);
+                    localStorage.setItem('userId', userId);
 
                     if (responseStatus === 'loggedC') {
-                      this.$router.push({name: 'add-ticket', params: {id: userId}});
+                        this.$router.push()
                     }else if (responseStatus === 'loggedL'){
-                      this.$router.push({name: 'assign-ticket', params: {id: userId}});
+                        this.$router.push({name: 'assign-ticket', params: {id: userId}});
                     }else{
-                      console.log('BBBBBBBB');
+                        console.log('BBBBBBBB');
                     }
 
                 } catch (error) {

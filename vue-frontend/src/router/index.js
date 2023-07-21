@@ -11,15 +11,16 @@ const routes = [
     },
     {
         path: '/login',
+        name: 'login',
         component: Login,
     },
     {
-        path: '/add-ticket/:id',
+        path: '/add-ticket',
         name: 'add-ticket',
         component: AddTicket,
     },
     {
-        path: '/assign-ticket/:id',
+        path: '/assign-ticket',
         name: 'assign-ticket',
         component: LeadershipAssign,
     }

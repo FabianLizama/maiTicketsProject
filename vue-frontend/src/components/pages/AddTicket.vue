@@ -26,18 +26,25 @@
                         <v-autocomplete
                         label="Motivo" 
                         variant="outlined"
-                        v-model="motivo"
+                        v-model="category"
                         :items="['Solicitud', 'Incidencia']"
                         >
                         </v-autocomplete>
                     </v-col>
                     <v-col align="center">
                         <v-autocomplete
+                        v-if = academicUnits.length > 0
                         label="Unidad Académica" 
                         variant="outlined"
-                        v-model="unidad"
-                        :items="unidades"
-                        @click="getUnits"
+                        v-model="academicUnit"
+                        :items="academicUnits"
+                        >
+                        </v-autocomplete>
+                        <v-autocomplete
+                        v-else
+                        label="Unidad Académica" 
+                        variant="outlined"
+                        disabled
                         >
                         </v-autocomplete>
                     </v-col>
@@ -47,7 +54,7 @@
                         <v-text-field
                         label="Descripción" 
                         variant="outlined"
-                        v-model="descripcion"
+                        v-model="description"
                         >
                         </v-text-field>
                     </v-col>
@@ -83,61 +90,64 @@
 <script>
     import axios from 'axios'
     import appBar from '../appBar.vue'
-    import {id} from "vuetify/locale";
     export default {
         name: 'AddTicket',
         data: () => ({
-            motivo: null,
-            unidad: "",
-            unidades: [],
-            descripcion: "",
-            creation: "",
-            responseLimit: "",
-            comentarios: "",
-            fkIdClient: null,
-            fkIdAcademicUnit: null,
-            fkIdLeadership: null
+            category: null,
+            academicUnit: null,
+            academicUnits: [],
+            description: null,
         }),
         components: {
             appBar
         },
         methods: {
-            async sendData() {
-              try {
-                const idClient = this.$route.params.id;
-                this.clientId = idClient;
-                axios.post(
-                    `http://localhost:8081/tickets/add-ticket/${idClient}/`,
-                    {
-                      description: this.descripcion,
-                      category: this.motivo,
-                      state: "Sin asignar",
-                      fkIdClient: Number(idClient)
-                    }
-                ).then(response => {
-                  console.log(response.data)
-                }).catch(error => {
-                  console.error(error)
-                })
+            initFetch() {
+                // Método inicial, se ejecuta al cargar la página
+                // Si hay un usuario logueado, se obtienen las unidades académicas
+                // Sino, se redirige a la página de login
+                localStorage.getItem('userId')?
+                this.getUnits():
+                this.$router.push('/login')
 
-              } catch (error) {
-                console.error(error);
-              }
             },
-          async getUnits(){
-              try {
-                const response = await axios.get(`http://localhost:8081/units/names`);
-                this.unidades = response.data;
-              } catch (error){
+            async sendData() {
+                // Método para enviar los datos del ticket
+
+                    try {
+                    this.clientId = localStorage.getItem('userId')
+                    axios.post(
+                        `http://localhost:8081/tickets/add-ticket/${idClient}/`,
+                        {
+                            description: this.descripcion,
+                            category: this.category,
+                            state: "Sin asignar",
+                            fkIdClient: Number(idClient)
+                        }
+                    ).then(response => {
+                        console.log(response.data)
+                    }).catch(error => {
+                        console.error(error)
+                    })
+
+                } catch (error) {
                 console.error(error);
-              }
-          }
+                }
+            },
+            async getUnits(){
+                try {
+                    const response = await axios.get(`http://localhost:8081/units/names`)
+                    this.academicUnits = response.data
+                } catch (error){
+                    console.error(error)
+                }
+            }
         },
+        mounted() {
+            this.initFetch()
+        }
     }
-    
-    const instance = axios.create({
-        baseURL: 'http://localhost:8081' // URL base con el puerto 8081
-    })
+
 </script>
 <style>
 </style>

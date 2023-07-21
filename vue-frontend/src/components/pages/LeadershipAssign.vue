@@ -21,6 +21,7 @@
                             <v-btn
                             variant="outlined"
                             @click="getUnassignedTickets"
+                            :active="clickedButton=='unassigned'"
                             >
                                 Tickets por asignar
                             </v-btn>
@@ -29,6 +30,8 @@
                             <v-btn
                             variant="outlined"
                             @click="getAnsweredTickets"
+                            :active="clickedButton=='answered'"
+                            
                             >
                                 Tickets por validar
                             </v-btn>
@@ -37,8 +40,18 @@
                 
                 <v-card-text
                 align="center"
-                >
-                    <v-list lines="one">
+                class="ma-5"
+                >   
+                    <v-progress-circular 
+                    v-if = "loadingTickets"
+                    color="grey"
+                    indeterminate
+                    >
+                    </v-progress-circular>
+                    <v-list
+                    v-else-if="listTickets.length > 0"
+                    lines="one"
+                    >
                         <v-list-item
                             v-for="ticket in listTickets"
                             :key="ticket.idTicket"
@@ -78,6 +91,9 @@
                             </v-row>
                         </v-list-item>
                     </v-list>
+                    <h3 class="text-disabled" v-else>
+                        No hay tickets disponibles
+                    </h3>
                 </v-card-text>
             </v-card>
             <v-dialog v-model="popUp" max-width="500">
@@ -86,7 +102,14 @@
                     Seleccione analista a asignar
                 </v-card-title>
                 <v-card-text>
+                    <v-progress-circular 
+                    v-if = "loadingAnalysts"
+                    color="grey"
+                    indeterminate
+                    >
+                    </v-progress-circular>
                     <v-list
+                    v-else-if = "listAnalyzers.length > 0"
                     v-for="analyzer in listAnalyzers"
                     :key="analyzer.idAnalyzer"
                     >
@@ -102,6 +125,9 @@
                             </v-list-item-action>
                         </v-list-item>
                     </v-list>
+                    <h3 class="text-disabled" v-else>
+                        No hay analistas disponibles
+                    </h3>
                 </v-card-text>
                 <v-card-actions>
                     <v-btn @click="popUp = false">Cerrar</v-btn>
@@ -120,58 +146,86 @@
         data: () => ({
             motivo: null,
             unidad: null,
-            descripcion: "",
-            comentarios: "",
+            descripcion: '',
+            comentarios: '',
             clientId: null,
             popUp: false,
             listTickets: [],
-            listAnalyzers: []
+            /*listTickets: [
+                {
+                    id: 1,
+                }
+            ],
+            */
+            listAnalyzers: [],
+            clickedButton: 'unassigned',
+            loadingAnalysts: false,
+            loadingTickets: false,
         }),
         components: {
             appBar
         },
         methods: {
-            async getUnassignedTickets() {
-              try {
-                const idLeadership = this.$route.params.id;
-                const response = await axios.get(`http://localhost:8081/leaderships/${idLeadership}/tickets-sin-asignar`);
-                this.listTickets = response.data;
-              } catch (error) {
-                console.error(error);
-              }
+            initFetch() {
+                localStorage.getItem('userId')?
+                this.getUnassignedTickets():
+                this.$router.push('/login')
             },
-          async getAnsweredTickets(){
-              try {
-                const idLeadership = this.$route.params.id;
-                const response = await axios.get(`http://localhost:8081/leaderships/${idLeadership}/tickets-por-validar`);
-                this.listTickets = response.data;
-              } catch (error) {
-                console.error(error);
-              }
-          },
-          async getAnalyzers(){
-              try {
-                const idLeadership = this.$route.params.id;
-                const response = await axios.get(`http://localhost:8081/leaderships/${idLeadership}/analyzers`);
-                this.listAnalyzers = response.data;
-              }catch (error){
-                console.error(error);
-              }
-          },
-          async openPopup(){
-              try {
-                await this.getAnalyzers();
-                this.popUp = true;
-              }catch (error){
-                console.error(error);
-              }
-          }
+            async getUnassignedTickets() {
+                try {
+                    this.loadingTickets = true
+                    this.clickedButton = 'unassigned'
+                    const idLeadership = localStorage.getItem('userId')
+                    const response = await axios.get(`http://localhost:8081/leaderships/${idLeadership}/tickets-sin-asignar`)
+                    this.listTickets = response.data
+                    this.loadingTickets = false
+                }
+                catch (error) {
+                    this.loadingTickets = false
+                    console.error(error)
+                }
+            },
+            async getAnsweredTickets(){
+                try {
+                    this.loadingTickets = true
+                    this.clickedButton = 'answered'
+                    const idLeadership = localStorage.getItem('userId')
+                    const response = await axios.get(`http://localhost:8081/leaderships/${idLeadership}/tickets-por-validar`)
+                    this.listTickets = response.data
+                    this.loadingTickets = false
+                }
+                catch (error) {
+                    this.loadingTickets = false
+                    console.error(error)
+                }
+            },
+            async getAnalyzers(){
+                try {
+                    this.loadingAnalysts = true
+                    const idLeadership = localStorage.getItem('userId')
+                    const response = await axios.get(`http://localhost:8081/leaderships/${idLeadership}/analyzers`)
+                    this.listAnalyzers = response.data
+                    this.loadingAnalysts = false
+                }
+                catch (error){
+                    this.loadingAnalysts = false
+                    console.error(error)
+                }
+            },
+            async openPopup(){
+                this.popUp = true
+                try {
+                    this.getAnalyzers()
+                }
+                catch (error){
+                    console.error(error)
+                }
+            },
+
         },
+        mounted() {
+            this.initFetch();
+        }
     }
-    
-    const instance = axios.create({
-        baseURL: 'http://localhost:8081' // URL base con el puerto 8081
-    })
+
 </script>
-<style>
-</style>
