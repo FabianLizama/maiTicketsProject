@@ -28,6 +28,7 @@
                         variant="outlined"
                         v-model="category"
                         :items="['Solicitud', 'Incidencia']"
+                        :rules="[v => !!v || 'El motivo es obligatorio']"
                         >
                         </v-autocomplete>
                     </v-col>
@@ -40,6 +41,7 @@
                         :items="academicUnits"
                         item-title="name"
                         item-value="idAcademicUnit"
+                        :rules="[v => !!v || 'La unidad académica es obligatoria']"
                         >
                         </v-select>
                         <v-autocomplete
@@ -57,6 +59,8 @@
                         label="Descripción" 
                         variant="outlined"
                         v-model="description"
+                        :rules="[v => !!v || 'La descripción es obligatoria']"
+                        :class="{'invalid-input': descriptionInvalid}"
                         >
                         </v-text-field>
                     </v-col>
@@ -79,6 +83,7 @@
                         type="submit"
                         variant="outlined"
                         @click="sendData"
+                        :disabled="!formIsValid"
                         >
                         Enviar
                         </v-btn>
@@ -90,12 +95,12 @@
                             <!-- Contenido del mensaje de éxito aquí -->
                             <v-icon color="success" size="200">mdi-check-circle</v-icon>
                             <p class="text-success font-weight-bold text-center my-3">
-                              El ticket se ha enviado con éxito.
+                                El ticket se ha enviado con éxito.
                             </p>
                         </v-card-text>
                         <v-card-actions>
                             <v-btn variant="outlined" class="font-weight-bold text-medium-emphasis" @click="showPopup = false">
-                              Cerrar
+                                Cerrar
                             </v-btn>
                         </v-card-actions>
                     </v-card>
@@ -116,7 +121,10 @@
         computed: {
             id() {
               return id
-            }
+            },
+            formIsValid() {
+                return this.category && this.idAcademicUnit && this.description;
+            },
         },
         data: () => ({
             category: null,
@@ -127,6 +135,7 @@
             creation: null,
             successMessage: "",
             showPopup: false,
+            descriptionInvalid: false,
         }),
         components: {
             appBar
@@ -145,6 +154,8 @@
                 // Método para enviar los datos del ticket
 
                     try {
+                      this.descriptionInvalid = false;
+
                       this.clientId = localStorage.getItem('userId');
                       await this.getIdLeadership();
 
@@ -172,9 +183,12 @@
 
                       this.showPopup = true;
 
-                      this.description = "";
                       this.category = null;
                       this.idAcademicUnit = null;
+                      this.description = "";
+
+                      this.descriptionInvalid = false;
+                      this.description = "";
 
                     } catch (error) {
                       console.error(error);
@@ -186,6 +200,7 @@
                     this.academicUnits = response.data;
                 } catch (error){
                     console.error(error)
+                    this.descriptionInvalid = true;
                 }
             },
             async getIdLeadership(){
@@ -207,4 +222,7 @@
 
 </script>
 <style>
+    .invalid-input .v-text-field__details {
+        color: red;
+    }
 </style>
