@@ -19,16 +19,17 @@
                 <v-row justify="center">
                     <v-col align="center">
                             <v-btn
-                            variant="outlined"
+                            color="light-grey"
                             @click="getUnassignedTickets"
                             :active="clickedButton=='unassigned'"
+                            class="font-weight-bold text-medium-emphasis"
                             >
                                 Tickets por asignar
                             </v-btn>
                     </v-col>
                     <v-col align="center">
                             <v-btn
-                            variant="outlined"
+                            class="font-weight-bold text-medium-emphasis"
                             @click="getAnsweredTickets"
                             :active="clickedButton=='answered'"
                             
@@ -97,41 +98,41 @@
                 </v-card-text>
             </v-card>
             <v-dialog v-model="popUp" max-width="500">
-                <v-card  class="pa-5 rounded-lg">
-                <v-card-title>
-                    Seleccione analista a asignar
-                </v-card-title>
-                <v-card-text>
-                    <v-progress-circular 
-                    v-if = "loadingAnalysts"
-                    color="grey"
-                    indeterminate
-                    >
-                    </v-progress-circular>
-                    <v-list
-                    v-else-if = "listAnalyzers.length > 0"
-                    v-for="analyzer in listAnalyzers"
-                    :key="analyzer.idAnalyzer"
-                    >
-                        <v-list-item>
-                            <v-list-item-title>
-                                {{ analyzer.name }}
-                            </v-list-item-title>
-                            <v-list-item-action>
-                                <v-btn
-                                >
-                                    Asignar
-                                </v-btn>
-                            </v-list-item-action>
-                        </v-list-item>
-                    </v-list>
-                    <h3 class="text-disabled" v-else>
-                        No hay analistas disponibles
-                    </h3>
-                </v-card-text>
-                <v-card-actions>
-                    <v-btn @click="popUp = false">Cerrar</v-btn>
-                </v-card-actions>
+                <v-card  class="pa-5 rounded-lg align-center">
+                    <v-card-title>
+                        <h3 class="text-high-emphasis">Seleccione analista a asignar</h3>
+                    </v-card-title>
+                    <v-card-text>
+                        <v-progress-circular 
+                        v-if = "loadingAnalysts"
+                        color="grey"
+                        indeterminate
+                        >
+                        </v-progress-circular>
+                        <v-list
+                        v-else-if = "listAnalyzers.length > 0"
+                        v-for="analyzer in listAnalyzers"
+                        :key="analyzer.idAnalyzer"
+                        >
+                            <v-list-item>
+                                <v-list-item-title>
+                                    {{ analyzer.name }}
+                                </v-list-item-title>
+                                <v-list-item-action>
+                                    <v-btn
+                                    >
+                                        Asignar
+                                    </v-btn>
+                                </v-list-item-action>
+                            </v-list-item>
+                        </v-list>
+                        <h3 class="text-medium-emphasis" v-else>
+                            No hay analistas disponibles
+                        </h3>
+                    </v-card-text>
+                    <v-card-actions>
+                        <v-btn class="font-weight-bold text-medium-emphasis" @click="popUp = false">Cerrar</v-btn>
+                    </v-card-actions>
                 </v-card>
             </v-dialog>
         </v-main>
@@ -150,13 +151,14 @@
             comentarios: '',
             clientId: null,
             popUp: false,
-            listTickets: [],
-            /*listTickets: [
+            //listTickets: [],
+            listTickets: [
                 {
                     id: 1,
+                    category: "Por asignar",
+                    description: "Compré un ticket y el código qr no llevaba hacia ninguna página"
                 }
             ],
-            */
             listAnalyzers: [],
             clickedButton: 'unassigned',
             loadingAnalysts: false,
