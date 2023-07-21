@@ -93,19 +93,22 @@
     import axios from 'axios'
     import appBar from '../appBar.vue'
     import {id} from "vuetify/locale";
+    import {addBusinessDays} from "../../dateUtils";
+
     export default {
         name: 'AddTicket',
-      computed: {
-        id() {
-          return id
-        }
-      },
+        computed: {
+            id() {
+              return id
+            }
+        },
         data: () => ({
             category: null,
             academicUnits: [],
             description: null,
             idAcademicUnit: null,
-            idLeadership: null
+            idLeadership: null,
+            creation: null
         }),
         components: {
             appBar
@@ -127,10 +130,15 @@
                       this.clientId = localStorage.getItem('userId');
                       await this.getIdLeadership();
 
+                      this.creation = new Date();
+                      const numBusinessDays = 20;
+
                       const ticketData = {
                             description: this.description,
                             category: this.category,
                             state: "Sin asignar",
+                            creation: this.creation,
+                            responseLimit: addBusinessDays(this.creation, numBusinessDays),
                             fkIdClient: Number(this.clientId),
                             fkIdAcademicUnit: this.idAcademicUnit,
                             fkIdLeadership: this.idLeadership
@@ -143,6 +151,10 @@
                       const idTicket = response.data.idTicket;
 
                       await axios.put(`http://localhost:8081/units/leaderships/${this.idLeadership}/tickets/${idTicket}`)
+
+                      this.description = "";
+                      this.category = null;
+                      this.idAcademicUnit = null;
 
                     } catch (error) {
                       console.error(error);
@@ -165,7 +177,8 @@
               } catch(error){
                 console.error(error);
               }
-            }
+            },
+
         },
         mounted() {
             this.initFetch()

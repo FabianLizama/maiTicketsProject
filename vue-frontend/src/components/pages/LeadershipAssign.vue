@@ -221,7 +221,7 @@
               this.idTicket = idTicket;
                 this.popUp = true
                 try {
-                    this.getAnalyzers();
+                    await this.getAnalyzers();
                 }
                 catch (error){
                     console.error(error)
