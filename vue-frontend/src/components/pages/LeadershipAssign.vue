@@ -72,7 +72,7 @@
                                     <v-row justify="space-between" align="center">
                                         <v-col>
                                             <v-btn
-                                            @click="openPopup"
+                                            @click="openPopup(ticket.idTicket)"
                                             >
                                                 Asignar
                                             </v-btn>
@@ -120,6 +120,7 @@
                                 </v-list-item-title>
                                 <v-list-item-action>
                                     <v-btn
+                                    @click="assignTicketToAnalyzer(analyzer.idAnalyzer, this.idTicket)"
                                     >
                                         Asignar
                                     </v-btn>
@@ -161,6 +162,7 @@
             ],*/
             listAnalyzers: [],
             idAnalyzer: null,
+            idTicket: null,
             clickedButton: 'unassigned',
             loadingAnalysts: false,
             loadingTickets: false,
@@ -215,14 +217,23 @@
                     console.error(error)
                 }
             },
-            async openPopup(){
+            async openPopup(idTicket){
+              this.idTicket = idTicket;
                 this.popUp = true
                 try {
-                    this.getAnalyzers()
+                    this.getAnalyzers();
                 }
                 catch (error){
                     console.error(error)
                 }
+            },
+            async assignTicketToAnalyzer(idAnalyzer, idTicket){
+              try {
+                const response = await axios.put(`http://localhost:8081/leaderships/analyzers/${idAnalyzer}/tickets/${idTicket}`);
+                console.log(response.data);
+              } catch (e) {
+                console.error(e);
+              }
             }
 
         },
