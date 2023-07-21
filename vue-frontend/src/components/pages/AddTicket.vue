@@ -32,17 +32,19 @@
                         </v-autocomplete>
                     </v-col>
                     <v-col align="center">
-                        <v-autocomplete
-                        v-if = academicUnits.length > 0
-                        label="Unidad Académica" 
+                        <v-select
+                        v-if = "academicUnits.length > 0"
+                        label="Unidad Académica"
                         variant="outlined"
-                        v-model="academicUnit"
+                        v-model="idAcademicUnit"
                         :items="academicUnits"
+                        item-title="name"
+                        item-value="idAcademicUnit"
                         >
-                        </v-autocomplete>
+                        </v-select>
                         <v-autocomplete
                         v-else
-                        label="Unidad Académica" 
+                        label="Unidad Académica"
                         variant="outlined"
                         disabled
                         >
@@ -72,7 +74,7 @@
                     <v-col align-center>
                         <v-btn
                         class="rounded-lg text-disabled"
-                        block
+                        block=""
                         size="large"
                         type="submit"
                         variant="outlined"
@@ -90,13 +92,20 @@
 <script>
     import axios from 'axios'
     import appBar from '../appBar.vue'
+    import {id} from "vuetify/locale";
     export default {
         name: 'AddTicket',
+      computed: {
+        id() {
+          return id
+        }
+      },
         data: () => ({
             category: null,
-            academicUnit: null,
             academicUnits: [],
             description: null,
+            idAcademicUnit: null,
+            idLeadership: null
         }),
         components: {
             appBar
@@ -115,32 +124,47 @@
                 // Método para enviar los datos del ticket
 
                     try {
-                    this.clientId = localStorage.getItem('userId')
-                    axios.post(
-                        `http://localhost:8081/tickets/add-ticket/${idClient}/`,
-                        {
-                            description: this.descripcion,
+                      this.clientId = localStorage.getItem('userId');
+                      await this.getIdLeadership();
+
+                      const ticketData = {
+                            description: this.description,
                             category: this.category,
                             state: "Sin asignar",
-                            fkIdClient: Number(idClient)
-                        }
-                    ).then(response => {
-                        console.log(response.data)
-                    }).catch(error => {
-                        console.error(error)
-                    })
+                            fkIdClient: Number(this.clientId),
+                            fkIdAcademicUnit: this.idAcademicUnit,
+                            fkIdLeadership: this.idLeadership
+                        };
 
-                } catch (error) {
-                console.error(error);
-                }
+                      const response = await axios.post(
+                          `http://localhost:8081/tickets/add-ticket/${this.clientId}/`,
+                          ticketData);
+
+                      const idTicket = response.data.idTicket;
+
+                      await axios.put(`http://localhost:8081/units/leaderships/${this.idLeadership}/tickets/${idTicket}`)
+
+                    } catch (error) {
+                      console.error(error);
+                    }
             },
             async getUnits(){
                 try {
-                    const response = await axios.get(`http://localhost:8081/units/names`)
-                    this.academicUnits = response.data
+                    const response = await axios.get(`http://localhost:8081/units/`);
+                    this.academicUnits = response.data;
                 } catch (error){
                     console.error(error)
                 }
+            },
+            async getIdLeadership(){
+              try {
+                console.log(this.idAcademicUnit);
+                const response = await axios.get(`http://localhost:8081/units/${this.idAcademicUnit}/leadership`);
+                this.idLeadership = response.data;
+                console.log(response.data);
+              } catch(error){
+                console.error(error);
+              }
             }
         },
         mounted() {

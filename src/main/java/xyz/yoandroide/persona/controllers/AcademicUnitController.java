@@ -31,7 +31,7 @@ public class AcademicUnitController {
     }
 
     @GetMapping("/{nameAcademicUnit}")
-    private ResponseEntity<Long> getIdAcademicUnit(@PathVariable String nameAcademicUnit){
+    private ResponseEntity<Long> getIdAcademicUnitByName(@PathVariable String nameAcademicUnit){
         return ResponseEntity.ok(academicUnitService.findByName(nameAcademicUnit));
     }
 

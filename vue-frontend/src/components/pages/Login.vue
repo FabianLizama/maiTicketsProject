@@ -85,9 +85,9 @@
                     localStorage.setItem('userId', userId);
 
                     if (responseStatus === 'loggedC') {
-                        this.$router.push()
+                        this.$router.push({name: 'add-ticket'});
                     }else if (responseStatus === 'loggedL'){
-                        this.$router.push({name: 'assign-ticket', params: {id: userId}});
+                        this.$router.push({name: 'assign-ticket'});
                     }else{
                         console.log('BBBBBBBB');
                     }
