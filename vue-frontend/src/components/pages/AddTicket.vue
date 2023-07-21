@@ -84,6 +84,22 @@
                         </v-btn>
                     </v-col>
                 </v-row>
+                <v-dialog v-model="showPopup" max-width="500">
+                    <v-card class="pa-5 rounded-lg align-center">
+                        <v-card-text class="text-center d-flex flex-column align-center">
+                            <!-- Contenido del mensaje de éxito aquí -->
+                            <v-icon color="success" size="200">mdi-check-circle</v-icon>
+                            <p class="text-success font-weight-bold text-center my-3">
+                              El ticket se ha enviado con éxito.
+                            </p>
+                        </v-card-text>
+                        <v-card-actions>
+                            <v-btn variant="outlined" class="font-weight-bold text-medium-emphasis" @click="showPopup = false">
+                              Cerrar
+                            </v-btn>
+                        </v-card-actions>
+                    </v-card>
+                </v-dialog>
             </v-card>
         </v-main>
     </v-app>
@@ -108,7 +124,9 @@
             description: null,
             idAcademicUnit: null,
             idLeadership: null,
-            creation: null
+            creation: null,
+            successMessage: "",
+            showPopup: false,
         }),
         components: {
             appBar
@@ -151,6 +169,8 @@
                       const idTicket = response.data.idTicket;
 
                       await axios.put(`http://localhost:8081/units/leaderships/${this.idLeadership}/tickets/${idTicket}`)
+
+                      this.showPopup = true;
 
                       this.description = "";
                       this.category = null;
