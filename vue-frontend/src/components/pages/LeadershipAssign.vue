@@ -1,9 +1,9 @@
 <template>
     <v-app class="rounded rounded-md">
         <v-app-bar
-            flat
+        flat
             class="pa-md-3"
-            color="grey"
+            color="#17a499"
         >
             <appBar />
         </v-app-bar>
@@ -11,30 +11,33 @@
         class="d-flex align-center justify-center"
         >
             <v-card
-            :elevation="10"
-            class="pa-10"
-            style="border-radius: 10px"
+            color="#17a499"
+            class="rounded-lg px-10 py-5 align-center text-center"
+            :elevation="5"
             min-width="1000"
             >
                 <v-row justify="center">
                     <v-col align="center">
                             <v-btn
-                            color="light-grey"
+                            variant="outlined"
                             @click="getUnassignedTickets"
                             :active="clickedButton=='unassigned'"
-                            class="font-weight-bold text-medium-emphasis"
+                            class="rounded-lg text-white px-5"
                             >
                                 Tickets por asignar
                             </v-btn>
                     </v-col>
                     <v-col align="center">
                             <v-btn
-                            class="font-weight-bold text-medium-emphasis"
+                            class="rounded-lg text-white px-5"
                             @click="getAnsweredTickets"
                             :active="clickedButton=='answered'"
+                            variant="outlined"
                             
                             >
-                                Tickets por validar
+                                <div class="font-weight-medium text-white">
+                                    Tickets por validar
+                                </div>
                             </v-btn>
                     </v-col>
                 </v-row>
@@ -42,16 +45,19 @@
                 <v-card-text
                 align="center"
                 class="ma-5"
+                color="#17a499"
                 >   
                     <v-progress-circular 
                     v-if = "loadingTickets"
-                    color="grey"
+                    color="white"
                     indeterminate
                     >
                     </v-progress-circular>
                     <v-list
                     v-else-if="listTickets.length > 0"
                     lines="one"
+                    base-color="white"
+                    bg-color="#17a499"
                     >
                         <v-list-item
                             v-for="ticket in listTickets"
@@ -60,7 +66,7 @@
                             class="py-3 my-3 rounded-lg"
                         >
                             <v-row>
-                                <v-col align="center">
+                                <v-col align-center>
                                     <v-list-item-title class="text-left">
                                         ID: {{ ticket.idTicket }}<br>Motivo: {{ ticket.category }}
                                     </v-list-item-title>
@@ -69,21 +75,26 @@
                                     </v-list-item-subtitle>
                                 </v-col>
                                 <v-col class="d-flex align-center">
-                                    <v-row justify="space-between" align="center">
+                                    <v-row justify="space-between" >
                                         <v-col>
                                             <v-btn
                                             @click="openPopup(ticket.idTicket)"
+                                            variant="text"
                                             >
                                                 Asignar
                                             </v-btn>
                                         </v-col>
                                         <v-col>
-                                            <v-btn>
+                                            <v-btn
+                                            variant="text"
+                                            >
                                                 Validar
                                             </v-btn>
                                         </v-col>
                                         <v-col>
-                                            <v-btn>
+                                            <v-btn
+                                            variant="text"
+                                            >
                                                 Rechazar
                                             </v-btn>
                                         </v-col>
@@ -92,47 +103,65 @@
                             </v-row>
                         </v-list-item>
                     </v-list>
-                    <h3 class="text-disabled" v-else>
+                    <h3 class="text-white" v-else>
                         No hay tickets disponibles
                     </h3>
                 </v-card-text>
             </v-card>
-            <v-dialog v-model="popUp" max-width="500">
-                <v-card  class="pa-5 rounded-lg align-center">
+            <v-dialog v-model="popUp" max-width="600">
+                <v-card  class="d-flex pa-5 rounded-lg align-center" color="#eb7704">
                     <v-card-title>
-                        <h3 class="text-high-emphasis">Seleccione analista a asignar</h3>
+                        <h3 class="text-white">Seleccione analista a asignar</h3>
                     </v-card-title>
                     <v-card-text>
                         <v-progress-circular 
+                        color="white"
                         v-if = "loadingAnalysts"
-                        color="grey"
                         indeterminate
                         >
                         </v-progress-circular>
                         <v-list
+                        base-color="white"
+                        bg-color="#eb7704"
                         v-else-if = "listAnalyzers.length > 0"
                         v-for="analyzer in listAnalyzers"
                         :key="analyzer.idAnalyzer"
                         >
-                            <v-list-item>
-                                <v-list-item-title>
-                                    {{ analyzer.name }}
-                                </v-list-item-title>
-                                <v-list-item-action>
-                                    <v-btn
-                                    @click="assignTicketToAnalyzer(analyzer.idAnalyzer, this.idTicket)"
-                                    >
-                                        Asignar
-                                    </v-btn>
-                                </v-list-item-action>
+                            <v-list-item variant="outlined" class="py-3 px-5 my-3 rounded-lg" min-width="400">
+                                <v-row>
+                                    <v-col class="d-flex align-center">
+                                        <v-list-item-title>
+                                            {{ analyzer.name }}
+                                        </v-list-item-title>
+                                    </v-col>
+                                    <v-col class="d-flex align-center">
+                                        <v-row justify="end" class="text-center pr-3">
+                                            <v-list-item-action>
+                                                <v-btn
+                                                @click="assignTicketToAnalyzer(analyzer.idAnalyzer, this.idTicket)"
+                                                variant="text"
+                                                size="small"
+                                                justify-center
+                                                >
+                                                <div justify="center">
+                                                    Asignar
+                                                </div>
+                                                </v-btn>
+                                            </v-list-item-action>
+                                        </v-row>
+                                        
+                                    </v-col>
+                                </v-row>
+                                
+                                
                             </v-list-item>
                         </v-list>
-                        <h3 class="text-medium-emphasis" v-else>
+                        <h3 class="text-white" v-else>
                             No hay analistas disponibles
                         </h3>
                     </v-card-text>
                     <v-card-actions>
-                        <v-btn class="font-weight-bold text-medium-emphasis" @click="popUp = false">Cerrar</v-btn>
+                        <v-btn class="font-weight-bold text-white px-3" size="small" @click="popUp = false">Cerrar</v-btn>
                     </v-card-actions>
                 </v-card>
             </v-dialog>
@@ -152,15 +181,25 @@
             comentarios: '',
             clientId: null,
             popUp: false,
-            listTickets: [],
-            /*listTickets: [
+            //listTickets: [],
+            listTickets: [
                 {
-                    id: 1,
+                    idTicket: 1,
                     category: "Por asignar",
                     description: "Compré un ticket y el código qr no llevaba hacia ninguna página"
                 }
-            ],*/
-            listAnalyzers: [],
+            ],
+            //listAnalyzers: [],
+            listAnalyzers: [
+                {
+                    id: 1,
+                    name: "Analista 1"
+                },
+                {
+                    id: 2,
+                    name: "Analista 2"
+                }
+            ],
             idAnalyzer: null,
             idTicket: null,
             clickedButton: 'unassigned',

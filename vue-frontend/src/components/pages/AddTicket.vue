@@ -3,7 +3,7 @@
         <v-app-bar
             flat
             class="pa-md-3"
-            color="grey"
+            color="#17a499"
         >
             <appBar />
         </v-app-bar>
@@ -11,17 +11,18 @@
         class="d-flex align-center justify-center"
         >
             <v-card
-            :elevation="10"
-            class="pa-10"
+            color="#17a499"
+            :elevation="1"
+            class="pa-10 text-white"
             style="border-radius: 10px"
             min-width="600"
             >
                 <v-row class="py-1">
                     <v-col cols="12" align="center">
-                        <h2 class="text-h4 font-weight-black text-disabled">Añadir Ticket</h2>
+                        <h2 class="pb-3 text-h3 font-weight-bold text-white">Añadir Ticket</h2>
                     </v-col>
                 </v-row>
-                <v-row>
+                <v-row >
                     <v-col cols="4">
                         <v-autocomplete
                         label="Motivo" 
@@ -74,10 +75,10 @@
                         </v-file-input>
                     </v-col>
                 </v-row>
-                <v-row align-center class="pt-7">
+                <v-row align-center class="pt-7 text-white">
                     <v-col align-center>
                         <v-btn
-                        class="rounded-lg text-disabled"
+                        class="rounded-lg text-white"
                         block=""
                         size="large"
                         type="submit"
@@ -85,7 +86,9 @@
                         @click="sendData"
                         :disabled="!formIsValid"
                         >
-                        Enviar
+                            <div class="font-weight-medium text-white">
+                                Enviar
+                            </div>
                         </v-btn>
                     </v-col>
                 </v-row>
@@ -120,7 +123,7 @@
         name: 'AddTicket',
         computed: {
             id() {
-              return id
+                return id
             },
             formIsValid() {
                 return this.category && this.idAcademicUnit && this.description;
@@ -154,15 +157,15 @@
                 // Método para enviar los datos del ticket
 
                     try {
-                      this.descriptionInvalid = false;
+                        this.descriptionInvalid = false;
 
-                      this.clientId = localStorage.getItem('userId');
-                      await this.getIdLeadership();
+                        this.clientId = localStorage.getItem('userId');
+                        await this.getIdLeadership();
 
-                      this.creation = new Date();
-                      const numBusinessDays = 20;
+                        this.creation = new Date();
+                        const numBusinessDays = 20;
 
-                      const ticketData = {
+                        const ticketData = {
                             description: this.description,
                             category: this.category,
                             state: "Sin asignar",
@@ -173,25 +176,25 @@
                             fkIdLeadership: this.idLeadership
                         };
 
-                      const response = await axios.post(
-                          `http://localhost:8081/tickets/add-ticket/${this.clientId}/`,
-                          ticketData);
+                        const response = await axios.post(
+                            `http://localhost:8081/tickets/add-ticket/${this.clientId}/`,
+                            ticketData);
 
-                      const idTicket = response.data.idTicket;
+                        const idTicket = response.data.idTicket;
 
-                      await axios.put(`http://localhost:8081/units/leaderships/${this.idLeadership}/tickets/${idTicket}`)
+                        await axios.put(`http://localhost:8081/units/leaderships/${this.idLeadership}/tickets/${idTicket}`)
 
-                      this.showPopup = true;
+                        this.showPopup = true;
 
-                      this.category = null;
-                      this.idAcademicUnit = null;
-                      this.description = "";
+                        this.category = null;
+                        this.idAcademicUnit = null;
+                        this.description = "";
 
-                      this.descriptionInvalid = false;
-                      this.description = "";
+                        this.descriptionInvalid = false;
+                        this.description = "";
 
                     } catch (error) {
-                      console.error(error);
+                        console.error(error);
                     }
             },
             async getUnits(){
@@ -204,14 +207,14 @@
                 }
             },
             async getIdLeadership(){
-              try {
+                try {
                 console.log(this.idAcademicUnit);
                 const response = await axios.get(`http://localhost:8081/units/${this.idAcademicUnit}/leadership`);
                 this.idLeadership = response.data;
                 console.log(response.data);
-              } catch(error){
+                } catch(error){
                 console.error(error);
-              }
+                }
             },
 
         },
@@ -219,10 +222,4 @@
             this.initFetch()
         }
     }
-
 </script>
-<style>
-    .invalid-input .v-text-field__details {
-        color: red;
-    }
-</style>

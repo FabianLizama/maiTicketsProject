@@ -12,6 +12,7 @@
                     color="#17a499"
                     class="rounded-lg px-10 py-5 align-center text-center"
                     width="500"
+                    :elevation="7"
                 >
                     <div class="py-4 text-h4 text-white font-weight-bold">
                         Iniciar Sesión
@@ -41,7 +42,7 @@
                             @click="login"
                             variant="outlined"
                         >
-                        <div class="text-subtitle-1 font-weight-bold text-white">
+                        <div class="text-h6 font-weight-medium text-white">
                         Ingresar
                         </div>
                     </v-btn>
