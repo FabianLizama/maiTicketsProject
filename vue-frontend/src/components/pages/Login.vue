@@ -68,6 +68,15 @@
             appBar
         },
         methods: {
+            initFetch() {
+                if (localStorage.getItem('userId')) {
+                    if (localStorage.getItem('userType') === 'leadership') {
+                        this.$router.push({name: 'assign-ticket'});
+                    } else {
+                    this.$router.push({name: 'add-ticket'});
+                }
+            }   
+            },
             async login() {
                 try {
                     const response = await axios.post(
@@ -81,11 +90,13 @@
                     const responseStatus = response.data.substring(0, 7);
                     const userId = response.data.substring(7);
 
-                    localStorage.setItem('userId', userId);
+                    localStorage.setItem('userId', userId)
 
                     if (responseStatus === 'loggedC') {
-                        this.$router.push({name: 'add-ticket'});
+                        localStorage.setItem('userType', 'client')
+                        this.$router.push({name: 'add-ticket'})
                     }else if (responseStatus === 'loggedL'){
+                        localStorage.setItem('userType', 'leadership')
                         this.$router.push({name: 'assign-ticket'});
                     }else{
                         null
@@ -95,6 +106,9 @@
                     console.error('A');
                 }
             }
-        }
+        },
+        mounted() {
+                this.initFetch();
+            },
     };
 </script>
