@@ -208,10 +208,8 @@
             },
             async getIdLeadership(){
                 try {
-                console.log(this.idAcademicUnit);
                 const response = await axios.get(`http://localhost:8081/units/${this.idAcademicUnit}/leadership`);
                 this.idLeadership = response.data;
-                console.log(response.data);
                 } catch(error){
                 console.error(error);
                 }

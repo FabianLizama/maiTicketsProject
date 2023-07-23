@@ -269,7 +269,7 @@
             async assignTicketToAnalyzer(idAnalyzer, idTicket){
               try {
                 const response = await axios.put(`http://localhost:8081/leaderships/analyzers/${idAnalyzer}/tickets/${idTicket}`);
-                console.log(response.data);
+
               } catch (e) {
                 console.error(e);
               }

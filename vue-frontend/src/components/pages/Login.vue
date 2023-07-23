@@ -42,7 +42,7 @@
                             @click="login"
                             variant="outlined"
                         >
-                        <div class="text-h6 font-weight-medium text-white">
+                        <div class="text-h font-weight-medium text-white">
                         Ingresar
                         </div>
                     </v-btn>
@@ -88,7 +88,7 @@
                     }else if (responseStatus === 'loggedL'){
                         this.$router.push({name: 'assign-ticket'});
                     }else{
-                        console.log('BBBBBBBB');
+                        null
                     }
 
                 } catch (error) {
