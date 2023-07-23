@@ -3,21 +3,21 @@
         <v-app-bar
             flat
             class="pa-md-3"
-            color="grey"
+            color="#17a499"
         >
         <appBar />
         </v-app-bar>
         <v-main class="d-flex align-center justify-center">
                 <v-card
-                    variant="tonal"
+                    color="#17a499"
                     class="rounded-lg px-10 py-5 align-center text-center"
                     width="500"
                 >
-                    <div class="py-4 text-h4 font-weight-black text-disabled">
+                    <div class="py-4 text-h4 text-white font-weight-bold">
                         Iniciar Sesión
                     </div>
                     <v-text-field 
-                        class="pt-5"
+                        class="pt-5 text-white"
                         v-model="email"
                         placeholder="example@usach.cl"
                         size="large"
@@ -25,25 +25,23 @@
                         variant="outlined"
                     >
                     </v-text-field>
-                    <v-text-field 
+                    <v-text-field
+                        class="text-white"
                         :type="visible ? 'text' : 'password'"
                         v-model="password"
                         label="Contraseña"
                         variant="outlined"
                     >
                     </v-text-field>
-                    <v-card-actions class="px-16">
+                    <v-card-actions class="justify-center">
                         <v-btn
-                            class="rounded-lg "
+                            class="rounded-lg text-white px-5"
                             :loading="loading"
-                            block
                             size="large"
-                            type="submit"
                             @click="login"
-                            variant="tonal"
-
+                            variant="outlined"
                         >
-                        <div class="text-h6 font-weight-bold text-disabled">
+                        <div class="text-subtitle-1 font-weight-bold text-white">
                         Ingresar
                         </div>
                     </v-btn>

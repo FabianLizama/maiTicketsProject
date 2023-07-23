@@ -1,6 +1,6 @@
 <template>
     <v-app-bar-title>
-        <div class="mr-10 text-h2 text-white text-end font-weight-bold">
+        <div class="mr-10 text-h2 text-white text-end font-weight-bold" color="#eb7804">
             MaiTickets
         </div>
     </v-app-bar-title>
@@ -14,3 +14,6 @@ export default {
 }
 
 </script>
+<style>
+
+</style>
