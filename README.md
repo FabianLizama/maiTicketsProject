@@ -23,7 +23,9 @@ Iniciar la clase principal del backend con ruta:
 \api\src\main\java\xyz\yoandroide\persona\PersonaBackendApplication.java
 
 Para iniciar el frontend se deben utilizar los siguientes comandos en una terminal ubicada dentro de /landing/:
-
+```sh
 npm install
-
+```
+```sh
 npm run dev
+```
