@@ -87,6 +87,7 @@
                                         <v-col>
                                             <v-btn
                                             variant="text"
+                                            @click="dontImplemented()"
                                             >
                                                 Validar
                                             </v-btn>
@@ -165,6 +166,9 @@
                     </v-card-actions>
                 </v-card>
             </v-dialog>
+            <v-dialog v-model="dontImplementedPopUp" max-width="500">
+                Funcionalidad no implementada
+            </v-dialog>
         </v-main>
     </v-app>
 </template>
@@ -181,6 +185,7 @@
             comentarios: '',
             clientId: null,
             popUp: false,
+            dontImplementedPopUp: false,
             //listTickets: [],
             listTickets: [
                 {
@@ -257,7 +262,7 @@
                 }
             },
             async openPopup(idTicket){
-              this.idTicket = idTicket;
+                this.idTicket = idTicket;
                 this.popUp = true
                 try {
                     await this.getAnalyzers();
@@ -273,7 +278,10 @@
               } catch (e) {
                 console.error(e);
               }
-            }
+            },
+            dontImplemented(){
+                this.dontImplementedPopUp = true
+            },
 
         },
         mounted() {

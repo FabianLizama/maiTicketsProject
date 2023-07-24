@@ -160,7 +160,8 @@
                         this.descriptionInvalid = false;
 
                         this.clientId = localStorage.getItem('userId');
-                        await this.getIdLeadership();
+                        console.log(this.idAcademicUnit);
+                        this.idLeadership = await this.getIdLeadership();
 
                         this.creation = new Date();
                         const numBusinessDays = 20;
