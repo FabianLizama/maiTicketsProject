@@ -92,17 +92,17 @@
                         </v-btn>
                     </v-col>
                 </v-row>
-                <v-dialog v-model="showPopup" max-width="500">
-                    <v-card class="pa-5 rounded-lg align-center">
+                <v-dialog v-model="showPopup" max-width="500" persistent>
+                    <v-card class="pa-5 rounded-lg align-center" color="#eb7704">
                         <v-card-text class="text-center d-flex flex-column align-center">
                             <!-- Contenido del mensaje de éxito aquí -->
-                            <v-icon color="success" size="200">mdi-check-circle</v-icon>
-                            <p class="text-success font-weight-bold text-center my-3">
+                            <v-icon color="white" size="200">mdi-check-circle</v-icon>
+                            <p class="text-white font-weight-bold text-center my-3">
                                 El ticket se ha enviado con éxito.
                             </p>
                         </v-card-text>
                         <v-card-actions>
-                            <v-btn variant="outlined" class="font-weight-bold text-medium-emphasis" @click="showPopup = false">
+                            <v-btn variant="outlined" class="font-weight-bold text-white" @click="closePopup()">
                                 Cerrar
                             </v-btn>
                         </v-card-actions>
@@ -159,12 +159,12 @@
                     try {
                         this.descriptionInvalid = false;
 
-                        this.clientId = localStorage.getItem('userId');
-                        console.log(this.idAcademicUnit);
-                        this.idLeadership = await this.getIdLeadership();
+                        this.clientId = localStorage.getItem('userId')
+                        console.log(this.idAcademicUnit)
+                        await this.getIdLeadership()
 
-                        this.creation = new Date();
-                        const numBusinessDays = 20;
+                        this.creation = new Date()
+                        const numBusinessDays = 20
 
                         const ticketData = {
                             description: this.description,
@@ -179,42 +179,46 @@
 
                         const response = await axios.post(
                             `http://localhost:8081/tickets/add-ticket/${this.clientId}/`,
-                            ticketData);
+                            ticketData)
 
-                        const idTicket = response.data.idTicket;
+                        const idTicket = response.data.idTicket
 
                         await axios.put(`http://localhost:8081/units/leaderships/${this.idLeadership}/tickets/${idTicket}`)
 
-                        this.showPopup = true;
+                        this.showPopup = true
 
-                        this.category = null;
-                        this.idAcademicUnit = null;
-                        this.description = "";
+                        this.category = null
+                        this.idAcademicUnit = null
+                        this.description = ""
 
-                        this.descriptionInvalid = false;
-                        this.description = "";
+                        this.descriptionInvalid = false
+                        this.description = ""
 
                     } catch (error) {
-                        console.error(error);
+                        console.error(error)
                     }
             },
             async getUnits(){
                 try {
-                    const response = await axios.get(`http://localhost:8081/units/`);
-                    this.academicUnits = response.data;
+                    const response = await axios.get(`http://localhost:8081/units/`)
+                    this.academicUnits = response.data
                 } catch (error){
                     console.error(error)
-                    this.descriptionInvalid = true;
+                    this.descriptionInvalid = true
                 }
             },
             async getIdLeadership(){
                 try {
-                const response = await axios.get(`http://localhost:8081/units/${this.idAcademicUnit}/leadership`);
-                this.idLeadership = response.data;
+                const response = await axios.get(`http://localhost:8081/units/${this.idAcademicUnit}/leadership`)
+                this.idLeadership = response.data
                 } catch(error){
-                console.error(error);
+                console.error(error)
                 }
             },
+            closePopup() {
+                this.showPopup = false
+                window.location.reload()
+            }
 
         },
         mounted() {

@@ -169,6 +169,18 @@
             <v-dialog v-model="dontImplementedPopUp" max-width="500">
                 Funcionalidad no implementada
             </v-dialog>
+            <v-dialog v-model="successPopUp" max-width="600" persistent>
+                <v-card  class="d-flex pa-5 rounded-lg align-center" color="#eb7704">
+                    <v-card-text>
+                        <h3 class="text-white">
+                            Analista asignado correctamente
+                        </h3>
+                    </v-card-text>
+                    <v-card-actions>
+                        <v-btn class="font-weight-bold text-white px-3" size="small" @click="successPopUpClose">Cerrar</v-btn>
+                    </v-card-actions>
+                </v-card>
+            </v-dialog>
         </v-main>
     </v-app>
 </template>
@@ -176,6 +188,7 @@
 <script>
     import axios from 'axios'
     import appBar from '../appBar.vue'
+import { fa } from 'vuetify/lib/locale/index.mjs'
     export default {
         name: 'AssignTicket',
         data: () => ({
@@ -185,26 +198,10 @@
             comentarios: '',
             clientId: null,
             popUp: false,
+            successPopUp: false,
             dontImplementedPopUp: false,
-            //listTickets: [],
-            listTickets: [
-                {
-                    idTicket: 1,
-                    category: "Por asignar",
-                    description: "Compré un ticket y el código qr no llevaba hacia ninguna página"
-                }
-            ],
-            //listAnalyzers: [],
-            listAnalyzers: [
-                {
-                    id: 1,
-                    name: "Analista 1"
-                },
-                {
-                    id: 2,
-                    name: "Analista 2"
-                }
-            ],
+            listTickets: [],
+            listAnalyzers: [],
             idAnalyzer: null,
             idTicket: null,
             clickedButton: 'unassigned',
@@ -273,8 +270,9 @@
             },
             async assignTicketToAnalyzer(idAnalyzer, idTicket){
               try {
-                const response = await axios.put(`http://localhost:8081/leaderships/analyzers/${idAnalyzer}/tickets/${idTicket}`);
-
+                await axios.put(`http://localhost:8081/leaderships/analyzers/${idAnalyzer}/tickets/${idTicket}`);
+                this.popUp = false;
+                this.successPopUp= true;
               } catch (e) {
                 console.error(e);
               }
@@ -282,6 +280,10 @@
             dontImplemented(){
                 this.dontImplementedPopUp = true
             },
+            successPopUpClose(){
+                this.successPopUp = false
+                window.location.reload()
+            }
 
         },
         mounted() {
