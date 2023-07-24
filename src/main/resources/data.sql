@@ -1,13 +1,14 @@
-INSERT INTO public.leadership(id_leadership, email, name, password) VALUES (1,'John Doe', 'john.doe@example.com', 'leadership_password');
-INSERT INTO public.leadership(id_leadership, email, name, password) VALUES (2,'FELIPE FUENTES LEADERSHIP', 'FELIPE_FUENTES_L@maitickets.com', '1234');
-INSERT INTO public.leadership(id_leadership, email, name, password) VALUES (3,'JOSEFINA MUNOZ LEADERSHIP', 'FELIPE_FUENTES_L@maitickets.com', '1234');
-INSERT INTO public.leadership(id_leadership, email, name, password) VALUES (4,'FREDY MERCURY LEADERSHIP', 'FREDY_MERCURY_L@maitickets.com', '1234');
-INSERT INTO public.leadership(id_leadership, email, name, password) VALUES (5,'FERNANDO SOLIS LEADERSHIP', 'FERNANDO_SOLIS_L@maitickets.com', '1234');
-INSERT INTO public.leadership(id_leadership, email, name, password) VALUES (6,'ANDRE COSIO LEADERSHIP', 'ANDRE_COSIO_L@maitickets.com', '1234');
-INSERT INTO public.leadership(id_leadership, email, name, password) VALUES (7,'NICOLAS AGUILERA LEADERSHIP', 'NICOLAS_AGUILERA_L@maitickets.com', '1234');
-INSERT INTO public.leadership(id_leadership, email, name, password) VALUES (8,'VALENTINA CAMPOS LEADERSHIP', 'VALENTINA_CAMPOS_L@maitickets.com', '1234');
-INSERT INTO public.leadership(id_leadership, email, name, password) VALUES (9,'FABIAN LIZAMA LEADERSHIP', 'FABIAN_LIZAMA_L@maitickets.com', '1234');
-INSERT INTO public.leadership(id_leadership, email, name, password) VALUES (10,'Leadership Name', 'Leadership@maitickets.com', '1234');
+INSERT INTO public.leadership(id_leadership, name, email, password) VALUES (1, 'John Doe', 'john.doe@example.com', '1234');
+INSERT INTO public.leadership(id_leadership, name, email, password) VALUES (2, 'FELIPE FUENTES LEADERSHIP', 'FELIPE_FUENTES_L@maitickets.com', '1234');
+INSERT INTO public.leadership(id_leadership, name, email, password) VALUES (3, 'JOSEFINA MUNOZ LEADERSHIP', 'FELIPE_FUENTES_L@maitickets.com', '1234');
+INSERT INTO public.leadership(id_leadership, name, email, password) VALUES (4, 'FREDY MERCURY LEADERSHIP', 'FREDY_MERCURY_L@maitickets.com', '1234');
+INSERT INTO public.leadership(id_leadership, name, email, password) VALUES (5, 'FERNANDO SOLIS LEADERSHIP', 'FERNANDO_SOLIS_L@maitickets.com', '1234');
+INSERT INTO public.leadership(id_leadership, name, email, password) VALUES (6, 'ANDRE COSIO LEADERSHIP', 'ANDRE_COSIO_L@maitickets.com', '1234');
+INSERT INTO public.leadership(id_leadership, name, email, password) VALUES (7, 'NICOLAS AGUILERA LEADERSHIP', 'NICOLAS_AGUILERA_L@maitickets.com', '1234');
+INSERT INTO public.leadership(id_leadership, name, email, password) VALUES (8, 'VALENTINA CAMPOS LEADERSHIP', 'VALENTINA_CAMPOS_L@maitickets.com', '1234');
+INSERT INTO public.leadership(id_leadership, name, email, password) VALUES (9, 'FABIAN LIZAMA LEADERSHIP', 'FABIAN_LIZAMA_L@maitickets.com', '1234');
+INSERT INTO public.leadership(id_leadership, name, email, password) VALUES (10, 'Leadership Name', 'Leadership@maitickets.com', '1234');
+
 
 INSERT INTO public.analyzer (id_analyzer, email, name, password, id_leadership) VALUES (1, 'FABIAN_LIZAMA@maitickets.com', 'FABIAN LIZAMA', '1234', 1);
 INSERT INTO public.analyzer (id_analyzer, email, name, password, id_leadership) VALUES (2, 'VALENTINA_CAMPOS@maitickets.com', 'VALENTINA CAMPOS', '1234', 2);
