@@ -1,5 +1,8 @@
 # FingesoProject
 
+Laboratorio para el ramo Fundamentos de Ingeniería de Software - Ingeniería Civil Informática Usach
+Prototipo Sistema de Administración de Tickets para Universidad (incidencias y solicitudes)
+
 Para iniciar el proyecto es necesario inicializar la base de datos, el backend y el frontend por separado, los pasos a seguir son los siguientes:
 
 ## Base de Datos
